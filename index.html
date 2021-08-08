@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>My TiddlyWiki — a non-linear personal web notebook</title>
+<title>n-simplex blog — a non-linear mathematical blog</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -153,6 +153,10 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/katex</li>
 
+<li>$:/SiteSubtitle</li>
+
+<li>$:/SiteTitle</li>
+
 <li>$:/state/add-plugin-info/$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.23/index.html/$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.23/index.html/$:/plugins/tiddlywiki/katex</li>
 
 <li>$:/state/sidebar</li>
@@ -172,6 +176,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>Draft of 'New Tiddler'</li>
 
 <li>What numbers are good?</li>
 
@@ -10236,6 +10242,12 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20210808224845759" modified="20210808224848310" title="$:/SiteSubtitle">
+<pre>a non-linear mathematical blog</pre>
+</div>
+<div created="20210808224839679" modified="20210808224842526" title="$:/SiteTitle">
+<pre>n-simplex blog</pre>
+</div>
 <div created="20210808174819985" modified="20210808174819985" title="$:/state/add-plugin-info/$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.23/index.html/$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.23/index.html/$:/plugins/tiddlywiki/katex">
 <pre>yes</pre>
 </div>
@@ -10257,7 +10269,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210808210349046" list="$:/ControlPanel GettingStarted" modified="20210808210349046" title="$:/StoryList">
+<div created="20210808210349046" list="[[Draft of 'New Tiddler']] [[What numbers are good?]] GettingStarted" modified="20210808224830430" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10369,7 +10381,10 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210808174904521" modified="20210808175621139" tags="IMC olympiad" title="What numbers are good?">
+<div author="Author 1" created="20210808224855918" draft.of="New Tiddler" draft.title="Welcome" modified="20210808224955589" tags="topic" title="Draft of 'New Tiddler'">
+<pre>Hello and welcome to the n-simplex blog!</pre>
+</div>
+<div author="Author 1" created="20210808174904521" modified="20210808225012348" tags="IMC olympiad" title="What numbers are good?">
 <pre>The 2021 IMC recently happened and the questions were great! This post will be discussing Problem 3, which discusses the following unintuitive property of a real number:
 
 We say that a positive real number $$d$$ is good if there exists an infinite sequence $$a_1,a_2,a_3...\in (0,d)$$ such that for each $$n$$, the points $$a_1,...,a_n$$ partition the interval $$[0,d]$$ into segments of length at most $$1/n$$ each.
