@@ -11412,7 +11412,7 @@ It is clear that each vertex has degree four, so $$G$$ is the union of Eulerian 
 
 </pre>
 </div>
-<div author="stanislaw" created="20210816213605000" modified="20210816213605000" tags="Problem, IMO, Inequalities, Olympiad" title="IMO 2021, Problem 2" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210816213605000" modified="20210816213605000" tags="Problem IMO Inequalities Olympiad" title="IMO 2021, Problem 2" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This year's IMO happened on 19th-20th July and was filled, as usual, with strikingly difficult problems. The authors of this blog decided to take a look and found that Problem 2 appeared particularly tricky. Indeed, we were not the only ones who thought so: the //average mark across all contestants// was just 0.375/7 and the //total Chinese team score// was just 16 (out of a possible 42)!
 
 Enough stalling, here is the problem:
@@ -11429,7 +11429,19 @@ We might like to comment that the authors found this inequality quite surprising
 $$
  \lambda\sqrt{y} +(1-\lambda)\sqrt{x} \leq \sqrt{\lambda y + (1-\lambda)x}  
 $$
-and we also note that $$ \sqrt{x} +\sqrt{y} \leq \sqrt{x+y}  $$ (which can be seen via squaring).
+and we also note that $$ \sqrt{x} +\sqrt{y} \leq \sqrt{x+y}  $$ (which can be seen via squaring). The normal idea when tackling something this large is to first look at small cases and you can't get much smaller than $$n=2$$ :
+$$
+2\sqrt{\mid x_1-x_2\mid } \leq \sqrt{\mid 2x_1\mid } + \sqrt{\mid 2x_2\mid }+2\sqrt{\mid x_1+x_2\mid }  
+$$ 
+This isn't actually completely trivial as you might hope it to be! After some time, we were able to discover the following argument (but you might want to try this one). Suppose without loss of generality that $$\mid x_2\mid \geq \mid x_1\mid $$ and then
+$$
+\begin{align*}
+\sqrt{\mid 2x_1\mid } +\sqrt{\mid 2x_2\mid } +2\sqrt{\mid x_1+x_2\mid } &amp;\geq 2\sqrt{\mid 2x_1\mid } + 2\sqrt{\mid x_1+x_2\mid } 
+&amp;\geq 2\sqrt{\mid 2x_1\mid +\mid x_1+x_2\mid } 
+&amp;\geq 2\sqrt{\mid (x_1+x_2) - 2x_1\mid }
+&amp;\geq 2\sqrt{\mid x_1-x_2\mid } 
+\end{align*}
+$$
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210812164355193" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
