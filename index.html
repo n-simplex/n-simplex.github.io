@@ -11413,7 +11413,7 @@ It is clear that each vertex has degree four, so $$G$$ is the union of Eulerian 
 </pre>
 </div>
 <div author="stanislaw" created="20210816213605000" modified="20210816213605000" tags="Problem IMO Inequalities Olympiad" title="IMO 2021, Problem 2" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>This year's IMO happened on 19th-20th July and was filled, as usual, with strikingly difficult problems. The authors of this blog decided to take a look and found that Problem 2 appeared particularly tricky. Indeed, we were not the only ones who thought so: the //average mark across all contestants// was just 0.375/7 and the //total Chinese team score// was just 16 (out of a possible 42)!
+<pre>This year's IMO happened on 19th-20th July and was filled, as usual, with strikingly difficult problems. The authors of this blog decided to take a look and found that Problem 2 appeared particularly tricky. Indeed, we were not the only ones who thought so: the //average mark across all contestants// was just 0.375/7 and the //total American team score// was just 2 (out of a possible 42)!
 
 Enough stalling, here is the problem:
 
@@ -11439,6 +11439,10 @@ $$
 \geq 2\sqrt{\mid 2x_1\mid +\mid x_1+x_2\mid } \\
 \geq 2\sqrt{\mid (x_1+x_2) - 2x_1\mid }\\
 \geq 2\sqrt{\mid x_1-x_2\mid } 
+$$ 
+Aha! A natural question is to then wonder whether we can obtain some kind of general lesson from this and use it to work out the question for all $$n$$, either by induction or directly. While this may be possible, it was not true for us but we did notice the following clue as to how we might go about an induction argument: suppose that we have some choice of $$x_1,\ldots, x_{n}$$ such that $$x_1=-x_2$$ then we get a nice reduction. The LHS of the inequality becomes
+$$
+\sum_{i=3}^{n} \sum_{j=3}^{n} \sqrt{\mid x_i-x_j\mid } + 2 \sum_{i=1}^{n} \sqrt{\mid x_i-x_1\mid }+ 2 \sum_{i=1}^{n} \sqrt{\mid x_i+x_1\mid } + 2\sqrt{\mid 2x_1\mid }
 $$
 </pre>
 </div>
