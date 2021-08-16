@@ -11440,9 +11440,19 @@ $$
 \geq 2\sqrt{\mid (x_1+x_2) - 2x_1\mid }\\
 \geq 2\sqrt{\mid x_1-x_2\mid } 
 $$ 
-Aha! A natural question is to then wonder whether we can obtain some kind of general lesson from this and use it to work out the question for all $$n$$, either by induction or directly. While this may be possible, it was not true for us but we did notice the following clue as to how we might go about an induction argument: suppose that we have some choice of $$x_1,\ldots, x_{n}$$ such that $$x_1=-x_2$$ then we get a nice reduction. The LHS of the inequality becomes
+Aha! A natural question is to then wonder whether we can obtain some kind of general lesson from this and use it to work out the question for all $$n$$, either by induction or directly. While this may be possible, it was not true for us but we did notice the following clue as to how we might go about an induction argument: suppose that we have some choice of $$x_1,\ldots, x_{n}$$ such that $$x_n=-x_{n-1}$$ then we get a nice reduction. The LHS of the inequality becomes
 $$
-\sum_{i=3}^{n} \sum_{j=3}^{n} \sqrt{\mid x_i-x_j\mid } + 2 \sum_{i=1}^{n} \sqrt{\mid x_i-x_1\mid }+ 2 \sum_{i=1}^{n} \sqrt{\mid x_i+x_1\mid } + 2\sqrt{\mid 2x_1\mid }
+\sum_{i=1}^{n-2} \sum_{j=1}^{n-2} \sqrt{\mid x_i-x_j\mid } + 2 \sum_{i=1}^{n} \sqrt{\mid x_i-x_n\mid }+ 2 \sum_{i=1}^{n} \sqrt{\mid x_i+x_n\mid } + 2\sqrt{\mid 2x_n\mid }
+$$ 
+and the RHS of the inequality becomes
+$$
+\sum_{i=1}^{n-2} \sum_{j=1}^{n-2} \sqrt{\mid x_i+x_j\mid } + 2 \sum_{i=1}^{n} \sqrt{\mid x_i-x_n\mid }+ 2 \sum_{i=1}^{n} \sqrt{\mid x_i+x_n\mid } + 2\sqrt{\mid 2x_n\mid }
+$$ 
+The exciting thing about this substitution is that these two expressions only differ in double-sum terms and //they// are simply the question's inequality in the case of $$n-2$$ real numbers! This potentially could be made into some kind of induction argument (where the base cases would be us checking $$n=1,2$$ ) but we need to somehow enforce this obscure condition which clearly in general does not hold. Given this, you might think this whole observation is useless (as did we, for some time).
+
+However, $$\mid x_i-x_j\mid = \mid (x_i-c) - (x_j-c)\mid $$ so in fact we can shift all of the $$x_{i}$$ terms by some fixed amount without changing the value of the LHS of the inequality. If we then define $$x_i' = x_i - \frac{x_n+x_{n-1}}{2}$$ then we find that $$x_n' = -x_{n-1}'$$ and so the observation applies. Let's see what happens when we try to use all of this in an argument:
+$$
+\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i-x_j} = \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid y_i-y_j} \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid y_i+y_j} \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i+x_j} 
 $$
 </pre>
 </div>
