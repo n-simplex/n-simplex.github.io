@@ -11419,12 +11419,16 @@ Enough stalling, here is the problem:
 
 @@.problem
 Show that the inequality
-$$ \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i-x_j \mid} \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i+x_j \mid }$$
+$$
+ \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i-x_j \mid} \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i+x_j \mid }
+$$
 holds for all real numbers $$x_1,\ldots, x_{n}$$.
 @@
 
 We might like to comment that the authors found this inequality quite surprising; for general real choices of $$x_i$$, it's not obvious that there should be this asymmetry between subtraction and addition of the absolute values in this way (and it's even less clear how square roots come into this). Those with a well-developed intuition might look at the square-root and immediately recall that as a function it is //concave//, i.e.
-$$ \lambda\sqrt{y} +(1-\lambda)\sqrt{x} \leq \sqrt{\lambda y + (1-\lambda)x}  $$
+$$
+ \lambda\sqrt{y} +(1-\lambda)\sqrt{x} \leq \sqrt{\lambda y + (1-\lambda)x}  
+$$
 and we also note that $$ \sqrt{x} +\sqrt{y} \leq \sqrt{x+y}  $$ (which can be seen via squaring).
 </pre>
 </div>
