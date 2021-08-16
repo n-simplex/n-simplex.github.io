@@ -11452,8 +11452,17 @@ The exciting thing about this substitution is that these two expressions only di
 
 However, $$\mid x_i-x_j\mid = \mid (x_i-c) - (x_j-c)\mid $$ so in fact we can shift all of the $$x_{i}$$ terms by some fixed amount without changing the value of the LHS of the inequality. If we then define $$x_i' = x_i - \frac{x_n+x_{n-1}}{2}$$ then we find that $$x_n' = -x_{n-1}'$$ and so the observation applies. Let's see what happens when we try to use all of this in an argument:
 $$
-\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i-x_j} = \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid y_i-y_j} \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid y_i+y_j} \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i+x_j} 
+\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i-x_j\mid } = \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i'-x_j'\mid } \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i'+x_j'\mid } \leq \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid x_i+x_j\mid } 
+$$ 
+The first equality is because subtracting by a constant doesn't change the value of the sum, the next relation is due to the observation above (i.e. it uses an inductive hypothesis) using the fact that $$x_n'=-x_{n-1}'$$ and the final relation is not known but would need to be true for this argument to work. We now need to expend our efforts on trying work out how to make that last inequality correct by choosing our $$x_n'$$ and $$x_{n-1}'$$ correctly\ldots
+
+We spent quite some time thinking of various possible ways of picking the correct two real numbers out of $$x_1,\ldots,x_n$$. One seemingly natural choice might be the pair whose moduli are the smallest but consider if $$x_1=-3,x_2=-3, x_3=0, x_4=2$$. Here, $$x_3,x_4$$ have the smallest moduli and so $$x_1' = -4, x_2'=-4, x_3'=-1, x_4'=1$$. But then
 $$
+30.0 = \sum_{i=1}^{4} \sum_{j=1}^{4} \sqrt{\mid x_i'+x_j'\mid } &gt; \sum_{i=1}^{4} \sum_{j=1}^{4} \sqrt{\mid x_i+x_j\mid } = 25.6
+$$ 
+where these numerical values are roughly correct and can obtained via a calculator or, in our case, a quick trip to Python terminal. We were really stumped here -- this really felt like the correct choice, if there was one, and given it didn't work perhaps neither did this entire argument.
+
+
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210812164355193" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
