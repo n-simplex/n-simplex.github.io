@@ -221,7 +221,7 @@ Error message and password prompt
 
 <li>IMC 2021 Problem 3</li>
 
-<li>IMO 2020 Q3</li>
+<li>IMO 2020, Problem 3</li>
 
 <li>IMO 2021, Problem 2</li>
 
@@ -11397,18 +11397,28 @@ We say that a positive real nuber $$d$$ is //good// if there exists an infinite 
 
 </pre>
 </div>
-<div author="klaus" created="20210812180035000" modified="20210812180035000" tags="" title="IMO 2020 Q3" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>@@.problem
-$$ 4n$$ coins of weights $$ 1, 2, \ldots 4n$$ are given. Each coin is coloured in one of $$ n$$ colours and there are 4 coins of each colour. Show that the set can be partitioned into two sets of equal weight such that each set contains two coins of each colour. 
-@@
- 
-@@.solution
-Let the set weights of coins coloured by the $$i^{th}$$ colour be $$C_i$$. Let $$G$$ be a graph with vertices $$C_1, C_2, \ldots, C_{2n}$$ and edges such that the number of edges between $$C_i, C_j$$ is the number of (unordered) pairs  $$x\in C_i, y\in C_j, x+y=4n+1$$. For each edge between $$C_i, C_j$$ we naturally associate a coin in $$C_i$$ and one in $$C_j$$ which sum to  $$4n+1$$.
+<div author="klaus" created="20210812180035000" modified="20210812180035000" tags="IMO Olympiad Problem Combinatorics Graph\ Theory" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>We thought it would be interesting to consider a problem from last year's IMO which has stuck in my mind since that time because the solution we found uses as the key object a multigraph, to which the statement of the question makes no allusion. It seemed entirely unobvious to me when first trying to solve this that this would involve such a dramatic introduction of graph and it was very exciting to see the proof come together.
+
+@@.problem
+$$ 4n$$ coins of weights $$ 1, 2, \ldots 4n$$ are given. Each coin is coloured in one of $$ n$$ colours and there are 4 coins of each colour. Show that these coins can be partitioned into two sets with the same total weight, such that each set contains two coins of each colour. 
 @@
 
-It is clear that each vertex has degree four, so $$G$$ is the union of Eulerian graphs. Hence let $$e_1 e_2 \ldots e_{2n}$$ be a concatenation of Eulerian paths for each of the components. We can then take the set of coins associated with $$e_1, e_3, \ldots, e_{2n-1}$$ to be one of these sets. This gives $$n$$ pairs of coins, each of which has weight $$4n+1$$, so the total weight of these coins is $$n\cdot (4n+1)$$, half of the weight of all coins, $$4nC2$$. This contains two coins of each colour because for any coin associated with an edge of odd parity, there is a coin of the same colour in either the previous or next edge, which has even parity, so for any given colour exactly half of the coins of this colour are in our chosen set. Hence, this set defines a partition with the required properties.
- 
---Klaus
+Consider the coins coloured by the $$i^{\text{th}}$$ colour; let the set of their weights be denoted by $$C_{i}$$. Let $$G$$ be a multigraph (this means multiple edges and loops are permitted) with vertices $$C_1, C_2, \ldots, C_{2n}$$ and edges chosen such that the number of edges between $$C_i, C_j$$ is the number of (unordered) pairs  $$x\in C_i, y\in C_j \text{such that}  x+y=4n+1$$. This is useful because $$n$$ such pairs of weights will sum to give half of the total weight of coins. The hope is that studying this graph will give structural information about the distribution of these pairs between the colours.
+
+Each vertex has degree four because there are four coins of each colour. Recall that a graph is //Eulerian// if it has a circuit that contains each edge exactly once (funnily enough, such a circuit is also said to be //Eulerian//). We now use the following fairly foundational result (prove it!).
+
+@@.lemma
+A multigraph is the union of Eulerian graphs if and only if every vertex has even degree.
+@@
+
+Given every vertex has degree four, $$G$$ is the union of Eulerian graphs. Therefore, we write these Eulerian circuits for each of the components of $$G$$ as $$e_{1,1}, e_{1,2}, \ldots, e_{1,l(1)}$$ (where $$l(i)$$ denotes the number of edges of the $$i^{\text{th}}$$ component of $$G$$) and then $$e_{2,1}, e_{2,2}, \ldots, e_{2,l(2)}$$ (for the second component) and et cetera. Considering each of these components, and noting that each vertex has degree 4, we may deduce by the //Handshake Lemma// that the number of edges is even (i.e. each $$l(i)$$ is even). We will then form a partition of the coins by considering for each component the set of edges with odd index. The total weight of these coins is $$n\cdot (4n+1)$$ (because there are $$n$$ edges and hence $$n$$ pairs of coins in this partition), half of the weight of all coins, $$\begin{pmatrix} 4n\\2 \end{pmatrix}$$.
+
+We have now defined a partition where each pile of coins is of half the total weight. The question also requires that there be two coins of each colour in each pile, which we now check (here the additional structure of the graph comes into play). The piles consist of the edges whose indices are odd and even; if a coin appears in an edge whose index is odd, say $$e_{i, 2j+1}$$, then a coin of its same colour must be part of $$e_{i,2j}\text{ or } e_{i,2j+2}$$ (addition is modulo $$l(i)$$), which is in the other partition! This means that the number of coins of a given colour is the same in each partition and hence, this set defines a partition with the required properties!
+
+We found very unexpected that it was possible to use Eulerian circuits in such a neat way to solve a problem that seemed to be completely unrelated (having a path somehow balances weights!)
+
+-Klaus
 
 </pre>
 </div>
