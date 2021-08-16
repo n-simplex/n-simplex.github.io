@@ -11471,6 +11471,11 @@ $$ and similarly
 $$
 \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid z_i+z_j\mid } = \sum_{(i,j) \in S^+}^{} \sqrt{\mid x_i+x_j\mid +\mid s^-\mid } + \sum_{(i,j) \in S^-}^{} \sqrt{\mid x_i+x_j\mid -\mid s^-\mid } 
 $$ 
+We now will use weighted averages of these two statements and apply concavity as discussed at the beginning of the article. In particular, we will use the facts that
+$$
+\frac{\mid b\mid }{\mid a\mid +\mid b\mid }\sqrt{x-\mid a\mid } + \frac{\mid a\mid }{\mid a\mid +\mid b\mid }\sqrt{x+\mid b\mid } \leq \sqrt{\frac{\mid a\mid +\mid b\mid }{\mid a\mid +\mid b\mid }x -\frac{\mid b\mid \mid a\mid }{\mid a\mid +\mid b\mid } +\frac{\mid a\mid \mid b\mid }{\mid a\mid +\mid b\mid }}\leq \sqrt{x} \\
+\frac{\mid b\mid }{\mid a\mid +\mid b\mid }\sqrt{x+\mid a\mid } + \frac{\mid a\mid }{\mid a\mid +\mid b\mid }\sqrt{x-\mid b\mid } \leq \sqrt{x} 
+$$
 
 </pre>
 </div>
