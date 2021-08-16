@@ -11464,12 +11464,12 @@ where these numerical values are roughly correct and can obtained via a calculat
 
 Eventually, we came up with a rather absurd idea: that no particular choice would work and so we would instead attempt to engineer a weighted average of two choices and try to use concavity to deal with these averages. In the above example, the essential reason why the idea failed to work was that the negative terms (i.e. the -3s) were shifted downwards to be be more negative and this led to the absolute sums being larger overall. Ideally, we would magically be able to move the positive terms downwards closer to zero and also move the negative terms upwards towards zero with the same shift but obviously addition doesn't work like this. Instead, we will consider two shifts (one where the $$x_i$$s are shifted negatively and another where they are shifted positively) and we will weight them according to some measure of how many terms are positive and how many are negative.
 
-Let us define $$S^+ = \{(i,j) \; \| \; x_i+x_j \geq 0\} $$ and $$S^- = \{(i,j) \; \| \; x_i+x_j&lt;0\} $$ - this partitions the sums into those that are nonnegative and those that are negative. We further define $$s^+ = \min_{(i,j)\in S^+}\{ x_i+x_j\}$$ and $$s^- = \max_{(i,j)\in S^-}\{ x_i+x_j \}$$ and use these to make $$y_i := x_i - \frac{s^+}{2}, z_i := x_i - \frac{s^-}{2}$$. The reason for these definitions is that we can neatly split up the sums as
+Let us define $$S^+ = \{(i,j) \; | \; x_i+x_j \geq 0\} $$ and $$S^- = \{(i,j) \; | \; x_i+x_j&lt;0\} $$ - this partitions the sums into those that are nonnegative and those that are negative. We further define $$s^+ = \min_{(i,j)\in S^+}\{ x_i+x_j\}$$ and $$s^- = \max_{(i,j)\in S^-}\{ x_i+x_j \}$$ and use these to make $$y_i := x_i - \frac{s^+}{2}, z_i := x_i - \frac{s^-}{2}$$. The reason for these definitions is that we can neatly split up the sums as
 $$
-\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid y_i+y_j\mid }  = \sum_{(i,j) \in S^+}^{} \sqrt{\mid x_i+x_j\mid -\mid s^+\mid } + \sum_{(i,j) \in S^-}^{} \sqrt{\mid x_i+x_j\mid + \mid a\mid }
+\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid y_i+y_j\mid }  = \sum_{(i,j) \in S^+}^{} \sqrt{\mid x_i+x_j\mid -\mid s^+\mid } + \sum_{(i,j) \in S^-}^{} \sqrt{\mid x_i+x_j\mid + \mid s^+\mid }
 $$ and similarly
 $$
-\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid z_i+z_j\mid } = \sum_{(i,j) \in S^+}^{} \sqrt{\mid x_i+x_j\mid +\mid b\mid } + \sum_{(i,j) \in S^-}^{} \sqrt{\mid x_i+x_j\mid -\mid b\mid } 
+\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\mid z_i+z_j\mid } = \sum_{(i,j) \in S^+}^{} \sqrt{\mid x_i+x_j\mid +\mid s^-\mid } + \sum_{(i,j) \in S^-}^{} \sqrt{\mid x_i+x_j\mid -\mid s^-\mid } 
 $$ 
 
 </pre>
