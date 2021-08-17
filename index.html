@@ -223,6 +223,8 @@ Error message and password prompt
 
 <li>All the Strongly Darboux Functions</li>
 
+<li>Finding the number of closed walks of length $$ l$$ in $$K_{p}$$</li>
+
 <li>IMC 2021 Problem 3</li>
 
 <li>IMO 2020, Problem 3</li>
@@ -11523,6 +11525,61 @@ This exact problem (to find such a function!) was posed to me last year. I knew 
 
 
 
+
+</pre>
+</div>
+<div author="klaus" created="20210817211743000" modified="20210817211743000" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics" title="Finding the number of closed walks of length $$ l$$ in $$K_{p}$$" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Combinatorics has somewhat of a mixed reputation. It can appear insular relative to the rest of mathematics; its problems can appear obscure; and their solutions can seem ad hoc and impossible to generalise to broad theories. However, due to developments of the $$20^{\text{ th } }$$ century, none of these characterisations seem to hold much weight. One such example has been the creation of //Algebraic Combinatorics//- the application of algebraic methods to solve combinatorial problems. The problem of finding the number of closed walks of length $$l$$ in $$K_{p}$$ presents a stark example of the advantages of using this.
+
+Throughout this post, //&quot;graph&quot;// will refer to a multigraph, which may have multiple edges and loops.
+
+First, we will develop some theory:
+
+@@.definition
+The //adjacency matrix// $$\mathbf{A} (G)$$ of a graph $$G$$ with $$p$$ vertices is the $$p \times p$$ matrix over $$\mathbf{C} $$ whose $$(i,j)$$ entry is equal to the number of edges incident to $$v_{i}, v_{j}$$. 
+@@
+
+Notice that $$\mathbf{A} (G)$$ is a real symmetric matrix and $$tr(\mathbf{A} (G))$$ is the number of loops in $$G$$.
+
+@@.definition
+A //walk// in a graph $$G$$ is a sequence $$v_1, e_1, v_2,e_2,\ldots v_{l}, e_{l}, v_{l+1}$$ such that each $$v_{i}$$ is a vertex of $$G$$, each $$e_{i}$$ is an edge in $$G$$, with $$v_{i}, v_{i+1}$$ are the only vertices adjacent to $$e_{i}$$.
+@@
+
+@@.theorem
+For any integer $$l\in \mathbf{N} $$, the $$(i,j)$$ entry of $$\mathbf{A} (G)^{l}$$ is equal to the number of walks from $$v_{i}$$ to $$v_{j}$$ in $$G$$ of length $$l$$.
+@@
+
+The $$(i,j)$$ entry of $$\mathbf{A} (G)^{l}$$ is given by $$
+(\mathbf{A} (G)^{l})_{ij}= \Sigma a_{ii_1}a_{i_1i_2}\ldots a_{i_{l-1}j}
+$$ where this sum ranges over all sequences  $$(i_1, i_2,\ldots,i_{l-1})$$ with $$1\leq i_{k}\leq p$$. Notice also the summand is the number of walks from $$v_i$$ to $$v_{j}$$ of the form $$v_{i}, e_1,v_{i_1}, e_2,\ldots,v_{i_{l-1}}, e_{l}, v_{j}$$, so this sum is equal to the total number of walks from $$v_{i}$$ to $$v_{j}$$ in $$G$$ of length $$l$$.
+
+@@.corollary
+Given a graph $$G$$ with $$p$$ vertices there are real numbers $$c_1, c_2,\ldots, c_{p}$$ such that $$(\mathbf{A} (G)^{l})_{ij}=c_1\lambda_1^{l}+\ldots+c_{p}\lambda_{p}^{l}$$.
+@@
+
+By the spectral theorem, $$\mathbf{A}(G)$$ is diagonalisable, so there is a matrix $$U$$ satisfying $$
+U^{-1}\mathbf{A}(G)U=\text{ diag } (\lambda_1,\ldots,\lambda_{p}).
+$$
+By taking powers of $$l$$ on both sides, we get that $$
+U^{-1}\mathbf{A}(G)^{l}U=\text{ diag } (\lambda_1,\ldots,\lambda_{p}).
+$$
+And thus $$
+\mathbf{A}(G)^{l}=U\text{ diag } (\lambda_1,\ldots,\lambda_{p})U^{-1}.
+$$
+
+@@.corollary
+Suppose $$\mathbf{A} $$ has eigenvalues $$\lambda_1,\ldots,\lambda_{p}$$. Then the number of closed walks of length $$l$$ is given by $$\lambda_1+\ldots+\lambda_{p}$$.
+@@
+
+@@.definition
+$$J_p$$ is the $$(p\times p)$$ matrix with only 1s.
+@@
+
+@@.example
+Calculate the number of closed walks of length $$l$$ in the complete graph $$K_{p}$$.
+@@
+
+We have $$\mathbf{A}(K_{p})=J_{p}-I_{p} $$. $$J_p$$ has rank 1 so has 0 as an eigenvalue with multiplicity $$p-1$$ ; $$(1,\ldots,1)^{T}$$ is the remaining eigenvector and has eigenvalue $$p$$. Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J_{p}-I_{p})v=(\lambda_{v}-1)v$$, so $$\mathbf{A} $$ has eigenvalues $$-1$$ with multiplicity  $$p-1$$ and $$p-1$$ with multiplicity 1. Then by corollary 3, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
 
 </pre>
 </div>
