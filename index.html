@@ -221,8 +221,6 @@ Error message and password prompt
 
 <li>$:/view</li>
 
-<li>All the Strongly Darboux Functions</li>
-
 <li>IMC 2021 Problem 3</li>
 
 <li>IMO 2020, Problem 3</li>
@@ -11498,34 +11496,6 @@ exports.context = contextWidget;
 <div created="20210812010402887" modified="20210812010437508" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>horizontal</pre>
 </div>
-<div author="stanislaw" created="20210818005817000" modified="20210818005817000" tags="Esoteric" title="All the Strongly Darboux Functions" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>There is a certain type of function that is in the folklore of undergraduate mathematics, relating to the //Intermediate Value Theorem//.
-
-@@.theorem
-If $$f:[a,b]\to \mathbb{R}$$ is continuous on its entire domain and $$c \in \mathbb{R}$$ is such that it lies between $$f(a)$$ and $$f(b)$$ (i.e. either $$f(a) \leq  c \leq f(b)$$ or $$f(b) \leq c \leq f(a)$$ ) then there is some $$x \in [a,b]$$ such that $$f(x) = c$$.
-@@
-
-Those who take a First Year undergraduate course on Real Analysis will inevitably meet this theorem, see why all the assumptions are necessary (for example, what if $$f$$ was defined on $$(a,b)$$ instead?) and see some variants but essentially the theorem embodies a fact about continuity that we would really hope to be true: if something moves continuously between two points then it does indeed touch everything inbetween them at some point. What if we made this the //defining// property of continuity instead? More specifically, consider the following definition:
-
-@@.def
-A function $$f:\mathbb{R}\to \mathbb{R}$$ is said to be //Darboux// if for any $$x, y \in \mathbb{R}$$ and $$x \neq y$$ and any $$c \in \mathbb{R}$$ such that $$c$$ lies between $$f(x)$$ and $$f(y)$$ then there is some $$z$$ between $$x,y$$ such that $$f(z) = c$$.
-@@
-
-So, expressed in our new language, the Intermediate Value Theorem says that all continuous functions are Darboux. Given Darboux-ness is such a deep part of intuition about continuity, could there be a function that is Darboux but //not continuous//? The answer, remarkably, is ''yes'' but we can go further and consider the following type of function:
-
-@@.def
-A function $$f:\mathbb{R}\to \mathbb{R}$$ is said to be //strongly Darboux// if, for any open interval $$(a,b) \subseteq\mathbb{R}$$, we have that $$f((a,b)) = \mathbb{R}$$.
-@@
-
-To make this clear, the function outputs //every real number on any interval, no matter its size//. If $$f$$ is strongly Darboux, then it is discontinuous everywhere: suppose $$f(x) = c$$, then arbitrarily close to $$x$$ we can find a real $$y$$ such that $$f(y) = 1000000c$$ or all kinds of other junk which horribly contradicts the $$\varepsilon-\delta$$ definition of continuity. This kind of function is absolutely wild and would be utterly impossible to graph--one of the greatest examples of a pathological object--but could it really exist?
-
-This exact problem (to find such a function!) was posed to me last year. I knew vaguely in the back of my mind that there was a famous answer to this question due to Conway but didn't remember really anything of his construction, which had seemed really bizarre to me previously. However, after a couple days thought, I came up with an incredible number of examples. The rest of this post will be dedicated to explaining as many of these as I can muster and at the end we'll describe another, more subtle, sense in which these functions violate intuition about continuity I encountered when studying some topology.
-
-
-
-
-</pre>
-</div>
 <div author="stanislaw" created="20210813161525000" modified="20210813161525000" tags="IMC, Problem" title="IMC 2021 Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The 2021 IMC happened recently (3rd-4th of August) and it had some very interesting and challenging problems, as always. This blog may discuss more of them in the future but today we'll be focussing on Problem 3:
 
@@ -11535,7 +11505,7 @@ We say that a positive real nuber $$d$$ is //good// if there exists an infinite 
 
 </pre>
 </div>
-<div author="klaus" created="20210812180035000" modified="20210817033247750" tags="IMO Olympiad Problem Combinatorics Graphs Klaus" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210812180035000" modified="20210816071408816" tags="IMO Olympiad Problem Combinatorics Graphs" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>We thought it would be interesting to consider a problem from last year's IMO which has stuck in my mind since that time because the solution we found uses as the key object a multigraph, to which the statement of the question makes no allusion. It seemed entirely unobvious to me when first trying to solve this that this would involve such a dramatic introduction of graph and it was very exciting to see the proof come together.
 
 @@.problem
@@ -11560,7 +11530,7 @@ We found very unexpected that it was possible to use Eulerian circuits in such a
 
 </pre>
 </div>
-<div author="stanislaw" created="20210816213605000" modified="20210817033230200" tags="Problem IMO Inequalities Olympiad Stanisław" title="IMO 2021, Problem 2" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210816213605000" modified="20210816213605000" tags="Problem IMO Inequalities Olympiad" title="IMO 2021, Problem 2" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This year's IMO happened on 19th-20th July and was filled, as usual, with strikingly difficult problems. The authors of this blog decided to take a look and found that Problem 2 appeared particularly tricky. Indeed, we were not the only ones who thought so: the //average mark across all contestants// was just 0.375/7 and the //total American team score// was just 2 (out of a possible 42)!
 
 Enough stalling, here is the problem:
@@ -11647,13 +11617,15 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210811014905149" modified="20210817033358722" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210811014905149" modified="20210812164355193" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>body
 {
 counter-reset: theorem;
 counter-reset: def;
 counter-reset: example;
 counter-reset: conjecture;
+counter-reset: problem;
+counter-reset: exercise;
 counter-reset: axiom;
 }
 
@@ -11746,6 +11718,7 @@ font-weight: bold;
 
 .problem
 {
+counter-increment: problem;
 border: 2px;
 border-style: none none solid none;
 padding: 4px;
@@ -11754,13 +11727,14 @@ padding: 4px;
 
 .problem:before
 {
-content: &quot;Problem. &quot;;
+content: &quot;Problem &quot; counter(problem) &quot;. &quot;;
 font-weight: bold;
 /.../
 }
 
 .exercise
 {
+counter-increment: exercise;
 border: 2px;
 border-style: none none solid none;
 padding: 4px;
@@ -11769,7 +11743,7 @@ padding: 4px;
 
 .exercise:before
 {
-content: &quot;Exercise. &quot;;
+content: &quot;Exercise &quot; counter(exercise) &quot;. &quot;;
 font-weight: bold;
 /.../
 }
