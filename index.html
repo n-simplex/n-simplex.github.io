@@ -11528,20 +11528,20 @@ This exact problem (to find such a function!) was posed to me last year. I knew 
 
 </pre>
 </div>
-<div author="klaus" created="20210817211743000" modified="20210817211743000" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210817211743000" modified="20210817235022063" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Combinatorics has somewhat of a mixed reputation. It can appear insular relative to the rest of mathematics; its problems can appear obscure; and their solutions can seem ad hoc and impossible to generalise to broad theories. However, due to developments of the $$20^{\text{ th } }$$ century, none of these characterisations seem to hold much weight. One such example has been the creation of //Algebraic Combinatorics//- the application of algebraic methods to solve combinatorial problems. The problem of finding the number of closed walks of length $$l$$ in $$K_{p}$$ presents a stark example of the advantages of using this.
 
 Throughout this post, //&quot;graph&quot;// will refer to a multigraph, which may have multiple edges and loops.
 
 First, we will develop some theory:
 
-@@.definition
+@@.def
 The //adjacency matrix// $$\mathbf{A} (G)$$ of a graph $$G$$ with $$p$$ vertices is the $$p \times p$$ matrix over $$\mathbf{C} $$ whose $$(i,j)$$ entry is equal to the number of edges incident to $$v_{i}, v_{j}$$. 
 @@
 
 Notice that $$\mathbf{A} (G)$$ is a real symmetric matrix and $$\text{ tr } (\mathbf{A} (G))$$ is the number of loops in $$G$$.
 
-@@.definition
+@@.def
 A //walk// in a graph $$G$$ is a sequence $$v_1, e_1, v_2,e_2,\ldots v_{l}, e_{l}, v_{l+1}$$ such that each $$v_{i}$$ is a vertex of $$G$$, each $$e_{i}$$ is an edge in $$G$$, with $$v_{i}, v_{i+1}$$ are the only vertices adjacent to $$e_{i}$$. This walk is //closed// if $$v_1=v_{l+1}$$.
 @@
 
@@ -11560,7 +11560,7 @@ Suppose $$\mathbf{A}(G) $$ has eigenvalues $$\lambda_1,\ldots,\lambda_{p}$$. The
 
 By theorem 1, the number of closed walks in $$G$$ of length $$l$$ is the sum of the $$(i,i)$$ entries of $$\mathbf{A}(G)^{l}$$ over $$1\leq i\leq p$$. This is the trace of $$\mathbf{A}(G)^{l}$$.
 
-As previously established, $$\mathbf{A}(G)$$ is symmetric. Then by the //spectral theorem//, there is a matrix $$U$$ such that $$
+As previously established, $$\mathbf{A}(G)$$ is symmetric. Then by the //[[Spectral Theorem| https://en.wikipedia.org/wiki/Spectral_theorem]]//, there is a matrix $$U$$ such that $$
 U^{-1}\mathbf{A}(G)U=\text{ diag } (\lambda_1,\ldots,\lambda_{p})
 $$ (i.e. $$\mathbf{A}(G) $$ is diagonalisable.
 
@@ -11576,7 +11576,7 @@ $$
 $$
 This is a pretty remarkable result! The fact that eigenvalues are so closely related to the number of walks in graphs is very surprising.
 
-@@.definition
+@@.def
 $$J_p$$ is the $$(p\times p)$$ matrix with only 1s.
 @@
 
@@ -11584,9 +11584,11 @@ We now consider $$G=K_{p}$$ in particular.
 
 It is first necessary to calculate the eigenvalues of the adjacency matrix of $$K_{p}$$. We have $$\mathbf{A}(K_{p})=J_{p}-I_{p} $$.
 
-We will start by finding the eigenvalues of $$J_p$$. This has rank one so has 0 as an eigenvalue with multiplicity $$p-1$$.
+We will start by finding the eigenvalues of $$J_p$$. This has rank one so has 0 as an eigenvalue with multiplicity $$p-1$$. There is one remaining eigenvector, $$(1,\ldots,1)^{T}$$, which has eigenvalue $$p$$.
 
-There is one remaining eigenvector. This is $$(1,\ldots,1)^{T}$$, which has eigenvalue $$p$$. Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J_{p}-I_{p})v=(\lambda_{v}-1)v$$. Hence, $$\mathbf{A}(K_{p}) $$ has eigenvalues $$-1$$ with multiplicity  $$p-1$$ and $$p-1$$ with multiplicity 1. Applying theorem 2, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
+Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J_{p}-I_{p})v=(\lambda_{v}-1)v$$. Hence, $$\mathbf{A}(K_{p}) $$ has eigenvalues $$-1$$ with multiplicity  $$p-1$$ and $$p-1$$ with multiplicity 1. 
+
+Applying theorem 2, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
 
 </pre>
 </div>
@@ -11599,14 +11601,14 @@ We say that a positive real nuber $$d$$ is //good// if there exists an infinite 
 
 </pre>
 </div>
-<div author="klaus" created="20210812180035000" modified="20210817033247750" tags="IMO Olympiad Problem Combinatorics Graphs Klaus" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210812180035000" modified="20210817234935045" tags="IMO Olympiad Problem Combinatorics Graphs Klaus" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>We thought it would be interesting to consider a problem from last year's IMO which has stuck in my mind since that time because the solution we found uses as the key object a multigraph, to which the statement of the question makes no allusion. It seemed entirely unobvious to me when first trying to solve this that this would involve such a dramatic introduction of graph and it was very exciting to see the proof come together.
 
 @@.problem
 $$ 4n$$ coins of weights $$ 1, 2, \ldots 4n$$ are given. Each coin is coloured in one of $$ n$$ colours and there are 4 coins of each colour. Show that these coins can be partitioned into two sets with the same total weight, such that each set contains two coins of each colour. 
 @@
 
-Consider the coins coloured by the $$i^{\text{th}}$$ colour; let the set of their weights be denoted by $$C_{i}$$. Let $$G$$ be a multigraph (this means multiple edges and loops are permitted) with vertices $$C_1, C_2, \ldots, C_{2n}$$ and edges chosen such that the number of edges between $$C_i, C_j$$ is the number of (unordered) pairs  $$x\in C_i, y\in C_j \text{ s.t. }  x+y=4n+1$$. This is useful because $$n$$ such pairs of weights will sum to give half of the total weight of coins. The hope is that studying this graph will give structural information about the distribution of these pairs between the colours.
+Consider the coins coloured by the $$i^{\text{th}}$$ colour; let the set of their weights be denoted by $$C_{i}$$. Let $$G$$ be a multigraph (this means multiple edges and loops are permitted) with vertices $$C_1, C_2, \ldots, C_{n}$$ and edges chosen such that the number of edges between $$C_i, C_j$$ is the number of (unordered) pairs  $$x\in C_i, y\in C_j \text{ s.t. }  x+y=4n+1$$. This is useful because $$n$$ such pairs of weights will sum to give half of the total weight of coins. The hope is that studying this graph will give structural information about the distribution of these pairs between the colours.
 
 Each vertex has degree four because there are four coins of each colour. Recall that a graph is //Eulerian// if it has a circuit that contains each edge exactly once (funnily enough, such a circuit is also said to be //Eulerian//). We now use the following fairly foundational result (prove it!).
 
@@ -11711,7 +11713,7 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210811014905149" modified="20210817033358722" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210811014905149" modified="20210817232220893" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>body
 {
 counter-reset: theorem;
