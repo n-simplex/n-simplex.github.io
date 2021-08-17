@@ -223,7 +223,7 @@ Error message and password prompt
 
 <li>All the Strongly Darboux Functions</li>
 
-<li>Finding the number of closed walks of length $$ l$$ in $$K_{p}$$</li>
+<li>Closed Walks in the Complete Graph</li>
 
 <li>IMC 2021 Problem 3</li>
 
@@ -11528,7 +11528,7 @@ This exact problem (to find such a function!) was posed to me last year. I knew 
 
 </pre>
 </div>
-<div author="klaus" created="20210817211743000" modified="20210817211743000" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics" title="Finding the number of closed walks of length $$ l$$ in $$K_{p}$$" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210817211743000" modified="20210817211743000" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Combinatorics has somewhat of a mixed reputation. It can appear insular relative to the rest of mathematics; its problems can appear obscure; and their solutions can seem ad hoc and impossible to generalise to broad theories. However, due to developments of the $$20^{\text{ th } }$$ century, none of these characterisations seem to hold much weight. One such example has been the creation of //Algebraic Combinatorics//- the application of algebraic methods to solve combinatorial problems. The problem of finding the number of closed walks of length $$l$$ in $$K_{p}$$ presents a stark example of the advantages of using this.
 
 Throughout this post, //&quot;graph&quot;// will refer to a multigraph, which may have multiple edges and loops.
@@ -11542,7 +11542,7 @@ The //adjacency matrix// $$\mathbf{A} (G)$$ of a graph $$G$$ with $$p$$ vertices
 Notice that $$\mathbf{A} (G)$$ is a real symmetric matrix and $$tr(\mathbf{A} (G))$$ is the number of loops in $$G$$.
 
 @@.definition
-A //walk// in a graph $$G$$ is a sequence $$v_1, e_1, v_2,e_2,\ldots v_{l}, e_{l}, v_{l+1}$$ such that each $$v_{i}$$ is a vertex of $$G$$, each $$e_{i}$$ is an edge in $$G$$, with $$v_{i}, v_{i+1}$$ are the only vertices adjacent to $$e_{i}$$.
+A //walk// in a graph $$G$$ is a sequence $$v_1, e_1, v_2,e_2,\ldots v_{l}, e_{l}, v_{l+1}$$ such that each $$v_{i}$$ is a vertex of $$G$$, each $$e_{i}$$ is an edge in $$G$$, with $$v_{i}, v_{i+1}$$ are the only vertices adjacent to $$e_{i}$$. This walk is //closed// if $$v_1=v_{l+1}$$.
 @@
 
 @@.theorem
@@ -11551,25 +11551,32 @@ For any integer $$l\in \mathbf{N} $$, the $$(i,j)$$ entry of $$\mathbf{A} (G)^{l
 
 The $$(i,j)$$ entry of $$\mathbf{A} (G)^{l}$$ is given by $$
 (\mathbf{A} (G)^{l})_{ij}= \Sigma a_{ii_1}a_{i_1i_2}\ldots a_{i_{l-1}j}
-$$ where this sum ranges over all sequences  $$(i_1, i_2,\ldots,i_{l-1})$$ with $$1\leq i_{k}\leq p$$. Notice also the summand is the number of walks from $$v_i$$ to $$v_{j}$$ of the form $$v_{i}, e_1,v_{i_1}, e_2,\ldots,v_{i_{l-1}}, e_{l}, v_{j}$$, so this sum is equal to the total number of walks from $$v_{i}$$ to $$v_{j}$$ in $$G$$ of length $$l$$.
+$$ where this sum ranges over all sequences  $$(i_1, i_2,\ldots,i_{l-1})$$ with $$1\leq i_{k}\leq p$$.
+Notice also that the summand is the number of walks from $$v_i$$ to $$v_{j}$$ of the form $$v_{i}, e_1,v_{i_1}, e_2,\ldots,v_{i_{l-1}}, e_{l}, v_{j}$$, so this sum is equal to the total number of walks from $$v_{i}$$ to $$v_{j}$$ in $$G$$ of length $$l$$.
 
-@@.corollary
-Given a graph $$G$$ with $$p$$ vertices there are real numbers $$c_1, c_2,\ldots, c_{p}$$ such that $$(\mathbf{A} (G)^{l})_{ij}=c_1\lambda_1^{l}+\ldots+c_{p}\lambda_{p}^{l}$$.
+@@.theorem
+Suppose $$\mathbf{A}(G) $$ has eigenvalues $$\lambda_1,\ldots,\lambda_{p}$$. Then the number of closed walks of length $$l$$ is given by $$\lambda_1^{l}+\ldots+\lambda_{p}^{l}$$.
 @@
 
-By the spectral theorem, $$\mathbf{A}(G)$$ is diagonalisable, so there is a matrix $$U$$ satisfying $$
-U^{-1}\mathbf{A}(G)U=\text{ diag } (\lambda_1,\ldots,\lambda_{p}).
+By theorem 1, the number of closed walks in $$G$$ of length $$l$$ is the sum of the $$(i,i)$$ entries of $$\mathbf{A}(G)^{l}$$ over $$1\leq i\leq p$$. This is the trace of $$\mathbf{A}(G)^{l}$$.
+
+As previously established, $$\mathbf{A}(G)$$ is symmetric. Then by the //spectral theorem//, there is a matrix $$U$$ such that $$
+U^{-1}\mathbf{A}(G)U=\text{ diag } (\lambda_1,\ldots,\lambda_{p})
+$$ (i.e. $$\mathbf{A}(G) $$ is diagonalisable.
+
+Taking powers of $$l$$ on both sides $$
+U^{-1}\mathbf{A}(G)^{l}U=\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})
+$$, so $$
+\mathbf{A}(G)^{l}=U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})U^{-1}.
 $$
-By taking powers of $$l$$ on both sides, we get that $$
-U^{-1}\mathbf{A}(G)^{l}U=\text{ diag } (\lambda_1,\ldots,\lambda_{p}).
+We now use a foundational result about traces (prove it!), $$\text{ tr } (AB)=\text{ tr } (BA)$$.
+
 $$
-And thus $$
-\mathbf{A}(G)^{l}=U\text{ diag } (\lambda_1,\ldots,\lambda_{p})U^{-1}.
+\text{ tr } (\mathbf{A}(G)^{l})=\text{ tr } (U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})U^{-1})=\text{ tr }( U U^{-1}\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l}))=\lambda_1^{l}+\ldots+\lambda_{p}^{l}
 $$
 
-@@.corollary
-Suppose $$\mathbf{A} $$ has eigenvalues $$\lambda_1,\ldots,\lambda_{p}$$. Then the number of closed walks of length $$l$$ is given by $$\lambda_1+\ldots+\lambda_{p}$$.
-@@
+
+
 
 @@.definition
 $$J_p$$ is the $$(p\times p)$$ matrix with only 1s.
