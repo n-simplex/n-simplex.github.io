@@ -11505,7 +11505,7 @@ We say that a positive real nuber $$d$$ is //good// if there exists an infinite 
 
 </pre>
 </div>
-<div author="klaus" created="20210812180035000" modified="20210816071408816" tags="IMO Olympiad Problem Combinatorics Graphs" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210812180035000" modified="20210817033247750" tags="IMO Olympiad Problem Combinatorics Graphs Klaus" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>We thought it would be interesting to consider a problem from last year's IMO which has stuck in my mind since that time because the solution we found uses as the key object a multigraph, to which the statement of the question makes no allusion. It seemed entirely unobvious to me when first trying to solve this that this would involve such a dramatic introduction of graph and it was very exciting to see the proof come together.
 
 @@.problem
@@ -11530,7 +11530,7 @@ We found very unexpected that it was possible to use Eulerian circuits in such a
 
 </pre>
 </div>
-<div author="stanislaw" created="20210816213605000" modified="20210816213605000" tags="Problem IMO Inequalities Olympiad" title="IMO 2021, Problem 2" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210816213605000" modified="20210817033230200" tags="Problem IMO Inequalities Olympiad Stanisław" title="IMO 2021, Problem 2" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This year's IMO happened on 19th-20th July and was filled, as usual, with strikingly difficult problems. The authors of this blog decided to take a look and found that Problem 2 appeared particularly tricky. Indeed, we were not the only ones who thought so: the //average mark across all contestants// was just 0.375/7 and the //total American team score// was just 2 (out of a possible 42)!
 
 Enough stalling, here is the problem:
@@ -11617,15 +11617,13 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210811014905149" modified="20210812164355193" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210811014905149" modified="20210817033358722" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>body
 {
 counter-reset: theorem;
 counter-reset: def;
 counter-reset: example;
 counter-reset: conjecture;
-counter-reset: problem;
-counter-reset: exercise;
 counter-reset: axiom;
 }
 
@@ -11718,7 +11716,6 @@ font-weight: bold;
 
 .problem
 {
-counter-increment: problem;
 border: 2px;
 border-style: none none solid none;
 padding: 4px;
@@ -11727,14 +11724,13 @@ padding: 4px;
 
 .problem:before
 {
-content: &quot;Problem &quot; counter(problem) &quot;. &quot;;
+content: &quot;Problem. &quot;;
 font-weight: bold;
 /.../
 }
 
 .exercise
 {
-counter-increment: exercise;
 border: 2px;
 border-style: none none solid none;
 padding: 4px;
@@ -11743,7 +11739,7 @@ padding: 4px;
 
 .exercise:before
 {
-content: &quot;Exercise &quot; counter(exercise) &quot;. &quot;;
+content: &quot;Exercise. &quot;;
 font-weight: bold;
 /.../
 }
