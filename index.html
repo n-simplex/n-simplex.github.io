@@ -11473,19 +11473,25 @@ $$
 $$ 
 We now will use weighted averages of these two statements and apply concavity as discussed at the beginning of the article. In particular, we will use the facts that
 $$
-\frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right| }\sqrt{x-\left| s^+ \right| } + \frac{\left| s^+ \right| }{\left| s^+ \right| +\left| s^- \right| }\sqrt{x+\left| s^- \right| } \leq \sqrt{\frac{\left| s^+ \right| +\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right| }x- \frac{\left| s^- \right| \left| s^+ \right|}{\left| s^+ \right| + \left| s^- \right|}+ \frac{\left| s^- \right| \left| s^+ \right| }{\left| s^+ \right| +\left| s^- \right| }} \leq  \sqrt{x} 
+\frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right| }\sqrt{x-\left| s^+ \right| } + \frac{\left| s^+ \right| }{\left| s^+ \right| +\left| s^- \right| }\sqrt{x+\left| s^- \right| } \leq \sqrt{\frac{\left| s^+ \right| +\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right| }x- \frac{\left| s^- \right| \left| s^+ \right|}{\left| s^+ \right| + \left| s^- \right|}+ \frac{\left| s^- \right| \left| s^+ \right| }{\left| s^+ \right| +\left| s^- \right| }}
 $$
-and similarly
+which is just $$x$$ and similarly
 $$
 \frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right| }\sqrt{x+\left| s^+ \right| } + \frac{\left| s^+ \right| }{\left| s^+ \right| +\left| s^- \right| }\sqrt{x-\left| s^- \right| } \leq \sqrt{x} 
 $$
 So now we weight the two sum-expansions above to get
 $$
-\frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right|  }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| y_i+y_j \right| } + \frac{\left| s^+ \right| }{\left| s^- \right| +\left| s^+ \right| }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| z_i+z_j \right| }
+\frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right|  }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| y_i+y_j \right| } + \frac{\left| s^+ \right| }{\left| s^- \right| +\left| s^+ \right| }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| z_i+z_j \right| } \\
 \leq  \sum_{(i,j) \in S^+}^{} \sqrt{\left| x_i+x_j \right| } + \sum_{(i,j) \in S^-}^{} \sqrt{\left| x_i+x_j \right| } 
 = \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| x_i+x_j \right| } 
 $$ 
-
+which works just as planned! So although it's complicated, here is the final set of inequalities we get:
+$$
+\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| x_i+x_j \right| } \geq \frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right|  }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| y_i+y_j \right| } + \frac{\left| s^+ \right| }{\left| s^- \right| +\left| s^+ \right| }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| z_i+z_j \right| } \\
+\geq \frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right|  }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| y_i-y_j \right| } + \frac{\left| s^+ \right| }{\left| s^- \right| +\left| s^+ \right| }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| z_i-z_j \right| } \\
+\geq \frac{\left| s^- \right| }{\left| s^+ \right| +\left| s^- \right|  }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| x_i-x_j \right| } + \frac{\left| s^+ \right| }{\left| s^- \right| +\left| s^+ \right| }\sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| x_i-x_j \right| } \\
+ = \sum_{i=1}^{n} \sum_{j=1}^{n} \sqrt{\left| x_i-x_j \right| } 
+$$
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210812164355193" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
