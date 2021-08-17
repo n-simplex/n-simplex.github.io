@@ -11539,7 +11539,7 @@ First, we will develop some theory:
 The //adjacency matrix// $$\mathbf{A} (G)$$ of a graph $$G$$ with $$p$$ vertices is the $$p \times p$$ matrix over $$\mathbf{C} $$ whose $$(i,j)$$ entry is equal to the number of edges incident to $$v_{i}, v_{j}$$. 
 @@
 
-Notice that $$\mathbf{A} (G)$$ is a real symmetric matrix and $$tr(\mathbf{A} (G))$$ is the number of loops in $$G$$.
+Notice that $$\mathbf{A} (G)$$ is a real symmetric matrix and $$\text{ tr } (\mathbf{A} (G))$$ is the number of loops in $$G$$.
 
 @@.definition
 A //walk// in a graph $$G$$ is a sequence $$v_1, e_1, v_2,e_2,\ldots v_{l}, e_{l}, v_{l+1}$$ such that each $$v_{i}$$ is a vertex of $$G$$, each $$e_{i}$$ is an edge in $$G$$, with $$v_{i}, v_{i+1}$$ are the only vertices adjacent to $$e_{i}$$. This walk is //closed// if $$v_1=v_{l+1}$$.
@@ -11565,28 +11565,28 @@ U^{-1}\mathbf{A}(G)U=\text{ diag } (\lambda_1,\ldots,\lambda_{p})
 $$ (i.e. $$\mathbf{A}(G) $$ is diagonalisable.
 
 Taking powers of $$l$$ on both sides $$
-U^{-1}\mathbf{A}(G)^{l}U=\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})
-$$, so $$
+U^{-1}\mathbf{A}(G)^{l}U=\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l}),
+$$so $$
 \mathbf{A}(G)^{l}=U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})U^{-1}.
 $$
 We now use a foundational result about traces (prove it!), $$\text{ tr } (AB)=\text{ tr } (BA)$$.
 
 $$
-\text{ tr } (\mathbf{A}(G)^{l})=\text{ tr } (U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})U^{-1})=\text{ tr }( U U^{-1}\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l}))=\lambda_1^{l}+\ldots+\lambda_{p}^{l}
+\text{ tr } (\mathbf{A}(G)^{l})=\text{ tr } (U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})U^{-1})=\text{ tr }( U^{-1} U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l}))=\lambda_1^{l}+\ldots+\lambda_{p}^{l}
 $$
-
-
-
+This is a pretty remarkable result! The fact that eigenvalues are so closely related to the number of walks in graphs is very surprising.
 
 @@.definition
 $$J_p$$ is the $$(p\times p)$$ matrix with only 1s.
 @@
 
-@@.example
-Calculate the number of closed walks of length $$l$$ in the complete graph $$K_{p}$$.
-@@
+We now consider $$G=K_{p}$$ in particular.
 
-We have $$\mathbf{A}(K_{p})=J_{p}-I_{p} $$. $$J_p$$ has rank 1 so has 0 as an eigenvalue with multiplicity $$p-1$$ ; $$(1,\ldots,1)^{T}$$ is the remaining eigenvector and has eigenvalue $$p$$. Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J_{p}-I_{p})v=(\lambda_{v}-1)v$$, so $$\mathbf{A} $$ has eigenvalues $$-1$$ with multiplicity  $$p-1$$ and $$p-1$$ with multiplicity 1. Then by corollary 3, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
+It is first necessary to calculate the eigenvalues of the adjacency matrix of $$K_{p}$$. We have $$\mathbf{A}(K_{p})=J_{p}-I_{p} $$.
+
+We will start by finding the eigenvalues of $$J_p$$. This has rank one so has 0 as an eigenvalue with multiplicity $$p-1$$.
+
+There is one remaining eigenvector. This is $$(1,\ldots,1)^{T}$$, which has eigenvalue $$p$$. Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J_{p}-I_{p})v=(\lambda_{v}-1)v$$. Hence, $$\mathbf{A}(K_{p}) $$ has eigenvalues $$-1$$ with multiplicity  $$p-1$$ and $$p-1$$ with multiplicity 1. Applying theorem 2, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
 
 </pre>
 </div>
