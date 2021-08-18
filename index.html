@@ -11507,13 +11507,13 @@ If $$f:[a,b]\to \mathbb{R}$$ is continuous on its entire domain and $$c \in \mat
 
 Those who take a First Year undergraduate course on Real Analysis will inevitably meet this theorem, see why all the assumptions are necessary (for example, what if $$f$$ was defined on $$(a,b)$$ instead?) and see some variants but essentially the theorem embodies a fact about continuity that we would really hope to be true: if something moves continuously between two points then it does indeed touch everything inbetween them at some point. What if we made this the //defining// property of continuity instead? More specifically, consider the following definition:
 
-@@.definition
+@@.def
 A function $$f:\mathbb{R}\to \mathbb{R}$$ is said to be //Darboux// if for any $$x, y \in \mathbb{R}$$ and $$x \neq y$$ and any $$c \in \mathbb{R}$$ such that $$c$$ lies between $$f(x)$$ and $$f(y)$$ then there is some $$z$$ between $$x,y$$ such that $$f(z) = c$$.
 @@
 
 So, expressed in our new language, the Intermediate Value Theorem says that all continuous functions are Darboux. Given Darboux-ness is such a deep part of intuition about continuity, could there be a function that is Darboux but //not continuous//? The answer, remarkably, is ''yes'' but we can go further and consider the following type of function:
 
-@@.definition
+@@.def
 A function $$f:\mathbb{R}\to \mathbb{R}$$ is said to be //strongly Darboux// if, for any open interval $$(a,b) \subseteq\mathbb{R}$$, we have that $$f((a,b)) = \mathbb{R}$$.
 @@
 
