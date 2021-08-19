@@ -11817,8 +11817,55 @@ Many years later, Bernard Riemann found out about this and even discussed the ma
 Suppose $$a_1,a_2,\ldots$$ is a conditionally convergent series. Then by rearranging the terms, we may get the series to have as its sum //any real number// as well as get it to have positive or negative infinity as its limits.
 @@
 
-This is the Riemann Rearrangement Theorem. We shall not discuss the proof of Dirichlet's result but we will attempt to prove Riemann's, while assuming certain minor results (which appear quite intuitive anyway).
+This is the Riemann Rearrangement Theorem. We shall not discuss the proof of Dirichlet's result but we will attempt to prove Riemann's.
 
+First a result called the //Sum Rule// that we will take for granted (but is easy to prove with the right theory and intuitive):
+
+@@.prop
+If $$a_1,a_2,\ldots$$ and $$b_1,b_2,\ldots$$ are both convergent series then the sum
+$$
+\sum_{n=1}^{\infty} c\cdot a_n+d\cdot b_n
+$$
+also converges for any $$c,d \in \mathbb{R}$$.
+@@
+
+There is also the //Monotone Convergence Theorem//.
+
+@@.theorem
+Suppose $$a_1,a_2,\ldots$$ is an increasing sequence that is bounded above by some real $$M$$. Then the sequence is convergent, with a limit $$\leq M$$.
+@@
+
+It is quite intuitive and that's because its proof lies very very close to the foundations of analysis (indeed, in some textbooks you might find it as an axiom of the real numbers).
+
+We now prove the major observation by Riemann.
+
+@@.lemma
+Suppose $$a_1,a_2,\ldots$$ is a conditionally convergent series. Then the series defined by summing the negative terms from the $$a$$ sequence diverges to negative infinity and the series defined by summing the positive terms from the $$a$$ sequence diverges to positive infinity.
+@@
+@@.proof
+We first note a neat trick. If $$x \in \mathbb{R}$$ and $$x \geq 0$$, then $$\frac{\left| x \right| +x}{2} = x$$ but if $$x&lt; 0$$, then $$\frac{\left| x \right| +x}{2} = \frac{-x+x}{2} = 0$$. Similarly, the expression $$\frac{\left| x \right| -x}{2}$$ is equal zero if $$x \geq 0$$ and is $$|x|$$ if $$x &lt; 0$$.
+
+Given this, we may define the sequences 
+$$
+u_n = \frac{\left| a_n \right| +a_n}{2} \\
+v_n = \frac{\left| a_n \right| -a_n}{2}
+$$
+and we know that $$u_n$$ is only nonzero when $$a_n&gt;0$$ and $$v_n$$ is only nonzero when  $$a_n &lt; 0$$ (in which case $$v_n = |a_n|$$ ). Thus
+$$
+\sum_{n=1}^{\infty} u_n \\
+
+\sum_{n=1}^{\infty} v_n
+$$
+are the sums of the absolute values of the positive and negative terms of the $$a$$ sequence respectively. Now suppose the $$u_n$$ sum converged. Then by the sum rule we know that
+$$
+\sum_{n=1}^{\infty} 2u_n + \sum_{n=1}^{\infty} -\frac{a_n}{2} = \sum_{n=1}^{\infty} |a_n|
+$$
+also converges. But this is a contradiction: $$a_1,\ldots$$ is a conditionally convergent sequence and that precisely means that the sum of the sequence, when the terms are made positive, does not converge but the normal sum does.
+
+Similarly, we can find a contradiction if we suppose that $$v_n$$ is convergent (the argument is almost exactly the same).
+
+Now suppose that either of $$u_1,u_2,\ldots$$'s or $$v_1,v_2,\ldots$$'s partial sums are bounded above. Then, given the series consist of purely nonnegative terms and so the sequence of partial sums is increasing, we know that by the Monotone Convergence Theorem they would be convergent series. This is a contradiction and so both sums exceed every positive real. Thus, the sums tend to infinity and this completes the proof.
+@@
 
 </pre>
 </div>
