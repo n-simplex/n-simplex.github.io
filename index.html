@@ -223,6 +223,8 @@ Error message and password prompt
 
 <li>All the Strongly Darboux Functions</li>
 
+<li>Closed Walks in the Complete Graph</li>
+
 <li>IMC 2021 Problem 3</li>
 
 <li>IMO 2020, Problem 3</li>
@@ -11526,6 +11528,102 @@ This exact problem (to find such a function!) was posed to me last year. I knew 
 
 </pre>
 </div>
+<div author="klaus" created="20210817211743000" modified="20210819020442745" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics Klaus" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Combinatorics has somewhat of a mixed reputation. It can appear insular relative to the rest of mathematics; its problems can appear obscure; and their solutions can seem ad hoc and impossible to generalise to broad theories. However, due to developments of the $$20^{\text{ th } }$$ century, none of these characterisations seem to hold much weight. One such example has been the creation of //Algebraic Combinatorics//- the application of algebraic methods to solve combinatorial problems. The problem of finding the number of closed walks of length $$l$$ in $$K_{p}$$ presents a stark example of the advantages of using this.
+
+Throughout this post, //&quot;graph&quot;// will refer to a multigraph, which may have multiple edges and loops.
+
+First, we will develop some theory:
+
+@@.def
+The //adjacency matrix// $$\mathbf{A} (G)$$ of a graph $$G$$ with $$p$$ vertices is the $$p \times p$$ matrix over $$\mathbf{C} $$ whose $$(i,j)$$ entry is equal to the number of edges incident to $$v_{i}, v_{j}$$. 
+@@
+
+Notice that $$\mathbf{A} (G)$$ is a real symmetric matrix and $$\text{ tr } (\mathbf{A} (G))$$ is the number of loops in $$G$$.
+
+@@.def
+A //walk// in a graph $$G$$ is a sequence $$v_1, e_1, v_2,e_2,\ldots v_{l}, e_{l}, v_{l+1}$$ such that each $$v_{i}$$ is a vertex of $$G$$, each $$e_{i}$$ is an edge in $$G$$, with $$v_{i}, v_{i+1}$$ are the only vertices adjacent to $$e_{i}$$. This walk is //closed// if $$v_1=v_{l+1}$$.
+@@
+
+@@.theorem
+For any integer $$l\in \mathbf{N} $$, the $$(i,j)$$ entry of $$\mathbf{A} (G)^{l}$$ is equal to the number of walks from $$v_{i}$$ to $$v_{j}$$ in $$G$$ of length $$l$$.
+@@
+
+The $$(i,j)$$ entry of $$\mathbf{A} (G)^{l}$$ is given by $$
+(\mathbf{A} (G)^{l})_{ij}= \Sigma a_{ii_1}a_{i_1i_2}\ldots a_{i_{l-1}j}
+$$ where this sum ranges over all sequences  $$(i_1, i_2,\ldots,i_{l-1})$$ with $$1\leq i_{k}\leq p$$.
+Notice also that the summand is the number of walks from $$v_i$$ to $$v_{j}$$ of the form $$v_{i}, e_1,v_{i_1}, e_2,\ldots,v_{i_{l-1}}, e_{l}, v_{j}$$, so this sum is equal to the total number of walks from $$v_{i}$$ to $$v_{j}$$ in $$G$$ of length $$l$$.
+
+@@.theorem
+Suppose $$\mathbf{A}(G) $$ has eigenvalues $$\lambda_1,\ldots,\lambda_{p}$$. Then the number of closed walks of length $$l$$ is given by $$\lambda_1^{l}+\ldots+\lambda_{p}^{l}$$.
+@@
+
+By theorem 1, the number of closed walks in $$G$$ of length $$l$$ is the sum of the $$(i,i)$$ entries of $$\mathbf{A}(G)^{l}$$ over $$1\leq i\leq p$$. This is the trace of $$\mathbf{A}(G)^{l}$$.
+
+As previously established, $$\mathbf{A}(G)$$ is symmetric. Then by the //spectral theorem//, there is a matrix $$U$$ such that $$
+U^{-1}\mathbf{A}(G)U=\text{ diag } (\lambda_1,\ldots,\lambda_{p})
+$$ (i.e. $$\mathbf{A}(G) $$ is diagonalisable.
+
+Taking powers of $$l$$ on both sides $$
+U^{-1}\mathbf{A}(G)^{l}U=\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l}),
+$$so $$
+\mathbf{A}(G)^{l}=U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})U^{-1}.
+$$
+We now use a foundational result about traces (prove it!), $$\text{ tr } (AB)=\text{ tr } (BA)$$.
+
+$$
+\text{ tr } (\mathbf{A}(G)^{l})=\text{ tr } (U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l})U^{-1})=\text{ tr }( U^{-1} U\text{ diag } (\lambda_1^{l},\ldots,\lambda_{p}^{l}))=\lambda_1^{l}+\ldots+\lambda_{p}^{l}
+$$
+This is a pretty remarkable result! The fact that eigenvalues are so closely related to the number of walks in graphs is very surprising.
+
+@@.def
+$$J_p$$ is the $$(p\times p)$$ matrix with only 1s.
+@@
+__
+''An algebraic proof:''__
+
+It is first necessary to calculate the eigenvalues of the adjacency matrix of $$K_{p}$$. We have $$\mathbf{A}(K_{p})=J_{p}-I_{p} $$.
+
+We will start by finding the eigenvalues of $$J_p$$. This has rank one so has 0 as an eigenvalue with multiplicity $$p-1$$. There is one remaining eigenvector, $$(1,\ldots,1)^{T}$$, which has eigenvalue $$p$$.
+
+Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J_{p}-I_{p})v=(\lambda_{v}-1)v$$. Hence, $$\mathbf{A}(K_{p}) $$ has eigenvalues $$-1$$ with multiplicity  $$p-1$$ and $$p-1$$ with multiplicity 1. 
+
+Applying theorem 2, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
+
+__''A combinatorial proof:''__
+
+The following proof uses strong induction and careful conditioning.
+
+Let $$f(l)$$ denote the number of closed walks in $$K_{p}$$ and $$g(l)$$ denote the number of closed walks in $$K_{p}$$ that don't return to the original vertex except at the end. Then by conditioning on the length on the first closed //subwalk// of a given closed walk, we obtain the following identity: $$
+f(l)=\sum_{i=2}^{l}\frac{1}{p} g(i)f(l-i)
+$$
+We can find a formula for $$g(i)$$ pretty easily. There are $$p$$ choices for the first vertex in the walk, $$p-1$$ for the second, and $$p-2$$ for all of the others besides the last one, for which there is only $$1$$ choice. Hence, $$
+g(i)=p(p-1)(p-2)^{i-2}
+$$
+$$
+f(l)=\sum_{i=2}^{l} (p-1)(p-2)^{i-2}f(l-i)
+$$
+For the final step, we require induction. Suppose that for $$m&lt;l$$, $$f(m)=(p-1)(-1)^{m}+(p-1)^{m}$$. Then $$
+f(l)=\sum_{i=2}^{l} (p-1)(p-2)^{i-2}((p-1)(-1)^{l-i}+(p-1)^{l-i})
+$$Splitting the sum,$$
+f(l)=\sum_{i=2}^{l} (p-1)^{2}(-1)^{l}(2-p)^{i-2}+\sum_{i=2}^{l} (p-1)^{l-1}\left(\frac{p-2}{p-1}\right)^{i-2}
+$$By substituting $$j=i-2$$, $$
+f(l)=(p-1)^{2}(-1)^{l}\sum_{j=0}^{l-2} (2-p)^j+(p-1)^{l-1} \sum_{j=0}^{l-2} \left( \frac{p-2}{p-1} \right)
+$$Applying the closed form for geometric series,$$
+f(l)=(p-1)^{2}(-1)^{l}\frac{(2-p)^{l-1}-1}{1-p}+(p-1)^{l-1}\left(\frac{\left(\frac{p-2}{p-1}\right)^{l-1}-1}{\frac{p-2}{p-1}-1}\right)
+$$Simplifying,$$
+f(l)=(p-1)(p-2)^{l-1}(-1)^{l}+(p-1)(-1)^{l}+(p-1)^{l}-(p-1)(p-2)^{l-1}
+$$And finally,$$
+f(l)=(p-1)(-1)^{l}+(p-1)^{l}
+$$
+This completes the proof.
+
+Not only is the purely combinatorial proof more difficult, but it also gives little information as to how a similar problem should be handled for a different graph. For example, we were able to find a neat form for $$g$$ but such a form won't exist in general. 
+
+-Klaus
+
+</pre>
+</div>
 <div author="stanislaw" created="20210813161525000" modified="20210813161525000" tags="IMC, Problem" title="IMC 2021 Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The 2021 IMC happened recently (3rd-4th of August) and it had some very interesting and challenging problems, as always. This blog may discuss more of them in the future but today we'll be focussing on Problem 3:
 
@@ -11535,14 +11633,14 @@ We say that a positive real nuber $$d$$ is //good// if there exists an infinite 
 
 </pre>
 </div>
-<div author="klaus" created="20210812180035000" modified="20210817033247750" tags="IMO Olympiad Problem Combinatorics Graphs Klaus" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210812180035000" modified="20210817234935045" tags="IMO Olympiad Problem Combinatorics Graphs Klaus" title="IMO 2020, Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>We thought it would be interesting to consider a problem from last year's IMO which has stuck in my mind since that time because the solution we found uses as the key object a multigraph, to which the statement of the question makes no allusion. It seemed entirely unobvious to me when first trying to solve this that this would involve such a dramatic introduction of graph and it was very exciting to see the proof come together.
 
 @@.problem
 $$ 4n$$ coins of weights $$ 1, 2, \ldots 4n$$ are given. Each coin is coloured in one of $$ n$$ colours and there are 4 coins of each colour. Show that these coins can be partitioned into two sets with the same total weight, such that each set contains two coins of each colour. 
 @@
 
-Consider the coins coloured by the $$i^{\text{th}}$$ colour; let the set of their weights be denoted by $$C_{i}$$. Let $$G$$ be a multigraph (this means multiple edges and loops are permitted) with vertices $$C_1, C_2, \ldots, C_{2n}$$ and edges chosen such that the number of edges between $$C_i, C_j$$ is the number of (unordered) pairs  $$x\in C_i, y\in C_j \text{ s.t. }  x+y=4n+1$$. This is useful because $$n$$ such pairs of weights will sum to give half of the total weight of coins. The hope is that studying this graph will give structural information about the distribution of these pairs between the colours.
+Consider the coins coloured by the $$i^{\text{th}}$$ colour; let the set of their weights be denoted by $$C_{i}$$. Let $$G$$ be a multigraph (this means multiple edges and loops are permitted) with vertices $$C_1, C_2, \ldots, C_{n}$$ and edges chosen such that the number of edges between $$C_i, C_j$$ is the number of (unordered) pairs  $$x\in C_i, y\in C_j \text{ s.t. }  x+y=4n+1$$. This is useful because $$n$$ such pairs of weights will sum to give half of the total weight of coins. The hope is that studying this graph will give structural information about the distribution of these pairs between the colours.
 
 Each vertex has degree four because there are four coins of each colour. Recall that a graph is //Eulerian// if it has a circuit that contains each edge exactly once (funnily enough, such a circuit is also said to be //Eulerian//). We now use the following fairly foundational result (prove it!).
 
@@ -11647,7 +11745,7 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210811014905149" modified="20210817033358722" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210811014905149" modified="20210817232220893" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>body
 {
 counter-reset: theorem;
