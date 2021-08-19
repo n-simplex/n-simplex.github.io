@@ -11817,7 +11817,7 @@ Many years later, Bernard Riemann found out about this and even discussed the ma
 Suppose $$a_1,a_2,\ldots$$ is a conditionally convergent series. Then by rearranging the terms, we may get the series to have as its sum //any real number// as well as get it to have positive or negative infinity as its limits.
 @@
 
-This is the Riemann Rearrangement Theorem. We shall not discuss the proof of Dirichlet's result but we will attempt to prove Riemann's.
+This is the Riemann Rearrangement Theorem. We shall not discuss the proof of Dirichlet's result but we will attempt to prove Riemann's (while avoiding certain details here and there).
 
 First a result called the //Sum Rule// that we will take for granted (but is easy to prove with the right theory and intuitive):
 
@@ -11865,6 +11865,78 @@ also converges. But this is a contradiction: $$a_1,\ldots$$ is a conditionally c
 Similarly, we can find a contradiction if we suppose that $$v_n$$ is convergent (the argument is almost exactly the same).
 
 Now suppose that either of $$u_1,u_2,\ldots$$'s or $$v_1,v_2,\ldots$$'s partial sums are bounded above. Then, given the series consist of purely nonnegative terms and so the sequence of partial sums is increasing, we know that by the Monotone Convergence Theorem they would be convergent series. This is a contradiction and so both sums exceed every positive real. Thus, the sums tend to infinity and this completes the proof.
+&quot;&quot;&quot;
+@@
+
+Now we have all the tools we need to prove the main theorem!
+@@.proof
+&quot;&quot;&quot;
+Define $$u_n$$ and $$v_n$$ as above. We know that
+ $$
+\sum_{n=1}^{\infty} a_n = \sum_{n=1}^{\infty} u_n-v_n
+$$
+Suppose $$r \in \mathbb{R}$$. Firstly, we may choose as many terms in order from $$u_n$$ (i.e. starting with $$u_1$$ and then $$u_2$$ etc.) so that our partial sum is above $$r$$ (if $$r&lt;0$$ then this is zero terms), say $$N_0$$ terms. Then, we pick as many terms from $$v_n$$, say $$N_1$$ terms, until the partial sum is smaller than $$r$$. Continuing this process, we form a series $$(r_n) = u_1,u_2,\ldots, u_{N_0}, v_1,v_2,\ldots, v_{N_1}, u_{N_0+1}, u_{N_0+2},\ldots, u_{N_3},\ldots$$ whose partial sums converge to $$r$$.
+
+Why? Each time we &quot;pass by&quot; $$r$$, we are just below or above $$r$$ by at most one term and the magnitude of these terms becomes arbitrarily small (as $$a_n$$ is a convergent series) and so the partial sums converge to $$r$$. Why do we know that we will always be able to find finitely many terms from whats left of $$v_n$$ or $$u_n$$ to get above or below $$r$$ at each step? Because we showed in the previous lemma that these series diverge to infinity and so no matter what stage we are at, we will have only exhausted finitely many terms and the remaining terms will still have infinite sum.
+
+&quot;&quot;&quot;
+@@
+
+This proof not only gives a clear idea why the theorem is true--it provides an algorithm! Now that we've proved this, a natural question to ask is whether or not the rearrangments to get the sum to converge to a given number are unique, e.g. how many rearrangments of the $$\log(2)$$ series above give $$2$$? The answer, for every series and every number, is infinitely many but in some cases it's $$|\mathbb{N}|$$ and in other cases it's $$2^{|\mathbb{N}|} = |\mathbb{R}|$$ (just as a reminder: in Set Theory, $$a^b$$ for two sets  $$a,b$$ refers to the set of functions from $$b$$ to $$a$$ ).
+
+We can see this by a rather neat argument. Suppose $$a_1,\ldots$$ is a conditionally convergent series such that its sum is $$r$$ and recall that, as it is convergent, the magnitude of  $$a_i$$ must tend to zero as $$i \to \infty$$. This leads to two possibilities:
+
+* either there are finitely many nonzero terms
+* or there are infinitely many nonzero terms
+
+In the former case, we can clearly move &quot;shift&quot; the nonzero terms along the $$a$$ sequence in an infinite number of ways (one for each integer) and move zeros into the earlier parts to fill in the gaps. In the latter case, we know that all the nonzero terms must change value infinitely many times (as they must become arbitrarily close to zero and there's infinitely many of them). Suppose we call an integer $$n$$ a &quot;transition number&quot; if $$a_n \neq  a_n+1$$ and let $$n_0, n_1,\ldots$$ be the sequence of transition numbers. 
+
+Then we can switch the values of $$a_{n_0}, a_{n_0+1}$$ without effecting the overall value of the sum, as well as $$a_{n_{10}}, a_{n_{10}+1}$$ etc. By switching the values of $$a_1,\ldots$$ at every 10th transition, we have infinitely many ways of changing the order of the $$a$$ sequence without effecting the value of the sum (this is because almost all the partial sums of the sequence are the same, they only differ on the indices of every 10th transition number and so still get arbitrarily close to $$r$$ ). In particular, there are two ways of changing the sequence for every 10th transition (i.e. we either leave it as it was or switch the consecutive pair of elements) and infinitely many transitions so the total number of these kinds of changes is $$2^|\mathbb{N}| = |\mathbb{R}|$$.
+
+@@.remark
+Technically, we've only shown there are //at least// $$|\mathbb{R}|$$-many ways of rearranging the series (by giving a way of getting that number of rearrangements without effecting the sum). To see that there are at most this many, observe that each rearrangment of the seqeuence gives a real number and so there cannot be more rearrangements of a certain kind than real numbers.
+@@
+
+A related idea is that we can use the Riemann Rearrangement Theorem to somewhat simplify the answer to the question of how many bijections are there from $$\mathbb{N}$$ to $$\mathbb{N}$$. On this page from MathOverflow, we see a variety of answers for the more general case of bijections from $$S\to S$$ (where $$S$$ can be any infinite set). We know that 
+$$
+|\mathbb{N}|^{|\mathbb{N}|} \leq  (2^{|\mathbb{N}|})^(|\mathbb{N}|) = 2^{|N|\times |N|} = 2^{|N\times N|} = 2^{|\mathbb{N}|}
+$$
+We know these relations in order because
+* $$|S|&lt; |2^S|$$ for every set $$S$$, due to a theorem of Cantor.
+* $$(a^b)^c = a^{bc}$$ also works for functions between sets thanks to how beautifully thought out the modern framework of ZFC Set Theory is.
+* $$|N\times N| = |N|$$ because the cartesian product of two countable sets is countable.
+
+So we know that the number of functions from $$\mathbb{N}$$ to $$\mathbb{N}$$ is at most $$|\mathbb{R}|$$ and therefore the number of bijections is also at most $$|\mathbb{R}|$$ (as each bijection is a function). So far, we've been copying from the MathOverflow page but they give a very different, more subtle argument for the lower bound. We can simply say that we know that each bijection can be applied to reorder the terms of the $$\log(2)$$ series above and therefore give a real number.
+
+But Riemann's Rearrangement Theorem tells us that by doing this, we may obtain //every// real number. Thus there must be at least $$|\mathbb{R}|$$-many bijections! 
+
+We will give the definition of the Strongly Darboux function this whole article has been leading up to (!):
+@@.def
+&quot;&quot;&quot;
+The //realrangement function// $$\mathfrak{r}:\mathbb{R}\to \mathbb{R}$$ is defined by the following rule: 
+
+Suppose $$x$$'s fractional part is written $$0.d_1d_2d_3d_4\ldots$$ in ternary and we call $$(d_m)$$ its sequence of digits, then $$\mathfrak{r} (x) = 0$$ if it has infinitely many $$d_i$$ in the sequence which are equal to 2 and are isolated (i.e. neither of $$d_{i-1},d_{i+1}$$ are equal to 2). If, however, it has finitely many isolated 2-digits, then let $$M$$ be the index of the last such 2 (i.e. $$d_M$$ is the last isolated 2). Then the sequence $$(d_{M+n})$$ consists of passages of digits equal to 0 or 1 which are separated by nonisolated groups of 2s; by interpreting each such 0,1-passage as binary we may obtain an infinite sequence of natural numbers. If this sequence is not a permutation of $$\mathbb{N}$$, then again we have $$\mathfrak{r} (x)=0$$. If the sequence //is// a permutation of $$\mathbb{N}$$, then (calling it $$(r_n)$$ ) we define
+$$
+\mathfrak{r}(x) = \sum_{n=1}^{\infty} \frac{(-1)^{r_n}}{r_n}
+$$
+&quot;&quot;&quot;
+@@
+
+@@.prop
+$$\mathfrak{r} $$ is a strongly Darboux function.
+@@
+@@.proof
+&quot;&quot;&quot;
+We need to show that in every open interval, $$\mathfrak{r} $$ outputs every real number; we will do this by showing the result for //dyadic intervals//, i.e. intervals where the endpoints are rational and can be written as fractions $$\frac{p}{q}$$ where $$q$$ is a power of two, and then since there's at least one dyadic interval within every open interval we will have proved the claim.
+
+Suppose $$[a,b]$$ is a dyadic open interval. If we write $$a = \frac{p}{q}$$ as a fraction in its lowest terms and then consider writing $$p$$ in binary, we may see that $$a$$ can be written as a terminating binary number (i.e. finitely many digits are nonzero). The same argument tells us that $$b$$ has only finitely many binary digits that are nonzero. We may therefore select $$M \in \mathbb{N}$$ so that beyond the $$M$$th digit, both $$a$$ and $$b$$ have only zero digits.
+
+If we consider any number whose integer part is that of $$a$$ and whose fractional part's binary expansion up to the $$M$$th digit is the same as that of $$a$$, then it must lie between $$a$$ and $$b$$. Now suppose $$c \in \mathbb{R}$$ is an arbitrary real. We know that
+$$
+\sum_{n=M+1}^{\infty} \frac{(-1)^n}{n}
+$$
+is a conditionally convergent series and so by Riemann's rearrangement theorem there is some rearrangement 
+
 &quot;&quot;&quot;
 @@
 
