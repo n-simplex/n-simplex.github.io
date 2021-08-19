@@ -11747,7 +11747,7 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210819172624000" modified="20210819172624000" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210819172624000" modified="20210819185518190" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This page will explain one of the various ways of defining a //strongly Darboux// function but we'll take this time to have an extended discussion on the content of the //Riemann rearrangement theorem//. It requires a little work to give it some context.
 
 In elementary analysis, after defining the real numbers themselves the most important objects of discussion are sequences. Sequences are infinite ordered lists of numbers $$a_1,a_2,\ldots$$ where each entry is a real $$a_i$$ for some $$i \in \mathbb{N}$$. The key property we care about in such discussion is //convergence//: this is supposed to encode the intuitive idea of a sequence getting closer and closer to some real number until its &quot;limit at infinity&quot; is the real number itself.
@@ -11843,6 +11843,7 @@ We now prove the major observation by Riemann.
 Suppose $$a_1,a_2,\ldots$$ is a conditionally convergent series. Then the series defined by summing the negative terms from the $$a$$ sequence diverges to negative infinity and the series defined by summing the positive terms from the $$a$$ sequence diverges to positive infinity.
 @@
 @@.proof
+&quot;&quot;&quot;
 We first note a neat trick. If $$x \in \mathbb{R}$$ and $$x \geq 0$$, then $$\frac{\left| x \right| +x}{2} = x$$ but if $$x&lt; 0$$, then $$\frac{\left| x \right| +x}{2} = \frac{-x+x}{2} = 0$$. Similarly, the expression $$\frac{\left| x \right| -x}{2}$$ is equal zero if $$x \geq 0$$ and is $$|x|$$ if $$x &lt; 0$$.
 Given this, we may define the sequences 
 $$
@@ -11864,11 +11865,12 @@ also converges. But this is a contradiction: $$a_1,\ldots$$ is a conditionally c
 Similarly, we can find a contradiction if we suppose that $$v_n$$ is convergent (the argument is almost exactly the same).
 
 Now suppose that either of $$u_1,u_2,\ldots$$'s or $$v_1,v_2,\ldots$$'s partial sums are bounded above. Then, given the series consist of purely nonnegative terms and so the sequence of partial sums is increasing, we know that by the Monotone Convergence Theorem they would be convergent series. This is a contradiction and so both sums exceed every positive real. Thus, the sums tend to infinity and this completes the proof.
+&quot;&quot;&quot;
 @@
 
 </pre>
 </div>
-<div author="stanislaw" created="20210811014905149" modified="20210817232220893" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210811014905149" modified="20210819185430424" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>body
 {
 counter-reset: theorem;
