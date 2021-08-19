@@ -11604,12 +11604,17 @@ $$
 f(l)=\sum_{i=2}^{l} (p-1)(p-2)^{i-2}f(l-i)
 $$
 For the final step, we require induction. Suppose that for $$m&lt;l$$, $$f(m)=(p-1)(-1)^{m}+(p-1)^{m}$$. Then $$
-f(l)=\sum_{i=2}^{l} (p-1)(p-2)^{i-2}((p-1)(-1)^{l-i}+(p-1)^{l-i})\\
+f(l)=\sum_{i=2}^{l} (p-1)(p-2)^{i-2}((p-1)(-1)^{l-i}+(p-1)^{l-i})
+$$Splitting the sum,$$
 f(l)=\sum_{i=2}^{l} (p-1)^{2}(-1)^{l}(2-p)^{i-2}+\sum_{i=2}^{l} (p-1)^{l-1}\left(\frac{p-2}{p-1})^{i-2}\right) 
 $$By substituting $$j=i-2$$, $$
-f(l)=(p-1)^{2}(-1)^{l}\sum_{j=0}^{l-2} (2-p)^j+(p-1)^{l-1} \sum_{j=0}^{l-2} \left( \frac{p-2}{p-1} \right)\\
-f(l)=(p-1)^{2}(-1)^{l}\frac{(2-p)^{l-1}-1}{1-p}+(p-1)^{l-1}\left(\frac{\frac{p-2}{p-1}^{l-1}-1}{\frac{p-2}{p-1}-1}\right)\\
-f(l)=(p-1)(p-2)^{l-1}(-1)^{l}+(p-1)(-1)^{l}+(p-1)^{l}-(p-1)(p-2)^{l-1}=(p-1)(-1)^{l}+(p-1)^{l}
+f(l)=(p-1)^{2}(-1)^{l}\sum_{j=0}^{l-2} (2-p)^j+(p-1)^{l-1} \sum_{j=0}^{l-2} \left( \frac{p-2}{p-1} \right)
+$$Applying the closed form for geometric series,$$
+f(l)=(p-1)^{2}(-1)^{l}\frac{(2-p)^{l-1}-1}{1-p}+(p-1)^{l-1}\left(\frac{\frac{p-2}{p-1}^{l-1}-1}{\frac{p-2}{p-1}-1}\right)
+$$Simplifying,$$
+f(l)=(p-1)(p-2)^{l-1}(-1)^{l}+(p-1)(-1)^{l}+(p-1)^{l}-(p-1)(p-2)^{l-1}
+$$And finally,$$
+f(l)=(p-1)(-1)^{l}+(p-1)^{l}
 $$
 
 
