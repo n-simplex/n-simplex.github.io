@@ -11753,7 +11753,7 @@ Although this solution has many complications, we hope this article has perhaps 
 In elementary analysis, after defining the real numbers themselves the most important objects of discussion are sequences. Sequences are infinite ordered lists of numbers $$a_1,a_2,\ldots$$ where each entry is a real $$a_i$$ for some $$i \in \mathbb{N}$$. The key property we care about in such discussion is //convergence//: this is supposed to encode the intuitive idea of a sequence getting closer and closer to some real number until its &quot;limit at infinity&quot; is the real number itself.
 
 @@.def
-A sequence $$a_1,a_2,\ldots$$ is said to //converge to $$l$$// if for every $$\varepsilon &gt; 0$$, there is some $$N \in \mathbb{N}$$ such that for all $$n \in \mathbb{N}, n&gt;N$$ we have $$\left\mid a_n-l \right\mid &lt;\varepsilon$$.
+A sequence $$a_1,a_2,\ldots$$ is said to //converge to $$l$$// if for every $$\varepsilon &gt; 0$$, there is some $$N \in \mathbb{N}$$ such that for all $$n \in \mathbb{N}, n&gt;N$$ we have $$\left| a_n-l \right| &lt;\varepsilon$$.
 @@
 
 If you haven't encountered this definition before then welcome to Analysis and take a minute to soak it in! Those in their first year or beyond will very soon be seeing this everywhere so we won't say too much about it. Needless to say, you can prove that with this definition there is at most one real number $$l$$ such that a sequence converges to $$l$$ (this unique number is called the //limit//) and there are a very significant number of problems you can find online or in textbooks asking you what a given sequence converges to. 
@@ -11777,7 +11777,43 @@ $$
 $$
 @@
 
-The most well known series of this form is when $$r=\frac{1}{2}$$ and the sum is $$\frac{1}{2}+\frac{1}{4}+\ldots$$ whose limit is 1! There are also many, many tests for the convergence of series such as the Null Sequence Test, the Alternating Series Test, the Comparison Test, Integral Test, p-series test, Dirichlet's Test, Abel's Test, Abel's Theorem, Kronecker's Lemma, Cauchy's condensation test, Cauchy's test and, if you allow other things to be summed by expanding the definition above to objects like functions, you can have the Weierstrass M-test and much much more; each of these examples have their own intuitions, cases where they work and types of information they can give you.
+The most well known series of this form is when $$r=\frac{1}{2}$$ and the sum is $$\frac{1}{2}+\frac{1}{4}+\ldots$$ whose limit is 1! There are also many, many tests for the convergence of series such as the Null Sequence Test, the Alternating Series Test, the Comparison Test, Integral Test, p-series Test, Ratio Test, Limit comparison test, Dirichlet's Test, Abel's Test, Abel's Theorem, Kronecker's Lemma, Cauchy's condensation test, Cauchy's test, Cauchy's root test and, if you allow other things to be summed by expanding the definition above to objects like functions, you can have the Weierstrass M-test and much much more; each of these examples have their own intuitions, cases where they work and types of information they can give you.
+
+Clearly it's a very complex topic! There is kind of a reason, however, as to why it's so difficult. For series with positive terms it can be extremely difficult on its own but most examples (at least at an undergraduate or lower level!) can be compared to series that you already know about - this comparison relates the two series &quot;growth rates&quot; and can often tell you whether or not it converges. However, series can contain both negative //and// positive terms which means the partial sums can increase or decrease in value erratically and so tests have to be cleverer. Worst still, there's an additional distinction that isn't originally obvious: there are series that are convergent but if you made all the terms become positive they don't converge.
+
+As an example, consider the harmonic series.
+
+@@.example
+The infinite series
+$$
+\sum_{n=1}^{\infty} \frac{1}{n}
+$$
+is called the //harmonic series// and the sum from $$1$$ to $$m$$ is $$H_m$$, the $$m$$th harmonic number. Many people who first see this expect it to converge as the partial sums grow so slowly (indeed $$H_m ~ \log(n)$$ ) but the sum diverges to infinity. There's a really neat proof of this that is surprisingly old (dating back to the 14th century!) and thinking more carefully about this proof is what can lead you to Cauchy's condensation test above.
+@@
+
+This does not converge and yet
+$$
+\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2}+\frac{1}{3} - \frac{1}{4} +\ldots = \ln(2) 
+$$
+This series (where it converges but forcing everything to be positive makes it fail to converge) is said to be //conditionally convergent//. Such series display slippery properties which have no analogue with finite sums. A truly great mathematician, Peter Gustav Lejeune Dirichlet, observed in 1827 that we can rearrange the above sum to give
+$$
+\sum_{n=1}^{\infty} \frac{1}{2n-1} - \frac{1}{2(2n-1)}-\frac{1}{4n} = 1-\frac{1}{2}-\frac{1}{4}+\frac{1}{3}-\frac{1}{6}-\frac{1}{8}+\ldots = \frac{1}{2}\ln(2)
+$$
+This series contains all the same terms as the original one (you may wish to check this as an exercise), simply in a different order, and yet we have managed to halve the value! Blink again and we find that
+$$
+1+\frac{1}{3}-\frac{1}{2}+\frac{1}{5}+\frac{1}{7}-\frac{1}{4}+\ldots = \frac{3}{2}\log(2) \\
+1+\frac{1}{3}+\frac{1}{5} - \frac{1}{2}+\frac{1}{7}+\frac{1}{9}+\frac{1}{11}-\frac{1}{4}+\ldots = \log(2) + \frac{1}{2}\log(3) \\
+\ldots
+$$
+What could this all mean? Do sums never have definite answers? Dirichlet was never truly able to get to the bottom of this and it didn't matter to him as he had loftier goals at this time: to analyse differential equations using //Fourier series// and for this task he just needed series that retained their value when he rearranged their elements. He knew that positive series did this and in 1837 was able to prove that if a series is convergent when all the elements are made positive, then you could rearrange the elements without fear of effecting the overally sum.
+
+Many years later, Bernard Riemann found out about this and even discussed the matter with Dirichlet. He was able to get to the bottom of it and prove a truly remarkable result:
+
+@@.theorem
+Suppose $$a_1,a_2,\ldots$$ is a conditionally convergent series. Then by rearranging the terms, we may get the series to have as its sum //any real number// as well as get it to have positive or negative infinity as its limits.
+@@
+
+This is the Riemann Rearrangement Theorem. We shall not discuss the proof of Dirichlet's result but we will attempt to prove Riemann's, while assuming certain minor results (which appear quite intuitive anyway).
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210817232220893" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
