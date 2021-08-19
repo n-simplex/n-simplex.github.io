@@ -11580,7 +11580,7 @@ This is a pretty remarkable result! The fact that eigenvalues are so closely rel
 $$J_p$$ is the $$(p\times p)$$ matrix with only 1s.
 @@
 
-We now consider $$G=K_{p}$$ in particular.
+''An algebraic proof:''
 
 It is first necessary to calculate the eigenvalues of the adjacency matrix of $$K_{p}$$. We have $$\mathbf{A}(K_{p})=J_{p}-I_{p} $$.
 
@@ -11589,6 +11589,23 @@ We will start by finding the eigenvalues of $$J_p$$. This has rank one so has 0 
 Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J_{p}-I_{p})v=(\lambda_{v}-1)v$$. Hence, $$\mathbf{A}(K_{p}) $$ has eigenvalues $$-1$$ with multiplicity  $$p-1$$ and $$p-1$$ with multiplicity 1. 
 
 Applying theorem 2, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
+
+''A combinatorial proof:''
+
+This is much more difficult. The following proof uses strong induction and careful conditioning.
+
+Let $$f(l)$$ denote the number of closed walks in $$K_{p}$$ and $$g(l)$$ denote the number of closed walks in $$K_{p}$$ that don't return to the original vertex except at the end. Then by conditioning on the length on the first closed //subloop// of a given closed loop, we obtain the following identity: $$
+f(l)=\sum_{i=2}^{l} g(i)f(l-i)
+$$
+We can find a formula for $$g(i)$$ pretty easily. There are $$p$$ choices for the first vertex in the walk, $$p-1$$ for the second, and $$p-2$$ for all of the others besides the last one, for which there is only $$1$$ choice. Hence, $$
+g(i)=p(p-1)(p-2)^{i-2}
+$$
+$$
+f(l)=\sum_{i=2}^{l} p(p-1)(p-2)^{i-2}f(l-i)
+$$
+For the final step, we require induction. Suppose that for $$m&lt;l$$, $$f(m)=(p-1)(-1)^{m}+(p-1)^{m}$$. Then $$
+f(l)=\sum_{i=2}^{l} p(p-1)(p-2)^{i-2}((p-1)(-1)^{l-i}+(p-1)^{l-i})
+$$
 
 </pre>
 </div>
