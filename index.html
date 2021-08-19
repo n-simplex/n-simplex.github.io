@@ -231,6 +231,8 @@ Error message and password prompt
 
 <li>IMO 2021, Problem 2</li>
 
+<li>Strongly Darboux Functions: Riemann Rearrangement Theorem</li>
+
 <li>Theorem Styling</li>
 
 </ul>
@@ -11743,6 +11745,39 @@ The first inequality is by concavity and our careful choice of $$s^+,s^-$$, the 
 Although this solution has many complications, we hope this article has perhaps guided you through our thought process in tackling a truly tough puzzle.
 
 --Stanisław
+</pre>
+</div>
+<div author="stanislaw" created="20210819172624000" modified="20210819172624000" tags="Analysis Esoteric" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>This page will explain one of the various ways of defining a //strongly Darboux// function but we'll take this time to have an extended discussion on the content of the //Riemann rearrangement theorem//. It requires a little work to give it some context.
+
+In elementary analysis, after defining the real numbers themselves the most important objects of discussion are sequences. Sequences are infinite ordered lists of numbers $$a_1,a_2,\ldots$$ where each entry is a real $$a_i$$ for some $$i \in \mathbb{N}$$. The key property we care about in such discussion is //convergence//: this is supposed to encode the intuitive idea of a sequence getting closer and closer to some real number until its &quot;limit at infinity&quot; is the real number itself.
+
+@@.def
+A sequence $$a_1,a_2,\ldots$$ is said to //converge to $$l$$// if for every $$\varepsilon &gt; 0$$, there is some $$N \in \mathbb{N}$$ such that for all $$n \in \mathbb{N}, n&gt;N$$ we have $$\left\mid a_n-l \right\mid &lt;\varepsilon$$.
+@@
+
+If you haven't encountered this definition before then welcome to Analysis and take a minute to soak it in! Those in their first year or beyond will very soon be seeing this everywhere so we won't say too much about it. Needless to say, you can prove that with this definition there is at most one real number $$l$$ such that a sequence converges to $$l$$ (this unique number is called the //limit//) and there are a very significant number of problems you can find online or in textbooks asking you what a given sequence converges to. 
+
+The next most complicated object studied in detail is a //series//, which is supposed to define the intuitive idea of an infinite sum.
+
+@@.def
+Given a sequence $$a_1,a_2,\ldots$$ we may consider defining 
+$$
+s_i = \sum_{j=1}^{i} a_j
+$$
+We call $$s_1,s_2,\ldots$$ the sequence of //partial sums of $$(a_i)$$// and, if this new sequence has a limit $$l$$, we say that $$l$$ is the //sum of the $$(a_i)$$//. Sometimes $$(a_i)$$ will be referred to as a //series//.
+@@
+
+Together, sequences and series make up a vast amount of analysis. There are simple and well known examples that are even learnt at GCSE or A-level such as the //geometric series//:
+
+@@.example
+Given $$r \in \mathbb{R}$$ such that  $$ \left| r \right|&lt;1 $$ then the sequence $$r, r^2, r^3, \ldots$$ defines a series which has a sum
+$$
+\sum_{n=1}^{\infty} r^n = \frac{r}{1-r}
+$$
+@@
+
+The most well known series of this form is when $$r=\frac{1}{2}$$ and the sum is $$\frac{1}{2}+\frac{1}{4}+\ldots$$ whose limit is 1! There are also many, many tests for the convergence of series such as the Null Sequence Test, the Alternating Series Test, the Comparison Test, Integral Test, p-series test, Dirichlet's Test, Abel's Test, Abel's Theorem, Kronecker's Lemma, Cauchy's condensation test, Cauchy's test and, if you allow other things to be summed by expanding the definition above to objects like functions, you can have the Weierstrass M-test and much much more; each of these examples have their own intuitions, cases where they work and types of information they can give you.
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210817232220893" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
