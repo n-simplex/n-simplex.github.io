@@ -11528,7 +11528,7 @@ This exact problem (to find such a function!) was posed to me last year. I knew 
 
 </pre>
 </div>
-<div author="klaus" created="20210817211743000" modified="20210817235022063" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210817211743000" modified="20210819020442745" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics Klaus" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Combinatorics has somewhat of a mixed reputation. It can appear insular relative to the rest of mathematics; its problems can appear obscure; and their solutions can seem ad hoc and impossible to generalise to broad theories. However, due to developments of the $$20^{\text{ th } }$$ century, none of these characterisations seem to hold much weight. One such example has been the creation of //Algebraic Combinatorics//- the application of algebraic methods to solve combinatorial problems. The problem of finding the number of closed walks of length $$l$$ in $$K_{p}$$ presents a stark example of the advantages of using this.
 
 Throughout this post, //&quot;graph&quot;// will refer to a multigraph, which may have multiple edges and loops.
@@ -11560,7 +11560,7 @@ Suppose $$\mathbf{A}(G) $$ has eigenvalues $$\lambda_1,\ldots,\lambda_{p}$$. The
 
 By theorem 1, the number of closed walks in $$G$$ of length $$l$$ is the sum of the $$(i,i)$$ entries of $$\mathbf{A}(G)^{l}$$ over $$1\leq i\leq p$$. This is the trace of $$\mathbf{A}(G)^{l}$$.
 
-As previously established, $$\mathbf{A}(G)$$ is symmetric. Then by the //[[Spectral Theorem| https://en.wikipedia.org/wiki/Spectral_theorem]]//, there is a matrix $$U$$ such that $$
+As previously established, $$\mathbf{A}(G)$$ is symmetric. Then by the //spectral theorem//, there is a matrix $$U$$ such that $$
 U^{-1}\mathbf{A}(G)U=\text{ diag } (\lambda_1,\ldots,\lambda_{p})
 $$ (i.e. $$\mathbf{A}(G) $$ is diagonalisable.
 
@@ -11579,8 +11579,8 @@ This is a pretty remarkable result! The fact that eigenvalues are so closely rel
 @@.def
 $$J_p$$ is the $$(p\times p)$$ matrix with only 1s.
 @@
-
-''An algebraic proof:''
+__
+''An algebraic proof:''__
 
 It is first necessary to calculate the eigenvalues of the adjacency matrix of $$K_{p}$$. We have $$\mathbf{A}(K_{p})=J_{p}-I_{p} $$.
 
@@ -11590,11 +11590,11 @@ Now if  $$v$$ is an eigenvector of $$J_{p}$$, $$J_{p} v=\lambda_{v} v$$, so $$(J
 
 Applying theorem 2, the number of closed walks of length $$l$$ is $$(p-1)(-1)^{l}+(p-1)^{l}$$.
 
-''A combinatorial proof:''
+__''A combinatorial proof:''__
 
-This is much more difficult. The following proof uses strong induction and careful conditioning.
+The following proof uses strong induction and careful conditioning.
 
-Let $$f(l)$$ denote the number of closed walks in $$K_{p}$$ and $$g(l)$$ denote the number of closed walks in $$K_{p}$$ that don't return to the original vertex except at the end. Then by conditioning on the length on the first closed //subloop// of a given closed loop, we obtain the following identity: $$
+Let $$f(l)$$ denote the number of closed walks in $$K_{p}$$ and $$g(l)$$ denote the number of closed walks in $$K_{p}$$ that don't return to the original vertex except at the end. Then by conditioning on the length on the first closed //subwalk// of a given closed walk, we obtain the following identity: $$
 f(l)=\sum_{i=2}^{l}\frac{1}{p} g(i)f(l-i)
 $$
 We can find a formula for $$g(i)$$ pretty easily. There are $$p$$ choices for the first vertex in the walk, $$p-1$$ for the second, and $$p-2$$ for all of the others besides the last one, for which there is only $$1$$ choice. Hence, $$
@@ -11606,17 +11606,21 @@ $$
 For the final step, we require induction. Suppose that for $$m&lt;l$$, $$f(m)=(p-1)(-1)^{m}+(p-1)^{m}$$. Then $$
 f(l)=\sum_{i=2}^{l} (p-1)(p-2)^{i-2}((p-1)(-1)^{l-i}+(p-1)^{l-i})
 $$Splitting the sum,$$
-f(l)=\sum_{i=2}^{l} (p-1)^{2}(-1)^{l}(2-p)^{i-2}+\sum_{i=2}^{l} (p-1)^{l-1}\left(\frac{p-2}{p-1})^{i-2}\right) 
+f(l)=\sum_{i=2}^{l} (p-1)^{2}(-1)^{l}(2-p)^{i-2}+\sum_{i=2}^{l} (p-1)^{l-1}\left(\frac{p-2}{p-1}\right)^{i-2}
 $$By substituting $$j=i-2$$, $$
 f(l)=(p-1)^{2}(-1)^{l}\sum_{j=0}^{l-2} (2-p)^j+(p-1)^{l-1} \sum_{j=0}^{l-2} \left( \frac{p-2}{p-1} \right)
 $$Applying the closed form for geometric series,$$
-f(l)=(p-1)^{2}(-1)^{l}\frac{(2-p)^{l-1}-1}{1-p}+(p-1)^{l-1}\left(\frac{\frac{p-2}{p-1}^{l-1}-1}{\frac{p-2}{p-1}-1}\right)
+f(l)=(p-1)^{2}(-1)^{l}\frac{(2-p)^{l-1}-1}{1-p}+(p-1)^{l-1}\left(\frac{\left(\frac{p-2}{p-1}\right)^{l-1}-1}{\frac{p-2}{p-1}-1}\right)
 $$Simplifying,$$
 f(l)=(p-1)(p-2)^{l-1}(-1)^{l}+(p-1)(-1)^{l}+(p-1)^{l}-(p-1)(p-2)^{l-1}
 $$And finally,$$
 f(l)=(p-1)(-1)^{l}+(p-1)^{l}
 $$
+This completes the proof.
 
+Not only is the purely combinatorial proof more difficult, but it also gives little information as to how a similar problem should be handled for a different graph. For example, we were able to find a neat form for $$g$$ but such a form won't exist in general. 
+
+-Klaus
 
 </pre>
 </div>
