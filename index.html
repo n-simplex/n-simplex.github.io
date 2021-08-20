@@ -235,6 +235,8 @@ Error message and password prompt
 
 <li>Strongly Darboux Functions: Riemann Rearrangement Theorem</li>
 
+<li>Strongly Darboux Functions: The Darboux Machine</li>
+
 <li>Theorem Styling</li>
 
 </ul>
@@ -12017,6 +12019,30 @@ Prove that the signary function is strongly Darboux.
 @@
 
 --Stanisław
+</pre>
+</div>
+<div author="klaus" created="20210820193436000" modified="20210820193436000" tags="Darboux Esoteric" title="Strongly Darboux Functions: The Darboux Machine" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>In this article, we will discuss a way of describing a Darboux function in terms of a machine: it will read off the digits of a real number in base 4 and use them as instructions for moving along the number line and finding a number.
+
+We first define the machine itself. It may be imagined as a simple computer with a single //pointer// or arrow to a real number, which is initially 0. It can be fed a (potentially infinite) string of integers between  0 and 3 inclusive, interpreted as instructions:
+
+* 
+
+@@.def
+&quot;&quot;&quot;
+The //Darboux Machine// is a function $$\mathfrak{M}:\mathbb{R}\to \mathbb{R}$$ defined according to the following rules:
+
+Suppose $$x \in \mathbb{R}$$ and $$(d_n)$$ is the sequence of digits corresponding to the base 4 representation of its fractional part. Then we may imagine a machine which sits on $$\mathbb{R}$$ and has a register which can store a real number, which is initially 0, along with another register called the current &quot;step size&quot;, which is initially 1. It will be fed $$(d_n)$$ and interpret them as instructions in the following way:
+&quot;&quot;&quot;
+
+* If a 0 is read in, the machine multiplies the current step size by $$\frac{1}{2}$$.
+* If a 1 is read in, the machine multiplies the current step size by 2.
+* If a 2 is read in, the machine adds its step size to its current pointer (i.e. the pointer is shifted along by the step size in the positive direction).
+* If a 3 is read in, the machine subtracts its step size from its current pointer.
+
+Let $$(r_n)$$ be the sequence of values of the machine's real-number-register as each instruction is fed in. If this sequence converges to some real $$l$$, then $$\mathfrak{M} (x) = l$$, and otherwise we set $$\mathfrak{x} = 0$$.
+@@
+
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210819185430424" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
