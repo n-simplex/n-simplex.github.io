@@ -231,6 +231,8 @@ Error message and password prompt
 
 <li>IMO 2021, Problem 2</li>
 
+<li>Strongly Darboux Functions: Conway's Idea</li>
+
 <li>Strongly Darboux Functions: Nonconstructive Examples</li>
 
 <li>Strongly Darboux Functions: Riemann Rearrangement Theorem</li>
@@ -11747,6 +11749,42 @@ The first inequality is by concavity and our careful choice of $$s^+,s^-$$, the 
 Although this solution has many complications, we hope this article has perhaps guided you through our thought process in tackling a truly tough puzzle.
 
 --Stanisław
+</pre>
+</div>
+<div author="stanislaw" created="20210820211832000" modified="20210820211832000" tags="Esoteric Conway Darboux" title="Strongly Darboux Functions: Conway's Idea" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Conway had a famous answer to the question of finding a Darboux function, called his &quot;Base 13 function&quot;, but I had never really understood it. This article should explain the idea behind it through the variant that I rediscovered independently.
+
+@@.def
+&quot;&quot;&quot;
+The //Stanislaw Base 3 function// $$\mathfrak{S}:\mathbb{R}\to \mathbb{R}$$ is defined according to the following rule:
+
+For $$x \in \mathbb{R}$$, let $$(d_n)$$ be the sequence of digits of the ternary expansion of its fractional part. If $$(d_n)$$ contains infinitely many or fewer than two 2s, then $$\mathfrak{S} (x) = 0$$. Otherwise, consider the last two occurrences of a 2: between them is a string that can only contain 0s and 1s, which may be interpreted as an integer in binary. Beyond the final two is an infinite string only consisting of 0s and 1s, which may be interpreted as a number between 0 and 1 (inclusive) in binary. 
+
+Then  $$\mathfrak{S} (x)$$ is the sum of the binary integer and the binary fractional part.
+&quot;&quot;&quot;
+@@
+
+Unsurprisingly, we have the following proposition.
+
+@@.prop
+The Stanislaw Base 3 function outputs every nonnegative real in every open interval.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+We need to show that in every open interval, $$\mathfrak{S}$$ outputs every real number; we will do this by showing the result for triadic closed intervals, i.e. intervals where the endpoints are rational and can be written as fractions $$\frac{p}{q}$$ where $$q$$ is a power of three, and then since there's at least one triadic interval within every open interval we will have proved the claim.
+
+As observed in similar beginnings of proofs on other Darboux pages, such triadic numbers are those whose ternary expansions have only finitely many nonzero digits and so if $$[a,b]$$ is a triadic interval, we may choose $$M\in \mathbb{N}$$ such that beyond the $$M$$-th digit both $$a$$ and $$b$$ have only zero digits. Note also that any number that agrees with $$a$$ to the first $$M$$ digits must lie between $$a$$ and $$b$$.
+
+If $$c \in \mathbb{R}, \;c&gt;0$$, then consider its binary expansion, where $$i_1,i_2,\ldots, i_m$$ is its integer part written in binary and $$(c_n)$$ is its fractional part. Then by appending $$2,i_1,i_2,\ldots, i_m ,2,c_1,c_2,\ldots$$ to the ternary representation of $$a$$ we get a number $$x$$ such that $$\mathfrak{S} (x) = c$$.
+&quot;&quot;&quot;
+@@
+
+This doesn't quite make my function strongly Darboux, so we can slightly edit the definition by taking $$\log(\mathfrak{S} (x))$$ whenever $$\mathfrak{S} (x) \neq 0$$ and otherwise output 0 which will output all of $$\mathbb{R}$$ on every interval.
+
+What was Conway's idea? He decided to step this idea to the next level. You can now look at the definition online and understand it; he used base 13 because then he could use as characters all the digits $$0,\ldots,9$$ as well as $$+,-,.$$ in writing the numbers. You'll find his definition incredibly similar but instead of interpreting a number as a nonnegative binary number it can directly interpret it as a decimal real.
+
+--Stanislaw
 </pre>
 </div>
 <div author="stanislaw" created="20210820175139000" modified="20210820173250072" tags="Esoteric Darboux Choice" title="Strongly Darboux Functions: Nonconstructive Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
