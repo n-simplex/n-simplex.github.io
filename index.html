@@ -12021,7 +12021,7 @@ Prove that the signary function is strongly Darboux.
 --Stanisław
 </pre>
 </div>
-<div author="klaus" created="20210820193436000" modified="20210820193436000" tags="Darboux Esoteric" title="Strongly Darboux Functions: The Darboux Machine" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="klaus" created="20210820193436000" modified="20210820200042607" tags="Darboux Esoteric" title="Strongly Darboux Functions: The Darboux Machine" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>In this article, we will discuss a way of describing a Darboux function in terms of a machine: it will read off the digits of a real number in base 4 and use them as instructions for moving along the number line and finding a number.
 
 We first define the machine itself. It may be imagined as a simple computer with a register containing a real number, which is initially 0, along with another register called the current &quot;step size&quot;, initially set to 1. It can be fed a (potentially infinite) string of integers between  0 and 3 inclusive, interpreted as instructions:
@@ -12041,7 +12041,7 @@ $$
 $$
 Suppose instead that the machine was fed the tape $$2,3,2,3,\ldots$$ (repeating forever). This will make the real-register have one added to it and then subtracted from it repeatedly, i.e. the register's sequence of values would be $$0,1,0,1,0,1\ldots$$ with no limit.
 
-Yet another example would be the tape formed from taking all the prime numbers, writing them in base 4 and concatenating their digits (in order) to form an instruction sequence $$P$$ (which begins $$2,3,1,1,1,3,2,3,3,1,\ldots$$). Some work by Erdos proved that this sequence has the remarkable property of every $$m$$-length sequence made up of 0s,1s,2s and 3s appears just as often as any other such $$m$$-length sequence (for each $$m\geq 1$$ ), where &quot;just as often&quot; means the proportion of their occurrences becomes uniform as we take the limit of longer and longer parts of $$P$$. Thus the Darboux machine when fed this tape will eventually have every dyadic rational in its register and indeed get arbitrarily close to every real.
+Yet another example would be the tape formed from taking all the prime numbers, writing them in base 4 and concatenating their digits (in order) to form an instruction sequence $$P$$ (which begins $$2,3,1,1,1,3,2,3,3,1,\ldots$$). [[Some work by Erdos|https://en.wikipedia.org/wiki/Copeland%E2%80%93Erd%C5%91s_constant#Related_constants]] proved that this sequence has the remarkable property of every $$m$$-length sequence made up of 0s,1s,2s and 3s appears just as often as any other such $$m$$-length sequence (for each $$m\geq 1$$ ), where &quot;just as often&quot; means the proportion of their occurrences becomes uniform as we take the limit of longer and longer parts of $$P$$. Thus the Darboux machine when fed this tape will eventually have every [[dyadic rational|https://en.wikipedia.org/wiki/Dyadic_rational]] in its register and indeed get arbitrarily close to every real.
 
 &quot;&quot;&quot;
 @@
@@ -12067,12 +12067,14 @@ As with some of the other Darboux proofs, we will prove that the interpreter fun
 
 Suppose we are considering the interval $$[a,b]$$ and both $$a,b$$ have terminated their digital representations in base 4 by the $$M $$-th digit. Notice that any real which has the integer part of $$a$$ and agrees with $$a$$ up to the $$M$$-th base-4 digit must lie within the interval.
 
-Now, suppose $$c \in \mathbb{R}$$ and consider the first $$M$$ digits of $$a$$'s fractional part in base-4. This defines $$M$$ instructions for the Darboux machine that get it to move to some real number $$r$$ and have some step size. We may imagine appending digits to $$a$$'s fractional representation which encode instructions for the following idea: we move the real-register along by the current step size until we are as close as we can be to $$c$$ with the current step size (i.e. the closest integer multiple of the current step size to $$c$$ ). We then halve the step size and again move until we are as close as possible to $$c$$ and then halve the step size again etc. Doing this process again and again, we get arbitrarily close to $$c$$ and if we ever actually reach $$c$$, we may simply add instructions which change only the step size (without ever moving along by the step). This gives us an infinite sequence of digits to append to $$a$$, giving an $$x \in [a,b]$$ such that $$\mathfrak{M} (x) = c$$.
+Now, suppose $$c \in \mathbb{R}$$ and consider the first $$M$$ digits of $$a$$'s fractional part in base-4. This defines $$M$$ instructions for the Darboux machine that get it to move to some real number $$r$$ and have some step size. We may imagine appending digits to $$a$$'s fractional representation which encode instructions for the following idea: we move the real-register along by the current step size until we are as close as we can be to $$c$$ with the current step size (i.e. the closest integer multiple of the current step size to $$c$$ ). 
+
+We then halve the step size and again move until we are as close as possible to $$c$$ and then halve the step size again etc. Doing this process again and again, we get arbitrarily close to $$c$$ and if we ever actually reach $$c$$, we may simply add instructions which change only the step size (without ever moving along by the step). This gives us an infinite sequence of digits to append to $$a$$, giving an $$x \in [a,b]$$ such that $$\mathfrak{M} (x) = c$$.
 
 &quot;&quot;&quot;
 @@
 
---Stanislaw
+--Stanisław
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210819185430424" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
