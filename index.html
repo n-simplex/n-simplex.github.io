@@ -11869,6 +11869,7 @@ Now suppose that either of $$u_1,u_2,\ldots$$'s or $$v_1,v_2,\ldots$$'s partial 
 @@
 
 Now we have all the tools we need to prove the main theorem!
+
 @@.proof
 &quot;&quot;&quot;
 Define $$u_n$$ and $$v_n$$ as above. We know that
@@ -11881,7 +11882,6 @@ Why? Each time we &quot;pass by&quot; $$r$$, we are just below or above $$r$$ by
 
 &quot;&quot;&quot;
 @@
-
 This proof not only gives a clear idea why the theorem is true--it provides an algorithm! Now that we've proved this, a natural question to ask is whether or not the rearrangments to get the sum to converge to a given number are unique, e.g. how many rearrangments of the $$\log(2)$$ series above give $$2$$? The answer, for every series and every number, is infinitely many but in some cases it's $$|\mathbb{N}|$$ and in other cases it's $$2^{|\mathbb{N}|} = |\mathbb{R}|$$ (just as a reminder: in Set Theory, $$a^b$$ for two sets  $$a,b$$ refers to the set of functions from $$b$$ to $$a$$ ).
 
 We can see this by a rather neat argument. Suppose $$a_1,\ldots$$ is a conditionally convergent series such that its sum is $$r$$ and recall that, as it is convergent, the magnitude of  $$a_i$$ must tend to zero as $$i \to \infty$$. This leads to two possibilities:
@@ -11912,32 +11912,53 @@ But Riemann's Rearrangement Theorem tells us that by doing this, we may obtain /
 
 We will give the definition of the Strongly Darboux function this whole article has been leading up to (!):
 @@.def
-&quot;&quot;&quot;
-The //realrangement function// $$\mathfrak{r}:\mathbb{R}\to \mathbb{R}$$ is defined by the following rule: 
 
+The //realrangement function// $$\mathfrak{r}:\mathbb{R}\to \mathbb{R}$$ is defined by the following rule:
 Suppose $$x$$'s fractional part is written $$0.d_1d_2d_3d_4\ldots$$ in ternary and we call $$(d_m)$$ its sequence of digits, then $$\mathfrak{r} (x) = 0$$ if it has infinitely many $$d_i$$ in the sequence which are equal to 2 and are isolated (i.e. neither of $$d_{i-1},d_{i+1}$$ are equal to 2). If, however, it has finitely many isolated 2-digits, then let $$M$$ be the index of the last such 2 (i.e. $$d_M$$ is the last isolated 2). Then the sequence $$(d_{M+n})$$ consists of passages of digits equal to 0 or 1 which are separated by nonisolated groups of 2s; by interpreting each such 0,1-passage as binary we may obtain an infinite sequence of natural numbers. If this sequence is not a permutation of $$\mathbb{N}$$, then again we have $$\mathfrak{r} (x)=0$$. If the sequence //is// a permutation of $$\mathbb{N}$$, then (calling it $$(r_n)$$ ) we define
 $$
 \mathfrak{r}(x) = \sum_{n=1}^{\infty} \frac{(-1)^{r_n}}{r_n}
 $$
-&quot;&quot;&quot;
+
 @@
 
 @@.prop
-$$\mathfrak{r} $$ is a strongly Darboux function.
+The realrangement function $$\mathfrak{r} $$ is a strongly Darboux function.
 @@
 @@.proof
 &quot;&quot;&quot;
-We need to show that in every open interval, $$\mathfrak{r} $$ outputs every real number; we will do this by showing the result for //dyadic intervals//, i.e. intervals where the endpoints are rational and can be written as fractions $$\frac{p}{q}$$ where $$q$$ is a power of two, and then since there's at least one dyadic interval within every open interval we will have proved the claim.
+We need to show that in every open interval, $$\mathfrak{r} $$ outputs every real number; we will do this by showing the result for //triadic intervals//, i.e. intervals where the endpoints are rational and can be written as fractions $$\frac{p}{q}$$ where $$q$$ is a power of three, and then since there's at least one dyadic interval within every open interval we will have proved the claim.
 
-Suppose $$[a,b]$$ is a dyadic open interval. If we write $$a = \frac{p}{q}$$ as a fraction in its lowest terms and then consider writing $$p$$ in binary, we may see that $$a$$ can be written as a terminating binary number (i.e. finitely many digits are nonzero). The same argument tells us that $$b$$ has only finitely many binary digits that are nonzero. We may therefore select $$M \in \mathbb{N}$$ so that beyond the $$M$$th digit, both $$a$$ and $$b$$ have only zero digits.
+Suppose $$[a,b]$$ is a triadic open interval. If we write $$a = \frac{p}{q}$$ as a fraction in its lowest terms and then consider writing $$p$$ in ternary, we may see that $$a$$ can be written as a terminating ternary number (i.e. finitely many digits are nonzero). The same argument tells us that $$b$$ has only finitely many ternary digits that are nonzero. We may therefore select $$M \in \mathbb{N}$$ so that beyond the $$M$$th digit, both $$a$$ and $$b$$ have only zero digits. Note that any number that agrees with $$a$$ to the first $$M$$ digits must lie between $$a$$ and $$b$$.
 
-If we consider any number whose integer part is that of $$a$$ and whose fractional part's binary expansion up to the $$M$$th digit is the same as that of $$a$$, then it must lie between $$a$$ and $$b$$. Now suppose $$c \in \mathbb{R}$$ is an arbitrary real. We know that
+Now suppose $$c \in \mathbb{R}$$ is an arbitrary real. We know that
 $$
-\sum_{n=M+1}^{\infty} \frac{(-1)^n}{n}
+\sum_{n=1}^{\infty} \frac{(-1)^n}{n}
 $$
-is a conditionally convergent series and so by Riemann's rearrangement theorem there is some rearrangement 
+is a conditionally convergent series and so by Riemann's rearrangement theorem there is some rearrangement of the terms of the series such that it sums to $$c$$. Let that rearrangement be the sequence $$c_1,c_2,\ldots$$ (each $$c_i$$ is a natural number representing the index of the term $$\frac{(-1)^i}{n}$$ ). Then we may form an infinite ternary sequence formed by concatenating each $$c_i$$'s binary representation, separated each by the string &quot;22&quot;. Prefix this string by &quot;121&quot; and then append this to the first $$M$$ digits of $$a$$ (as well as the integer part of $$a$$ ) to obtain a number $$x$$ that lies between $$a$$ and $$b$$ such that it satisfies the requirements for $$\mathfrak{r} (x) = c$$.
 
+To summarise:
+* $$c$$ is some real number.
+* We can represent $$c$$ by rearranging the terms of $$\sum_{n=1}^{\infty} \frac{(-1)^n}{n}$$
+* This rearrangement is encoded by the sequence $$c_1,c_2,\ldots$$ 
+* We make this sequence into an infinite ternary sequence that can be decoded by the definition of $$\mathfrak{r} $$.
+* We append this string, prefixed by &quot;121&quot; (in order to make sure that this 2 is the last isolated 2), to the ternary representation of $$a$$.
+* We get a number between $$a$$ and $$b$$ with the desired property!
 &quot;&quot;&quot;
+@@
+
+There is another and perhaps more elegant function which is also strongly Darboux and, while the proof doesn't quite use the Riemann rearrangement function, it uses the same ideas in the proof (instead of two sequences, one negative and one positive, there's just one sequence which we can //make// negative or positive). Here is its definition.
+
+@@.def
+The //signary function// $$\mathfrak{s}: \mathbb{R}\to \mathbb{R}$$ is defined by the following rule:
+Suppose $$x$$ has a fractional part written $$0.b_1b_2\ldots$$ in binary and we call $$(b_m)$$ its sequence of digits then
+$$
+\mathfrak{s} (x) = \sum_{n=1}^{\infty} \frac{(-1)^{b_n}}{n}
+$$
+and if this sum fails to converge then $$\mathfrak{s} (x) = 0$$.
+@@
+
+@@.exercise
+Prove that the signary function is strongly Darboux.
 @@
 
 </pre>
