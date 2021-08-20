@@ -11717,7 +11717,7 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210819172624000" modified="20210819185518190" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210819172624000" modified="20210820153559123" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This page will explain one of the various ways of defining a //strongly Darboux// function but we'll take this time to have an extended discussion on the content of the //Riemann rearrangement theorem//. It requires a little work to give it some context.
 
 In elementary analysis, after defining the real numbers themselves the most important objects of discussion are sequences. Sequences are infinite ordered lists of numbers $$a_1,a_2,\ldots$$ where each entry is a real $$a_i$$ for some $$i \in \mathbb{N}$$. The key property we care about in such discussion is //convergence//: this is supposed to encode the intuitive idea of a sequence getting closer and closer to some real number until its &quot;limit at infinity&quot; is the real number itself.
@@ -11747,7 +11747,7 @@ $$
 $$
 @@
 
-The most well known series of this form is when $$r=\frac{1}{2}$$ and the sum is $$\frac{1}{2}+\frac{1}{4}+\ldots$$ whose limit is 1! There are also many, many tests for the convergence of series such as the Null Sequence Test, the Alternating Series Test, the Comparison Test, Integral Test, p-series Test, Ratio Test, Limit comparison test, Dirichlet's Test, Abel's Test, Abel's Theorem, Kronecker's Lemma, Cauchy's condensation test, Cauchy's test, Cauchy's root test and, if you allow other things to be summed by expanding the definition above to objects like functions, you can have the Weierstrass M-test and much much more; each of these examples have their own intuitions, cases where they work and types of information they can give you.
+The most well known series of this form is when $$r=\frac{1}{2}$$ and the sum is $$\frac{1}{2}+\frac{1}{4}+\ldots$$ whose limit is 1! There are also many, many tests for the convergence of series such as the [[Null Sequence Test|https://en.wikipedia.org/wiki/Term_test]], the [[Alternating Series Test|https://en.wikipedia.org/wiki/Alternating_series_test]], the [[Comparison Test|https://en.wikipedia.org/wiki/Direct_comparison_test]], [[Integral Test|https://en.wikipedia.org/wiki/Integral_test_for_convergence]], [[p-series Test|https://en.wikipedia.org/wiki/Convergence_tests#p-series_test]], [[Ratio Test|https://en.wikipedia.org/wiki/Ratio_test]], [[Limit comparison test|https://en.wikipedia.org/wiki/Limit_comparison_test]], [[Dirichlet's Test|https://en.wikipedia.org/wiki/Dirichlet%27s_test]], [[Abel's Test|https://en.wikipedia.org/wiki/Abel%27s_test]], [[Abel's Theorem|https://en.wikipedia.org/wiki/Abel%27s_theorem]], [[Kronecker's Lemma|https://en.wikipedia.org/wiki/Kronecker%27s_lemma]], [[Cauchy's condensation test|https://en.wikipedia.org/wiki/Cauchy_condensation_test]], [[Cauchy's test|https://en.wikipedia.org/wiki/Cauchy%27s_convergence_test]], [[Cauchy's root test|https://en.wikipedia.org/wiki/Root_test]] and, if you allow other things to be summed by expanding the definition above to objects like functions, you can have the [[Weierstrass M-test |https://en.wikipedia.org/wiki/Weierstrass_M-test]] and much much more; each of these examples have their own intuitions, cases where they work and types of information they can give you.
 
 Clearly it's a very complex topic! There is kind of a reason, however, as to why it's so difficult. For series with positive terms it can be extremely difficult on its own but most examples (at least at an undergraduate or lower level!) can be compared to series that you already know about - this comparison relates the two series &quot;growth rates&quot; and can often tell you whether or not it converges. However, series can contain both negative //and// positive terms which means the partial sums can increase or decrease in value erratically and so tests have to be cleverer. Worst still, there's an additional distinction that isn't originally obvious: there are series that are convergent but if you made all the terms become positive they don't converge.
 
@@ -11758,7 +11758,7 @@ The infinite series
 $$
 \sum_{n=1}^{\infty} \frac{1}{n}
 $$
-is called the //harmonic series// and the sum from $$1$$ to $$m$$ is $$H_m$$, the $$m$$th harmonic number. Many people who first see this expect it to converge as the partial sums grow so slowly (indeed $$H_m \sim \log(n)$$ ) but the sum diverges to infinity. There's a really neat proof of this that is surprisingly old (dating back to the 14th century!) and thinking more carefully about this proof is what can lead you to Cauchy's condensation test above.
+is called the //harmonic series// and the sum from $$1$$ to $$m$$ is $$H_m$$, the $$m$$th harmonic number. Many people who first see this expect it to converge as the partial sums grow so slowly (indeed $$H_m \sim \log(n)$$ ) but the sum diverges to infinity. There's [[a really neat proof|https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)#Comparison_test]] of this that is surprisingly old (dating back to the 14th century!) and thinking more carefully about this proof is what can lead you to Cauchy's condensation test above.
 @@
 
 This does not converge and yet
@@ -11867,13 +11867,13 @@ Then we can switch the values of $$a_{n_0}, a_{n_0+1}$$ without effecting the ov
 Technically, we've only shown there are //at least// $$|\mathbb{R}|$$-many ways of rearranging the series (by giving a way of getting that number of rearrangements without effecting the sum). To see that there are at most this many, observe that each rearrangment of the seqeuence gives a real number and so there cannot be more rearrangements of a certain kind than real numbers.
 @@
 
-A related idea is that we can use the Riemann Rearrangement Theorem to somewhat simplify the answer to the question of how many bijections are there from $$\mathbb{N}$$ to $$\mathbb{N}$$. On this page from MathOverflow, we see a variety of answers for the more general case of bijections from $$S\to S$$ (where $$S$$ can be any infinite set). We know that 
+A related idea is that we can use the Riemann Rearrangement Theorem to somewhat simplify the answer to the question of how many bijections are there from $$\mathbb{N}$$ to $$\mathbb{N}$$. On [[this page|https://mathoverflow.net/questions/27785/cardinality-of-the-permutations-of-an-infinite-set]] from MathOverflow, we see a variety of answers for the more general case of bijections from $$S\to S$$ (where $$S$$ can be any infinite set). We know that 
 $$
 |\mathbb{N}|^{|\mathbb{N}|} \leq  (2^{|\mathbb{N}|})^(|\mathbb{N}|) = 2^{|N|\times |N|} = 2^{|N\times N|} = 2^{|\mathbb{N}|}
 $$
 We know these relations in order because
 
-* $$|S|&lt; |2^S|$$ for every set $$S$$, due to a theorem of Cantor.
+* $$|S|&lt; |2^S|$$ for every set $$S$$, due to a [[theorem of Cantor|https://en.wikipedia.org/wiki/Cantor%27s_theorem]].
 * $$(a^b)^c = a^{bc}$$ also works for functions between sets thanks to how beautifully thought out the modern framework of ZFC Set Theory is.
 * $$|N\times N| = |N|$$ because the cartesian product of two countable sets is countable.
 
@@ -11939,7 +11939,7 @@ and if this sum fails to converge then $$\mathfrak{s} (x) = 0$$.
 Prove that the signary function is strongly Darboux.
 @@
 
---Stanislaw
+--Stanisław
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210819185430424" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
