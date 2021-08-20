@@ -11504,7 +11504,7 @@ exports.context = contextWidget;
 <div created="20210812010402887" modified="20210812010437508" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>horizontal</pre>
 </div>
-<div author="stanislaw" created="20210818005817000" modified="20210818005817000" tags="Esoteric" title="All the Strongly Darboux Functions" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210818005817000" modified="20210820173519434" tags="Esoteric" title="All the Strongly Darboux Functions" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>There is a certain type of function that is in the folklore of undergraduate mathematics, relating to the //Intermediate Value Theorem//.
 
 @@.theorem
@@ -11525,7 +11525,9 @@ A function $$f:\mathbb{R}\to \mathbb{R}$$ is said to be //strongly Darboux// if,
 
 To make this clear, the function outputs //every real number on any interval, no matter its size//. If $$f$$ is strongly Darboux, then it is discontinuous everywhere: suppose $$f(x) = c$$, then arbitrarily close to $$x$$ we can find a real $$y$$ such that $$f(y) = 1000000c$$ or all kinds of other junk which horribly contradicts the $$\varepsilon-\delta$$ definition of continuity. This kind of function is absolutely wild and would be utterly impossible to graph--one of the greatest examples of a pathological object--but could it really exist?
 
-This exact problem (to find such a function!) was posed to me last year. I knew vaguely in the back of my mind that there was a famous answer to this question due to Conway but didn't remember really anything of his construction, which had seemed really bizarre to me previously. However, after a couple days thought, I came up with an incredible number of examples. The rest of this post will be dedicated to explaining as many of these as I can muster and at the end we'll describe another, more subtle, sense in which these functions violate intuition about continuity I encountered when studying some topology.
+This exact problem (to find such a function!) was posed to me last year. I knew vaguely in the back of my mind that there was a famous answer to this question due to Conway but didn't remember really anything of his construction, which had seemed really bizarre to me previously. However, after a couple days thought, I came up with an incredible number of examples. Each of these examples take a little describing and so I split them into manageable packages! At the end we'll describe another, more subtle, sense in which these functions violate intuition about continuity I encountered when studying some topology.
+
+&lt;&lt;list-links &quot;[tag[Darboux]]&quot;&gt;&gt;
 </pre>
 </div>
 <div author="klaus" created="20210817211743000" modified="20210819020442745" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics Klaus" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11745,7 +11747,7 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="klaus" created="20210820175139000" modified="20210820175139000" tags="Esoteric Darboux Choice" title="Strongly Darboux Functions: Nonconstructive Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210820175139000" modified="20210820173250072" tags="Esoteric Darboux Choice" title="Strongly Darboux Functions: Nonconstructive Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>In this article, we discuss two ideas for defining a strongly Darboux function in highly nonconstructive ways that use the Axiom of Choice as the key aspects for their construction. 
 
 We first consider $$\mathbb{R}/\mathbb{Q}$$, i.e. the set of equivalence classes on $$\mathbb{R}$$ when we say two numbers are &quot;the same&quot; if they differ by a rational number (e.g. $$\sqrt{2}$$ and $$\sqrt{2} +2$$ ). How big is $$\mathbb{R}/\mathbb{Q}$$ in terms of cardinality? There are a fair number of discussions online about just this that go something like this:
@@ -11760,7 +11762,7 @@ so $$|\mathbb{R}| = |S|\times |\mathbb{Q}|$$ and thus $$\mathbb{R}$$ would be co
 
 There is nothing wrong with this argumentation (though it does secretly use countable choice!) but what people don't appear to often notice is that //just because something is an uncountable set of $$\mathbb{R}$$ doesn't make its size determined.// After all, we don't know the cardinality of $$\mathbb{R}$$ in the list of cardinals and haven't really defined sets well enough for this question to really have an answer in ZFC! Investigating this in greater depth and trying to figure out where the Axiom of Choice in arguments can lead to strange, strange discoveries. With Choice, it turns out that  $$|\mathbb{R}/\mathbb{Q}| = |\mathbb{R}|$$ (for reasons that are rather complex and beyond this blog post) but without it, it turns out it is consistent with the axioms of set theory that $$|\mathbb{R}/\mathbb{Q}| &gt; |\mathbb{R}|$$!
 
-If you didn't spit out any beverage you were drinking upon reading this, perhaps you did not understand: we have a pile of objects and divided that pile into a bunch of other, smaller piles and then it turns out that you could end up with more piles than objects! This kind of phenomenon is discussed in some more detail here in a talk brilliantly titled ''How to have more things by forgetting where you put them''. If this isn't a good &quot;argument&quot; for Choice, then I don't know what is!
+If you didn't spit out any beverage you were drinking upon reading this, perhaps you did not understand: we have a pile of objects and divided that pile into a bunch of other, smaller piles and then it turns out that you could end up with more piles than objects! This kind of phenomenon is discussed in some more detail [[here|http://math.yorku.ca/~moliver/how.pdf]] in a talk brilliantly titled ''How to have more things by forgetting where you put them''. If this isn't a good &quot;argument&quot; for Choice, then I don't know what is!
 
 Assuming Choice, we can then obtain a bijection $$p: \mathbb{R}/\mathbb{Q} \to \mathbb{R}$$ and use it to define our function.
 
@@ -11786,13 +11788,13 @@ Define a function using the idea of a Hamel basis of $$\mathbb{R}$$ over $$\math
 @@
 
 @@.exercise
-Come up with a Sylvestrine name for the type of function in the previous exercise.
+Come up with a [[Sylvestrine|https://math.stackexchange.com/questions/6906/why-is-it-called-sylvesters-law-of-inertia]] name for the type of function in the previous exercise.
 @@
 
---Stanislaw
+--Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210819172624000" modified="20210820153559123" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210819172624000" modified="20210820173303907" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This page will explain one of the various ways of defining a //strongly Darboux// function but we'll take this time to have an extended discussion on the content of the //Riemann rearrangement theorem//. It requires a little work to give it some context.
 
 In elementary analysis, after defining the real numbers themselves the most important objects of discussion are sequences. Sequences are infinite ordered lists of numbers $$a_1,a_2,\ldots$$ where each entry is a real $$a_i$$ for some $$i \in \mathbb{N}$$. The key property we care about in such discussion is //convergence//: this is supposed to encode the intuitive idea of a sequence getting closer and closer to some real number until its &quot;limit at infinity&quot; is the real number itself.
