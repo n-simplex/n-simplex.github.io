@@ -231,6 +231,8 @@ Error message and password prompt
 
 <li>IMO 2021, Problem 2</li>
 
+<li>Strongly Darboux Functions: Nonconstructive Examples</li>
+
 <li>Strongly Darboux Functions: Riemann Rearrangement Theorem</li>
 
 <li>Theorem Styling</li>
@@ -11741,6 +11743,53 @@ The first inequality is by concavity and our careful choice of $$s^+,s^-$$, the 
 Although this solution has many complications, we hope this article has perhaps guided you through our thought process in tackling a truly tough puzzle.
 
 --Stanisław
+</pre>
+</div>
+<div author="klaus" created="20210820175139000" modified="20210820175139000" tags="Esoteric Darboux Choice" title="Strongly Darboux Functions: Nonconstructive Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>In this article, we discuss two ideas for defining a strongly Darboux function in highly nonconstructive ways that use the Axiom of Choice as the key aspects for their construction. 
+
+We first consider $$\mathbb{R}/\mathbb{Q}$$, i.e. the set of equivalence classes on $$\mathbb{R}$$ when we say two numbers are &quot;the same&quot; if they differ by a rational number (e.g. $$\sqrt{2}$$ and $$\sqrt{2} +2$$ ). How big is $$\mathbb{R}/\mathbb{Q}$$ in terms of cardinality? There are a fair number of discussions online about just this that go something like this:
+
+&lt;&lt;&lt;
+We may note that $$\mathbb{R}/\mathbb{Q}$$ cannot be countable. Why? If it was countable, then take one representative from each equivalence class and form the set  $$S$$ (which is countable). Observe then that by definition
+$$
+\bigcup_{q \in \mathbb{Q}} q+S = \mathbb{R}
+$$
+so $$|\mathbb{R}| = |S|\times |\mathbb{Q}|$$ and thus $$\mathbb{R}$$ would be countable (as the cartesian product of two countable sets is countable).
+&lt;&lt;&lt;
+
+There is nothing wrong with this argumentation (though it does secretly use countable choice!) but what people don't appear to often notice is that //just because something is an uncountable set of $$\mathbb{R}$$ doesn't make its size determined.// After all, we don't know the cardinality of $$\mathbb{R}$$ in the list of cardinals and haven't really defined sets well enough for this question to really have an answer in ZFC! Investigating this in greater depth and trying to figure out where the Axiom of Choice in arguments can lead to strange, strange discoveries. With Choice, it turns out that  $$|\mathbb{R}/\mathbb{Q}| = |\mathbb{R}|$$ (for reasons that are rather complex and beyond this blog post) but without it, it turns out it is consistent with the axioms of set theory that $$|\mathbb{R}/\mathbb{Q}| &gt; |\mathbb{R}|$$!
+
+If you didn't spit out any beverage you were drinking upon reading this, perhaps you did not understand: we have a pile of objects and divided that pile into a bunch of other, smaller piles and then it turns out that you could end up with more piles than objects! This kind of phenomenon is discussed in some more detail here in a talk brilliantly titled ''How to have more things by forgetting where you put them''. If this isn't a good &quot;argument&quot; for Choice, then I don't know what is!
+
+Assuming Choice, we can then obtain a bijection $$p: \mathbb{R}/\mathbb{Q} \to \mathbb{R}$$ and use it to define our function.
+
+@@.def
+The //realpresentative function// $$\mathcal{r}:\mathbb{R}\to \mathbb{R}$$ is defined by the following rule:
+Given $$x \in \mathbb{R}$$, it is part of some equivalence class $$A$$ in $$\mathbb{R}/\mathbb{Q}$$. Then $$\mathcal{r}(x) = p(A)$$.
+@@
+
+@@.prop
+The realpresentative function is strongly Darboux.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+Recall that $$\mathbb{Q}$$ is dense in $$\mathbb{R}$$, i.e. in every open interval there is at least one rational. Then notice that every member of $$\mathbb{R}/\mathbb{Q}$$ is simply a translated copy of $$\mathbb{Q}$$ and so is also dense in $$\mathbb{R}$$. Therefore, given any open interval we know there is at least one member of each element of $$\mathbb{R}/\mathbb{Q}$$ within it and so the realpresentative function outputs all of $$\mathbb{R}$$ in this interval.
+&quot;&quot;&quot;
+@@
+
+Given how incredibly simple the proof is (compare this, for example, to that of the realrangement function) you can see why this might be quite a natural example! You can also use Choice, however, to construct a basis for $$\mathbb{R}$$ when viewing $$\mathbb{R}$$ as a vector space over $$\mathbb{Q}$$ (it is called a //Hamel basis// and also has cardinality equal to $$|\mathbb{R}|$$) and this fact can be used to define a similar function to the above.
+
+@@.exercise
+Define a function using the idea of a Hamel basis of $$\mathbb{R}$$ over $$\mathbb{Q}$$ and prove that it is strongly Darboux.
+@@
+
+@@.exercise
+Come up with a Sylvestrine name for the type of function in the previous exercise.
+@@
+
+--Stanislaw
 </pre>
 </div>
 <div author="stanislaw" created="20210819172624000" modified="20210820153559123" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
