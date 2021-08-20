@@ -12024,25 +12024,55 @@ Prove that the signary function is strongly Darboux.
 <div author="klaus" created="20210820193436000" modified="20210820193436000" tags="Darboux Esoteric" title="Strongly Darboux Functions: The Darboux Machine" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>In this article, we will discuss a way of describing a Darboux function in terms of a machine: it will read off the digits of a real number in base 4 and use them as instructions for moving along the number line and finding a number.
 
-We first define the machine itself. It may be imagined as a simple computer with a single //pointer// or arrow to a real number, which is initially 0. It can be fed a (potentially infinite) string of integers between  0 and 3 inclusive, interpreted as instructions:
-
-* 
-
-@@.def
-&quot;&quot;&quot;
-The //Darboux Machine// is a function $$\mathfrak{M}:\mathbb{R}\to \mathbb{R}$$ defined according to the following rules:
-
-Suppose $$x \in \mathbb{R}$$ and $$(d_n)$$ is the sequence of digits corresponding to the base 4 representation of its fractional part. Then we may imagine a machine which sits on $$\mathbb{R}$$ and has a register which can store a real number, which is initially 0, along with another register called the current &quot;step size&quot;, which is initially 1. It will be fed $$(d_n)$$ and interpret them as instructions in the following way:
-&quot;&quot;&quot;
+We first define the machine itself. It may be imagined as a simple computer with a register containing a real number, which is initially 0, along with another register called the current &quot;step size&quot;, initially set to 1. It can be fed a (potentially infinite) string of integers between  0 and 3 inclusive, interpreted as instructions:
 
 * If a 0 is read in, the machine multiplies the current step size by $$\frac{1}{2}$$.
 * If a 1 is read in, the machine multiplies the current step size by 2.
 * If a 2 is read in, the machine adds its step size to its current pointer (i.e. the pointer is shifted along by the step size in the positive direction).
 * If a 3 is read in, the machine subtracts its step size from its current pointer.
 
-Let $$(r_n)$$ be the sequence of values of the machine's real-number-register as each instruction is fed in. If this sequence converges to some real $$l$$, then $$\mathfrak{M} (x) = l$$, and otherwise we set $$\mathfrak{x} = 0$$.
+We can imagine that some instruction-tapes will make the Darboux Machine close in on some real number after a while and others will instead lead to it wandering around the number line aimlessly.
+
+@@.example
+&quot;&quot;&quot;
+Suppose the Darboux Machine is fed the tape $$0,2,0,2,0,2,\ldots$$ repeating in this way forever. This will make the step size half and then be added to the real-register repeatedly, i.e. the machine will in the limit have in its register
+$$
+\sum_{n=1}^{\infty} \frac{1}{2^n} = 1
+$$
+Suppose instead that the machine was fed the tape $$2,3,2,3,\ldots$$ (repeating forever). This will make the real-register have one added to it and then subtracted from it repeatedly, i.e. the register's sequence of values would be $$0,1,0,1,0,1\ldots$$ with no limit.
+
+Yet another example would be the tape formed from taking all the prime numbers, writing them in base 4 and concatenating their digits (in order) to form an instruction sequence $$P$$ (which begins $$2,3,1,1,1,3,2,3,3,1,\ldots$$). Some work by Erdos proved that this sequence has the remarkable property of every $$m$$-length sequence made up of 0s,1s,2s and 3s appears just as often as any other such $$m$$-length sequence (for each $$m\geq 1$$ ), where &quot;just as often&quot; means the proportion of their occurrences becomes uniform as we take the limit of longer and longer parts of $$P$$. Thus the Darboux machine when fed this tape will eventually have every dyadic rational in its register and indeed get arbitrarily close to every real.
+
+&quot;&quot;&quot;
 @@
 
+We can use this machine to define our function.
+
+@@.def
+&quot;&quot;&quot;
+The //interpreter function// is a function $$\mathfrak{M}:\mathbb{R}\to \mathbb{R}$$ defined according to the following rule:
+Suppose that $$x \in \mathbb{R}$$ and $$(d_n)$$ is the sequence of base 4 digits of its fractional part. Then if we feed the Darboux Machine $$(d_n)$$ as an instruction-tape and its register's sequence of values converges to some real $$l$$ then $$\mathfrak{M} (x) = l$$ but otherwise we set $$\mathfrak{M} (x) = 0$$.
+&quot;&quot;&quot;
+@@
+
+The fact that this defines a strongly Darboux function should actually be fairly obvious after you've fully understood the definition, but we include the proof for completeness.
+
+@@.prop
+The interpreter function is strongly Darboux.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+As with some of the other Darboux proofs, we will prove that the interpreter function outputs all real numbers within intervals whose endpoints have terminating digital representations in base 4 (i.e. a finite number of digits are nonzero). Such numbers are precisely the dyadic rationals. If we prove it in this case, we prove the general case as every interval contains an interval with dyadic endpoints.
+
+Suppose we are considering the interval $$[a,b]$$ and both $$a,b$$ have terminated their digital representations in base 4 by the $$M $$-th digit. Notice that any real which has the integer part of $$a$$ and agrees with $$a$$ up to the $$M$$-th base-4 digit must lie within the interval.
+
+Now, suppose $$c \in \mathbb{R}$$ and consider the first $$M$$ digits of $$a$$'s fractional part in base-4. This defines $$M$$ instructions for the Darboux machine that get it to move to some real number $$r$$ and have some step size. We may imagine appending digits to $$a$$'s fractional representation which encode instructions for the following idea: we move the real-register along by the current step size until we are as close as we can be to $$c$$ with the current step size (i.e. the closest integer multiple of the current step size to $$c$$ ). We then halve the step size and again move until we are as close as possible to $$c$$ and then halve the step size again etc. Doing this process again and again, we get arbitrarily close to $$c$$ and if we ever actually reach $$c$$, we may simply add instructions which change only the step size (without ever moving along by the step). This gives us an infinite sequence of digits to append to $$a$$, giving an $$x \in [a,b]$$ such that $$\mathfrak{M} (x) = c$$.
+
+&quot;&quot;&quot;
+@@
+
+--Stanislaw
 </pre>
 </div>
 <div author="stanislaw" created="20210811014905149" modified="20210819185430424" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
