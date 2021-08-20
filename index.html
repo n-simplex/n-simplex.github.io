@@ -11751,8 +11751,8 @@ Although this solution has many complications, we hope this article has perhaps 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210820211832000" modified="20210820211832000" tags="Esoteric Conway Darboux" title="Strongly Darboux Functions: Conway's Idea" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Conway had a famous answer to the question of finding a Darboux function, called his &quot;Base 13 function&quot;, but I had never really understood it. This article should explain the idea behind it through the variant that I rediscovered independently.
+<div author="stanislaw" created="20210820211832000" modified="20210820211342833" tags="Esoteric Conway Darboux" title="Strongly Darboux Functions: Conway's Idea" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>[[Conway|https://en.wikipedia.org/wiki/John_Horton_Conway]] had a famous answer to the question of finding a Darboux function, called his &quot;Base 13 function&quot;, but I had never really understood it. This article should explain the idea behind it through the variant that I rediscovered independently.
 
 @@.def
 &quot;&quot;&quot;
@@ -11782,9 +11782,11 @@ If $$c \in \mathbb{R}, \;c&gt;0$$, then consider its binary expansion, where $$i
 
 This doesn't quite make my function strongly Darboux, so we can slightly edit the definition by taking $$\log(\mathfrak{S} (x))$$ whenever $$\mathfrak{S} (x) \neq 0$$ and otherwise output 0 which will output all of $$\mathbb{R}$$ on every interval.
 
-What was Conway's idea? He decided to step this idea to the next level. You can now look at the definition online and understand it; he used base 13 because then he could use as characters all the digits $$0,\ldots,9$$ as well as $$+,-,.$$ in writing the numbers. You'll find his definition incredibly similar but instead of interpreting a number as a nonnegative binary number it can directly interpret it as a decimal real.
+What was Conway's idea? He decided to step this idea to the next level. You can now look at the [[definition online|https://en.wikipedia.org/wiki/Conway_base_13_function#Definition]] and understand it; he used base 13 because then he could use as characters all the digits $$0,\ldots,9$$ as well as $$+,-,.$$ in writing the numbers. You'll find his definition incredibly similar but instead of interpreting a number as a nonnegative binary number it can directly interpret it as a decimal real.
 
---Stanislaw
+John Conway happens to be one of the author's favourite mathematicians and this marks the first time he is mentioned on this blog. Hopefully it is the first of many.
+
+--Stanisław
 </pre>
 </div>
 <div author="stanislaw" created="20210820175139000" modified="20210820173250072" tags="Esoteric Darboux Choice" title="Strongly Darboux Functions: Nonconstructive Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11834,7 +11836,7 @@ Come up with a [[Sylvestrine|https://math.stackexchange.com/questions/6906/why-i
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210819172624000" modified="20210820173303907" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210819172624000" modified="20210820211042904" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This page will explain one of the various ways of defining a //strongly Darboux// function but we'll take this time to have an extended discussion on the content of the //Riemann rearrangement theorem//. It requires a little work to give it some context.
 
 In elementary analysis, after defining the real numbers themselves the most important objects of discussion are sequences. Sequences are infinite ordered lists of numbers $$a_1,a_2,\ldots$$ where each entry is a real $$a_i$$ for some $$i \in \mathbb{N}$$. The key property we care about in such discussion is //convergence//: this is supposed to encode the intuitive idea of a sequence getting closer and closer to some real number until its &quot;limit at infinity&quot; is the real number itself.
@@ -12020,7 +12022,7 @@ The realrangement function $$\mathfrak{r} $$ is a strongly Darboux function.
 
 @@.proof
 &quot;&quot;&quot;
-We need to show that in every open interval, $$\mathfrak{r} $$ outputs every real number; we will do this by showing the result for //triadic intervals//, i.e. intervals where the endpoints are rational and can be written as fractions $$\frac{p}{q}$$ where $$q$$ is a power of three, and then since there's at least one dyadic interval within every open interval we will have proved the claim.
+We need to show that in every open interval, $$\mathfrak{r} $$ outputs every real number; we will do this by showing the result for //triadic intervals//, i.e. intervals where the endpoints are rational and can be written as fractions $$\frac{p}{q}$$ where $$q$$ is a power of three, and then since there's at least one triadic interval within every open interval we will have proved the claim.
 
 Suppose $$[a,b]$$ is a triadic open interval. If we write $$a = \frac{p}{q}$$ as a fraction in its lowest terms and then consider writing $$p$$ in ternary, we may see that $$a$$ can be written as a terminating ternary number (i.e. finitely many digits are nonzero). The same argument tells us that $$b$$ has only finitely many ternary digits that are nonzero. We may therefore select $$M \in \mathbb{N}$$ so that beyond the $$M$$th digit, both $$a$$ and $$b$$ have only zero digits. Note that any number that agrees with $$a$$ to the first $$M$$ digits must lie between $$a$$ and $$b$$.
 
@@ -12059,7 +12061,7 @@ Prove that the signary function is strongly Darboux.
 --Stanisław
 </pre>
 </div>
-<div author="klaus" created="20210820193436000" modified="20210820200042607" tags="Darboux Esoteric" title="Strongly Darboux Functions: The Darboux Machine" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210820193436000" modified="20210820211124086" tags="Darboux Esoteric" title="Strongly Darboux Functions: The Darboux Machine" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>In this article, we will discuss a way of describing a Darboux function in terms of a machine: it will read off the digits of a real number in base 4 and use them as instructions for moving along the number line and finding a number.
 
 We first define the machine itself. It may be imagined as a simple computer with a register containing a real number, which is initially 0, along with another register called the current &quot;step size&quot;, initially set to 1. It can be fed a (potentially infinite) string of integers between  0 and 3 inclusive, interpreted as instructions:
