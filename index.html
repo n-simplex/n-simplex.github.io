@@ -11891,6 +11891,105 @@ Now suppose $$X-A$$ is closed and that $$A$$ is not open. Then there is some poi
 &quot;&quot;&quot;
 @@
 
+Given this, we get an additional bit of geometric intuition: if open sets are blobs without boundaries, then closed sets are precisely those blobs WITH boundaries! Another important idea is how to obtain a closed or an open set in a natural way from an arbitrary subset of a metric space.
+
+@@.def
+The //closure// of a subset $$S$$ of a metric space $$(X,d)$$ is the set of limits of convergent sequences formed from members of $$S$$.
+@@
+
+@@.def
+The //interior// of a subset $$S$$ of a metric space $$(X,d)$$ is the set of points $$x \in S$$ such that there is some $$\varepsilon&gt;0$$ so that $$B_\varepsilon(x) \subseteq S$$.
+@@
+
+Both of these ideas should be fairly intuitive: the definition of a set being closed requires limit points to be in the set, so we just take $$S$$ and add all the limit points, and the definition of a set being open requires small open balls around each point to be also in the set, so we simply choose any point in $$S$$ such that there is some open ball around it in the set! Notably, the closure contains $$S$$ and the interior is contained within $$S$$. While it might seem obvious from the names and the comments we just made, we leave as an exercise a pretty important point.
+
+@@.exercise
+Let $$S$$ be an arbitrary subset of a metric space $$(X,d)$$. Prove that the closure of $$S$$ is a closed set and the interior of $$S$$ is an open set.
+@@
+
+Shall we consider some examples?
+
+@@.example
+Every closed interval is a closed subset of $$\mathbb{R}$$ and every open interval is an open subset of $$\mathbb{R}$$. $$[0,1), (0,1]$$ are neither while $$\mathbb{R}, \emptyset$$ are both!
+@@
+
+@@.example
+If we now consider $$\mathbb{Q}$$ as a metric space, $$(-\sqrt{2} , \sqrt{2} )\cap \mathbb{Q}$$ is a clopen subset.
+@@
+
+After trying to think of a few more examples of clopen sets in $$\mathbb{R}$$, you might realise it's tricky to think of anything similar to the example in $$\mathbb{Q}$$. Come to think of it, it's difficult to imagine anything //other than// $$\mathbb{R}$$ or $$\emptyset$$; this is no coincidence as we'll see in a minute.
+
+@@.example
+$$\{\frac{1}{n}\;|\; n \geq 1\} $$ is not a closed subset of $$\mathbb{R}$$ but $$\{\frac{1}{n}\;|\;n\geq 1\} \cup \{0\} $$ is and in fact is its closure in $$\mathbb{R}$$.
+@@
+
+@@.example
+$$[0,1)\cup (2,3]$$ is not an open subset of $$\mathbb{R}$$ but $$(0,1)\cup (2,3)$$ is and in fact is its interior in $$\mathbb{R}$$.
+@@
+
+We now show that in fact the kinds of subsets of $$\mathbb{R}$$ that are open are not that mysterious after all.
+
+@@.lemma
+Every open subset of $$\mathbb{R}$$ is a countable union of disjoint open intervals.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+Let $$\mathcal{O}$$ be an open subset of $$\mathbb{R}$$. If $$\mathcal{O}$$ is the empty set, then we're vacuously done.
+
+Otherwise, $$\mathcal{O}$$ contains at least one element $$x$$. Since $$\mathcal{O}$$ is open, there exists $$\varepsilon&gt;0$$ so that $$B_\varepsilon(x) \subseteq\mathcal{O}$$. But what is this open ball? It's the open interval $$(x-\varepsilon, x+\varepsilon)$$.
+
+Given there's at least one open interval contained in $$\mathcal{O}$$ that also contains $$x$$, we may take the union of all such intervals to obtain a &quot;largest&quot; interval containing $$x$$ and in $$\mathcal{O}$$. Denote this largest interval $$I_x$$. We may perform a similar construction on all the points of $$\mathcal{O}$$ to obtain a collection of maximally-sized open intervals $$\{I_a \;|\; a \in \mathcal{O}\} $$ and given we've performed the construction on every element of $$\mathcal{O}$$, we know that these intervals are all of $$\mathcal{O}$$.
+
+Finally, each interval contains a distinct rational number from the others and there are countably many rationals so there can only be countably many intervals.
+&quot;&quot;&quot;
+@@
+
+This statement implicitly expresses a certain important point: the union of two disjoint open intervals isn't an open interval itself but it //is// an open set in $$\mathbb{R}$$! This is more generally true of open sets: you can union arbitrarily many (even infinitely many) and you'll get an open set. Can you see why? If not, simply reread the definition and think for a minute. This has the neat consequence that the arbitrary intersection of closed sets is closed because the complements of these closed sets are open and taking the intersection of the sets is the same as taking the union of the complements! We can also sort out something we discussed before.
+
+@@.prop
+If $$S\subseteq\mathbb{R}$$ is clopen in $$\mathbb{R}$$, then $$S = \emptyset$$ or $$S = \mathbb{R}$$.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+Suppose $$S \subseteq\mathbb{R}$$ and $$S \neq \emptyset$$ and $$S \neq \mathbb{R}$$. Then by the above lemma, $$S$$ can be decomposed into countably many open intervals, not all equal to $$(-\infty,\infty)$$. Take one such interval $$I$$ and consider $$R-S$$. As $$S$$ is clopen, $$R-S$$ is open and so can also be decomposed into countably many open intervals not all equal to $$(-\infty,\infty)$$. But then notice the endpoints of $$I$$ are neither in $$S$$ nor $$R-S$$ as the open intervals making both up don't contain their endpoints. This is a contradiction.
+&quot;&quot;&quot;
+@@
+
+All of this classification was mainly done for interest's sake, so let's get on to the more important examples and ideas. 
+@@.example
+$$\mathbb{Q}$$ is neither closed nor open in $$\mathbb{R}$$ but its closure //is// $$\mathbb{R}$$.
+@@
+
+This is an interesting example! Something that is somehow so spread around that the closure is all of $$\mathbb{R}$$...
+
+@@.def
+A subset $$S$$ of a metric space $$(X,d)$$ is said to be //dense// in $$X$$ if the closure of $$S$$ is $$X$$.
+@@
+
+Thus $$\mathbb{Q}$$ is dense in $$\mathbb{R}$$ ! Could there be an opposite to this? Something truly sparse and which kind of avoids locations in space where the set &quot;densely clusters&quot;? Obviously $$\mathbb{N}$$ would have to be such a set in $$\mathbb{R}$$ and we might be able to build a definition straight from motivating examples but here it's easier to think directly in terms of &quot;strongly negating&quot; the density definition.
+
+@@.def
+A subset $$S$$ of a metric space $$(X,d)$$ is said to be //nowhere dense// in $$X$$ provided that every open set in $$X$$ has an open subset disjoint from $$S$$.
+@@
+
+A moment's thought using the open-interval decomposition lemma shows that $$\mathbb{N}$$ does indeed satisfy this defintiion and is nowhere dense. Most examples of such sets though (think about some of the closed sets we mentioned above!) will be countable. Could there be an uncountable nowhere dense set?
+
+The answer, remarkably, is yes and the example we'll consider is very important in Analysis: the Cantor set. This set is rather tricky and sits right at the meeting point between two competing intuitions: countable things are small and dust-like (like $$\mathbb{N}$$ or $$\mathbb{Q}$$ ), while uncountable things are meatier and have volume (like intervals). The Cantor set manages to be dust-like (indeed its cartesian square is often called //Cantor dust//) and yet has the same cardinality as $$|\mathbb{R}|$$. If this is strange, well, yeah points can arrange themselves in peculiar ways in metric spaces that have enough points...
+
+@@.example
+The //Cantor set// $$C$$ is defined as the infinite intersection of the sets $$C_1,C_2,\ldots$$ where $$C_1 = [0,1]$$ and
+$$
+C_{n+1} = \frac{C_n}{3}\cup \left( \frac{2+C_n}{3} \right) 
+$$
+@@
+
+Firstly, note that as it is the infinite intersection of closed sets we know that $$C$$ is itself closed. It can be visualised with the following image.
+
+[img class=&quot;center&quot; width=500 [https://en.m.wikipedia.org/wiki/Cantor_set#/media/File:Cantor_set_binary_tree.svg]]
+
+
 </pre>
 </div>
 <div author="stanislaw" created="20210819172624000" modified="20210820211042904" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
