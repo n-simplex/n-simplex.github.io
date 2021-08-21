@@ -11848,7 +11848,7 @@ Come up with a [[Sylvestrine|https://math.stackexchange.com/questions/6906/why-i
 It turns out that these spaces have enough structure to define many of the analytic concepts we have in $$\mathbb{R}$$ more generally in this context, such as convergence of sequences or continuity of functions or various other things ( //some// of these concepts can be carried even more generally, into topological spaces). We begin by defining open and closed sets.
 
 @@.def
-In a metric space $$(S,d)$$, the //open ball of radius $$r$$ around (or at) $$x$$//, written $$B_r(x)$$, is defined to be
+In a metric space $$(X,d)$$, the //open ball of radius $$r$$ around (or at) $$x$$//, written $$B_r(x)$$, is defined to be
 $$
 \{y \in S \;|\; d(x,y) &lt; r\} 
 $$
@@ -11856,12 +11856,41 @@ $$
 @@
 
 @@.def
-A subset $$\mathcal{O}$$ of a metric space $$(S,d)$$ is said to be //open// iff for every $$x\in \mathcal{O}$$, there is some $$\varepsilon&gt;0$$ so that $$B_\varepsilon(x) \subseteq \mathcal{O}$$.
+A subset $$A$$ of a metric space $$(X,d)$$ is said to be //open// iff for every $$x\in A$$, there is some $$\varepsilon&gt;0$$ so that $$B_\varepsilon(x) \subseteq A$$.
 @@
 
 So the notion of a ball should be very intuitive (it is literally a small &quot;blob&quot; of points within a certain distance of a point) but perhaps open is a little more tricky. The intuition is that there is always room between a point in an open set and its &quot;boundary&quot;, as shown by the image below.
 
 [img class=&quot;center&quot; width=500 [https://www2.oberlin.edu/faculty/ngray/LaTeX_pictures/Topology/topology_open_set.png]]
+
+The idea behind this image is that the dotted outlines of the sets indicate that they don't contain their boundaries (the reason we have $$U$$ instead of $$B_{\varepsilon}(x)$$ is because for more general spaces open sets aren't just defined using balls as there's not necessarily a strict notion of distance). If a point was to be on this boundary and still be in $$A$$, then any &quot;blob&quot; you would draw around the point would contain points from outside $$A$$ and so $$A$$ would not be open.
+
+@@.def
+A sequence of points  $$(x_n)$$ in a metric space $$(X,d)$$ is said to be convergent with limit $$l$$ if, for all  $$\varepsilon&gt;0$$, there is some $$N \in \mathbb{N}$$ such that for all $$m&gt;N$$ we have
+$$
+d(x_m, l) &lt; \varepsilon
+$$
+
+@@
+
+@@.def
+A subset $$C$$ of a metric space $$(X,d)$$ is said to be //closed// if every convergent sequence of points (where each point is a member of $$C$$ ) has its limit in $$C$$.
+@@
+
+The definition of a convergent sequence, as those familiar with elementary real analysis will see, is very natural in the context of a metric space! It is not obvious what the relationship between open and closed sets is at first sight; indeed, most subsets of a metric space are neither open nor closed and indeed some can be both ($$X$$ for example is &quot;clopen&quot;). The answer is one of the slickest foundational proofs in analysis; these two apparently fairly different definitions just work together perfectly in this line of thought:
+
+@@.prop
+A subset $$A$$ of a metric space $$(X,d)$$ is open iff $$X-A$$ is closed.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+Suppose $$A$$ is open and let $$x_1,x_2,\ldots$$ be a convergent sequence where $$x_i \in X-A$$. Suppose also that the limit $$x$$ of $$(x_n)$$ is in $$A$$ (i.e. $$X-A$$ is //not// closed). Then, because $$A$$ is open we know that there is some $$\varepsilon&gt;0$$ so that $$B_\varepsilon(x) \subseteq A$$. But as $$(x_n)$$ has $$x$$ as its limit, there is some $$N \in \mathbb{N}$$ so that for all $$m&gt;N$$ we have $$d(x_m, x) &lt; \varepsilon$$ and therefore, by definition, $$x_m \in B_\varepsilon(x) \implies x_m \in A$$. But we assumed each $$x_i \in X-A$$ so this is a contradiction and $$X-A$$ is closed.
+
+Now suppose $$X-A$$ is closed and that $$A$$ is not open. Then there is some point $$x \in A$$ so that for any $$\varepsilon&gt;0$$, $$B_\varepsilon(x)$$ contains at least one element of $$X-A$$. Given this, we may define a sequence $$(x_n)$$ where $$x_i$$ is an arbitrarily chosen element of $$X-A$$ that lies within $$B_{\frac{1}{i}}(x)$$. By definition, the sequence $$(x_n)$$ converges to $$x$$. But recall that $$X-A$$ is closed and the definition of closed is that any sequence made up of only members from $$X-A$$ must have a limit that is also in $$X-A$$, thus $$x \in X-A$$. This is a contradiction as we began with the assumption that $$x \in A$$ and so $$A$$ is open.
+&quot;&quot;&quot;
+@@
+
 </pre>
 </div>
 <div author="stanislaw" created="20210819172624000" modified="20210820211042904" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
