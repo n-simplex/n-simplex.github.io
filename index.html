@@ -235,6 +235,8 @@ Error message and password prompt
 
 <li>Strongly Darboux Functions: Nonconstructive Examples</li>
 
+<li>Strongly Darboux Functions: Nowhere Dense Sets</li>
+
 <li>Strongly Darboux Functions: Riemann Rearrangement Theorem</li>
 
 <li>Strongly Darboux Functions: The Darboux Machine</li>
@@ -11834,6 +11836,32 @@ Come up with a [[Sylvestrine|https://math.stackexchange.com/questions/6906/why-i
 @@
 
 --Stanisław
+</pre>
+</div>
+<div author="stanislaw" created="20210821140813000" modified="20210821140813000" tags="Esoteric Darboux Analysis" title="Strongly Darboux Functions: Nowhere Dense Sets" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>In this article, we describe what is almost certainly the most technical of constructions the author thought of for a strongly Darboux functions. It requires the explanation of a number of foundational concepts in more serious Analysis and also Topology (though we won't go too far into that in this article). Indeed, we'll be restricting our definitions and thought to //metric spaces//: these are pairs consisting of a set $$S$$ (whose elements we may think of as geometric points in a space) along with a function $$d: S\times S \to \mathbb{R}$$ with the following properties:
+
+* $$d(u,v) = d(u,v)$$ for all  $$u,v \in S$$.
+* $$d(u,v) \geq 0$$ for all $$u,v \in S$$ and there is equality iff $$u=v$$.
+* $$d(u,v) \leq  d(u,w) + d(w,v)$$ for all $$u,v,w \in S$$ (this is called the Triangle Inequality and has a very elegant geometric interpretation)
+
+It turns out that these spaces have enough structure to define many of the analytic concepts we have in $$\mathbb{R}$$ more generally in this context, such as convergence of sequences or continuity of functions or various other things ( //some// of these concepts can be carried even more generally, into topological spaces). We begin by defining open and closed sets.
+
+@@.def
+In a metric space $$(S,d)$$, the //open ball of radius $$r$$ around (or at) $$x$$//, written $$B_r(x)$$, is defined to be
+$$
+\{y \in S \;|\; d(x,y) &lt; r\} 
+$$
+
+@@
+
+@@.def
+A subset $$\mathcal{O}$$ of a metric space $$(S,d)$$ is said to be //open// iff for every $$x\in \mathcal{O}$$, there is some $$\varepsilon&gt;0$$ so that $$B_\varepsilon(x) \subseteq \mathcal{O}$$.
+@@
+
+So the notion of a ball should be very intuitive (it is literally a small &quot;blob&quot; of points within a certain distance of a point) but perhaps open is a little more tricky. The intuition is that there is always room between a point in an open set and its &quot;boundary&quot;, as shown by the image below.
+
+IMAGE
 </pre>
 </div>
 <div author="stanislaw" created="20210819172624000" modified="20210820211042904" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
