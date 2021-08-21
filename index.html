@@ -11996,7 +11996,69 @@ The black lines represent the sequence $$C_1,C_2,\ldots$$ as they look on the nu
 $$C$$ is precisely the set of reals in $$[0,1]$$ such that their ternary digital expansions use exclusively 0s and 2s.
 @@
 
+To see this we could try and show that the sets the two definitions are subsets of each other but we may also work directly: $$C_1$$ is $$[0,1]$$, $$C_2$$ is precisely those numbers in $$[0,1]$$ without 1 as their first digit,  $$C_3$$ is the set of numbers in $$[0,1]$$ without 1 as their first or second digit etc. The recursive definition tells us that this is indeed the case in general! Then the tree represents the series of choices you make when choosing an arbitrary element of $$C$$ : is the first ternary digit a 0 or a 2? What about the second digit? etc.
 
+There are two choices for each avenue the questions lead you down at the $$n$$-th stage and there are $$|\mathbb{N}|$$ choices to make so $$|C| = |2^\mathbb{N}| = |\mathbb{R}|$$. Now to prove the majorly important property!
+
+@@.prop
+The Cantor set $$C$$ is nowhere dense.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+We need to show that any open set $$\mathcal{O}$$ in $$\mathbb{R}$$ has an open subset disjoint from $$C$$. If $$\mathcal{O} = \emptyset$$ then we're done immediately. Otherwise, $$\mathcal{O}$$ contains an open interval $$I$$ of nonzero length. If $$I$$ has infinite length, then we may simply select an open interval within $$I$$ that lies completely outside of $$[0,1]$$ and we're done. Otherwise, $$I$$ has finite length $$l$$.
+
+In this case, we may choose $$k$$ such that $$\frac{1}{3^k}&lt;l$$. Then, recalling that $$C_k$$ contains entirely the Cantor set and also that $$C_k$$ consists of a disjoint union of closed intervals of length $$\frac{1}{3^k}$$, we may observe that the definition of $$k$$ means $$I\cap (\mathbb{R}-C_k)$$ has nonzero length. Therefore $$I\cap (\mathbb{R}-C_k)$$ contains some open interval and this is an open subset of $$\mathcal{O}$$ that is disjoint from $$C$$. We thus conclude $$C$$ is nowhere dense.
+&quot;&quot;&quot;
+@@
+
+We have one more proposition we need before defining our strongly Darboux function.
+
+@@.prop
+The union of finitely many nowhere dense subsets of a metric space $$(X,d)$$ is also nowhere dense in $$X$$.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+Suppose $$N_1,N_2,\ldots, N_m$$ are finitely many nowhere dense subsets of the metric space $$(X,d)$$. Let $$\mathcal{O}$$ be an arbitrary open subset of $$X$$. We know that $$\mathcal{O}$$ has an open subset $$U_1$$ that is disjoint from $$N_1$$ as it is nowhere dense. Similarly, $$U_1$$ has an open subset $$U_2$$ that is disjoint from $$N_2$$, as it is nowhere dense. Repeating this reasoning by induction, we may find an open subset $$U_m$$ of $$\mathcal{O}$$ that is disjoint from $$N_1,\ldots, N_m$$. Therefore $$U_m$$ is disjoint from $$\bigcup_{1\leq i\leq m}N_i$$ and so the union of the $$(N_i)$$ is nowhere dense.
+&quot;&quot;&quot;
+@@
+
+We can finally put together these two odd properties of the Cantor set (being both of cardinality $$|\mathbb{R}|$$ and also nowhere dense) to define our function.
+
+@@.def
+&quot;&quot;&quot;
+The //Georg function// $$\mathfrak{G}:\mathbb{R}\to \mathbb{R}$$ is defined according to the following construction:
+
+Recall that $$C$$ and $$\mathbb{R}$$ are equinumerous and so we may pick some bijection $$p:C\to R$$. There are countably many open intervals with rational endpoints and so we may enumerate them as $$I_1,I_2,\ldots$$ in a sequence.
+
+In $$I_1$$, we place a shifted and scaled copy of $$C$$ and we may define the output of  $$\mathfrak{G} $$ on any member of this scaled copy of $$C$$ to be the output of $$p$$ on the corresponding member of the original Cantor set $$C$$. To be clear, suppose $$I_1$$ was $$(1,3)$$ : the scaled and translated copy of $$C$$ could be in this case $$C+1.5$$ and so for any member $$x$$ of this distorted copy of $$C$$, we would have $$\mathfrak{G} (x) = p(x-1.5)$$.
+
+For $$I_2$$, we know (because $$C$$ is nowhere dense and $$I_2$$ is open) that it contains some open interval that is disjoint from the copy of the Cantor set in  $$I_1$$ and so we may place a shifted and scaled copy of $$C$$ within this open interval and again define $$\mathfrak{G} $$ on the members of this distorted copy as the output of $$p$$ on the corresponding members of $$C$$. Continuing in this way, we may at stage $$n$$ look at $$I_n$$ an d observe that it contains an open interval disjoint from the union of the distorted copies of $$C$$ from all the previous steps (as we have seen above that the union of finitely many nowhere dense sets is nowhere dense) and define $$\mathfrak{G} $$ on this new copy of the Cantor set as above.
+
+Having done this for all intervals in the sequence, any points which where $$\mathfrak{G} $$ has not yet had an output defined will have their outputs set to 0.
+&quot;&quot;&quot;
+@@
+
+@@.remark
+The one detail we did not prove about the inner workings of the above definition was that the shifted and scaled copies of the Cantor set were also nowhere dense. Can you see why this is true?
+@@
+
+Although this definition had a vast amount of setting up, the proof that it is strongly Darboux is actually trivial!
+
+@@.prop
+The Georg function is strongly Darboux.
+@@
+
+@@.proof
+&quot;&quot;&quot;
+In any open interval $$I$$, we know that there is an open interval with rational endpoints. The rational interval contains a shifted copy of the Cantor set from the above definition which was put in bijection with $$\mathbb{R}$$ and so $$\mathfrak{G} $$ outputs all of $$\mathbb{R}$$ in $$I$$.
+&quot;&quot;&quot;
+@@
+
+This hopefully has been one of the most interesting journeys towards a strongly Darboux function! Perhaps it is not so obvious now, but the proof really shows that this is a natural definition.
+
+--Stanislaw
 </pre>
 </div>
 <div author="stanislaw" created="20210819172624000" modified="20210820211042904" tags="Analysis Esoteric Darboux" title="Strongly Darboux Functions: Riemann Rearrangement Theorem" type="text/vnd.tiddlywiki" revision="0" bag="default">
