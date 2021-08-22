@@ -11511,7 +11511,12 @@ exports.context = contextWidget;
 <pre>horizontal</pre>
 </div>
 <div author="stanislaw" created="20210818005817000" modified="20210820173519434" tags="Esoteric" title="All the Strongly Darboux Functions" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>There is a certain type of function that is in the folklore of undergraduate mathematics, relating to the //Intermediate Value Theorem//.
+<pre>&lt;&lt;&lt;
+Young man, in mathematics you don't understand things. You just get used to them.
+&lt;&lt;&lt;
+-- John von Neumann
+---
+There is a certain type of function that is in the folklore of undergraduate mathematics, relating to the //Intermediate Value Theorem//.
 
 @@.theorem
 If $$f:[a,b]\to \mathbb{R}$$ is continuous on its entire domain and $$c \in \mathbb{R}$$ is such that it lies between $$f(a)$$ and $$f(b)$$ (i.e. either $$f(a) \leq  c \leq f(b)$$ or $$f(b) \leq c \leq f(a)$$ ) then there is some $$x \in [a,b]$$ such that $$f(x) = c$$.
@@ -11534,6 +11539,30 @@ To make this clear, the function outputs //every real number on any interval, no
 This exact problem (to find such a function!) was posed to me last year. I knew vaguely in the back of my mind that there was a famous answer to this question due to Conway but didn't remember really anything of his construction, which had seemed really bizarre to me previously. However, after a couple days thought, I came up with an incredible number of examples. Each of these examples take a little describing and so I split them into manageable packages! At the end we'll describe another, more subtle, sense in which these functions violate intuition about continuity I encountered when studying some topology.
 
 &lt;&lt;list-links &quot;[tag[Darboux]]&quot;&gt;&gt;
+
+When you begin to study topology, the major theme is that many of the ideas that seemingly require a notion of distance (provided by metric spaces) such as closed or open sets, continuity, convergence, etc. can be reduced to much weaker ideas of &quot;closeness&quot;. This generally involves (at least at the beginning) to reducing everything to be in terms of open sets. Here is the special definition of continuity:
+
+@@.def
+A function $$f:X\to Y$$ between two (topological/metric) spaces $$X,Y$$ is said to be //continuous// if the pre-image of every set that is open in $$Y$$, is open in $$X$$.
+@@
+
+For example, suppose $$f:\mathbb{R}\to \mathbb{R}$$. Then since $$(0,1)$$ is an open subset of $$\mathbb{R}$$, we require that $$f^{-1}((0,1))$$ (i.e. all points in $$\mathbb{R}$$ that $$f$$ sends to within $$(0,1)$$ ) is also open. This is very often mixed up by beginning students with //open functions//:
+
+@@.def
+A function $$f:X\to Y$$ between two (topological/metric) spaces $$X,Y$$ is said to be //open// if the output of any open set in $$X$$ is open in $$Y$$.
+@@
+
+This definition is perhaps slightly easier to grasp and appears similar but open maps are //not// the same thing as continuous maps in general. For example, consider the function $$f:\mathbb{R}\to \mathbb{R}$$ defined by $$f(x) = 1$$ for all $$x \in \mathbb{R}$$. Then $$f$$ is clearly continuous but maps the open interval $$(0,1)$$ to just $$\{1\} $$, which is not open (the article on nowhere dense sets defines open and closed sets if the reader is currently lost in this discussion). A popular book on introductory topology, //Introduction to Metric &amp; Topological Spaces//, discusses the difference between openness and continuity of maps and gives some more subtle examples of both functions that are not continuous but open as well as those that are continuous but not open before saying the following intriguing sentence:
+
+&lt;&lt;&lt;
+In fact there do exist examples of maps $$f:\mathbb{R}\to \mathbb{R}$$ which are open but not continuous; however, these are rather weird and will be omitted.
+&lt;&lt;&lt;
+
+The author of this article is embarrassed to admit that when he first read this sentence, it took him a few hours of thought to realise that he already knew many examples of such functions. Indeed, every strongly Darboux function counts! For the output of such a function upon being given any open set is the whole of $$\mathbb{R}$$ (which is open) so it is an open map but as discussed above, it is horribly discontinuous!
+
+Thus strongly Darboux functions violate another (wrong!) intuition about how continuous functions ought to behave. I, Stanisław, hope that you enjoyed this incredibly long article. It took a considerable effort to bring together and write up all the ideas involved in each of the different types of construction but I had never found a detailed list of such functions anywhere online despite them being such brilliant objects!
+
+--Stanisław
 </pre>
 </div>
 <div author="klaus" created="20210817211743000" modified="20210819020442745" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics Klaus" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
