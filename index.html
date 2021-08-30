@@ -221,6 +221,8 @@ Error message and password prompt
 
 <li>$:/view</li>
 
+<li>a</li>
+
 <li>All the Strongly Darboux Functions</li>
 
 <li>Closed Walks in the Complete Graph</li>
@@ -11509,6 +11511,80 @@ exports.context = contextWidget;
 </div>
 <div created="20210812010402887" modified="20210812010437508" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>horizontal</pre>
+</div>
+<div author="klaus" created="20210830053017000" modified="20210830053017000" tags="" title="a" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>@@.def
+Given a group $$G$$ and subset $$S\subseteq G$$, the //Cayley graph// $$\Gamma=\text{Cay}(G,S)$$ is the undirected graph with vertices indexed by elements of $$G$$ and edges between $$g$$ and $$tg$$ for $$g,t\in G$$ if and only if $$t=s$$or $$t=s^{-1}$$ for some $$\s\in S$$.
+@@
+
+For example, $$\text{Cay}\left(\mathbf{Z}_{n},\{1\}  \right)  $$ is just the cycle $$Z_{n}$$. To gain a better understanding of this you may want to consider different examples of Cayley graphs. What is $$\text{Cay}(\mathbf{Z}_{n},\{2\})$$? $$\text{Cay}(\mathfrak{S}_{3},\{(1,2)\}$$? $$\text{Cay}(\mathfrak{S}_{3},\{(123)\}$$?  
+
+By studying the properties of of $$G$$ we hope to learn more about the structure of the graph $$\Gamma$$. One way of doing this is by considering the //characters// of $$G$$.
+
+@@.def
+For an Abelian group $$G$$, a character of $$G$$ is a homomorphism $$\varphi:G\to S^{1}$$.
+@@ where $$S^{-1}$$ is the multiplicative group of complex numbers of size 1.
+
+@@.def
+For an Abelian group $$G$$, the //trivial character// $$\mathbf{1}_{G}$$ is defined by  $$
+\mathbf{1}_{G}(g)=1
+$$for every $$g\in G$$.
+@@
+
+@@.def
+The //conjugate// $$\overline{\chi}$$ of a character $$\chi$$ is the character defined by $$
+\overline{\chi}(g)=\overline{\chi(g)}
+$$
+
+@@
+
+ 
+Before directly applying this, we need to build up some theory about characters.
+
+@@.prop
+For a finite abelian group $$G$$ and a character $$\chi$$ which is not trivial, $$
+\sum_{g\in G} \chi(g)=0
+$$
+@@
+
+@@.proof
+&quot;&quot;&quot;
+$$\chi$$ is not trivial so let $$\chi(h)\neq 1$$. Since $$G$$ is a group, $$G=\{hg|h
+g\in G\} $$.
+
+Hence, $$
+\sum_{g\in G} \chi(g)=\sum_{g\in G} \chi(hg)=\chi(h)\sum_{ g\in  G}\chi(g) 
+$$where the last equality is due to $$\chi$$ being a homomorphism.
+
+Now since $$\chi(h)\neq 1$$, we must have that $$\sum_{g\in G} \chi(g)=0$$.
+
+&quot;&quot;&quot;
+@@
+
+@@.corollary
+The following are the //orthogonality relations//: $$
+\sum_{g\in G} \chi_{1}(g)\overline{\chi_{2}}(g)=0
+$$where $$\chi_{1}\neq \chi_{2}$$ and $$
+\sum_{g\in G} \chi(g)\overline{\chi}(g)=|G|
+$$
+@@
+
+@@.proof
+&quot;&quot;&quot;
+For the first of these, it suffices to notice that the map $$
+\chi_{1}\overline{\chi}_{2}(g)=\chi_{1}(g)\overline{\chi}_{2}(g)
+$$ is a character.
+
+For the second, we have that $$\chi(g)\overline{\chi}(g)=1$$ since $$\chi(g)\in S^{1}$$.
+&quot;&quot;&quot;
+@@
+
+To understand why this is useful, we consider the vector space $$\mathcal{V}$$ of functions from  $$G$$ to $$\mathbf{C} $$.
+
+
+
+
+</pre>
 </div>
 <div author="stanislaw" created="20210818005817000" modified="20210820173519434" tags="Esoteric" title="All the Strongly Darboux Functions" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
