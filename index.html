@@ -11739,7 +11739,7 @@ Not only is the purely combinatorial proof more difficult, but it also gives lit
 
 </pre>
 </div>
-<div author="stanislaw" created="20210813161525000" modified="20210813161525000" tags="IMC, Problem" title="IMC 2021 Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210813161525000" modified="20210927011705630" tags="IMC, Problem" title="IMC 2021 Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The 2021 IMC happened recently (3rd-4th of August) and it had some very interesting and challenging problems, as always. This blog may discuss more of them in the future but today we'll be focussing on Problem 3:
 
 @@.problem
@@ -11750,7 +11750,7 @@ $$
 
 The condition of being good appears rather natural after some thought and the authors of this article do wonder how this question came about. We first consider why we might be interested in the supremum at all and the answer is immediate: if $$d$$ is good and  $$0&lt;c&lt;d$$ then  $$c$$ is also good because any sequence $$a_1,a_2,\ldots$$ that satisfies the definition of goodness for $$d$$ may be scaled down to the interval $$(0,c)$$ linearly and preserve the requirements of the definition. Therefore, the set of good numbers is an interval of the form $$(0,s)$$ or $$(0,s]$$ for some $$s&gt;0$$.
 
-We then might wonder if the supremum is finite at all, i.e. are there any &quot;obvious&quot; reasons why a number might fail to be good. Well, after $$a_1$$ is chosen, we know that $$[0,d]$$ is partitioned into two pieces of length at most $$\frac{1}{1}$$ and therefore $$d \leq 2$$. Similarly, after $$a_1,a_2$$ are chosen $$[0,d]$$ is in three pieces each of length at most $$\frac{1}{2}$$ and thus $$d \leq \frac{3}{2}$$. We may generalise this argument to say that once $$a_1,\ldots, a_k$$ are chosen we have divided $$[0,d]$$ inot $$k+1$$ pieces of length at most $$\frac{1}{k}$$ and so $$d &lt; \frac{k+1}{k}$$ for all $$k\geq 1$$. Thus a simple series of thoughts has led us to the conclusion that any real larger than 1 is necessarily not good!
+We then might wonder if the supremum is finite at all, i.e. are there any &quot;obvious&quot; reasons why a number might fail to be good. Well, after $$a_1$$ is chosen, we know that $$[0,d]$$ is partitioned into two pieces of length at most $$\frac{1}{1}$$ and therefore $$d \leq 2$$. Similarly, after $$a_1,a_2$$ are chosen $$[0,d]$$ is in three pieces each of length at most $$\frac{1}{2}$$ and thus $$d \leq \frac{3}{2}$$. We may generalise this argument to say that once $$a_1,\ldots, a_k$$ are chosen we have divided $$[0,d]$$ into $$k+1$$ pieces of length at most $$\frac{1}{k}$$ and so $$d &lt; \frac{k+1}{k}$$ for all $$k\geq 1$$. Thus a simple series of thoughts has led us to the conclusion that any real larger than 1 is necessarily not good!
 
 Such a natural argument strongly suggests that 1 may be the supremum of the good numbers. Could 1 be good? Consider trying to define a sequence $$a_1,a_2,\ldots$$ as in the question. The obvious algorithm here is to repeatedly split the largest piece currently present into 2 as this surely will lead to the quickest reduction in maximum size. Thus $$[0,1]$$ is split into $$[0,\frac{1}{2}], [ \frac{1}{2},1]$$ and then  $$a_2$$ splits $$[0,\frac{1}{2}]$$ into two parts etc. The problem is that after the first step, there are 2 parts of size $$\frac{1}{2}$$, and after these are dealt with, there are 4 parts of size $$\frac{1}{4}$$ etc. At each stage, the number of parts to be halved doubles and so very quickly (by $$a_5$$ ) the bounds on size of the pieces catch up to us and this sequence fails. This is a shock to the system: the authors found it fairly tricky to envision any algorithm with a reasonable chance of success that operates that much differently from halving (e.g. halving some pieces while splitting others in $$\frac{1}{4}$$ and $$\frac{3}{4}$$ pieces). Indeed, after this realisation it appears that no number could possibly be good.
 
@@ -11778,8 +11778,14 @@ Having made such an argument, it might feel informally that we have squeezed as 
 
 In fact,$$
 \ln(2) = \ln(2n)-\ln(n) = \sum_{i=1}^{n} \ln(n+i)-\ln(n+i-1)
-$$ which is strongly suggestive of what we might want the sizes of the pieces to be. Observe that $$
-\ln(2) = \ln(2(n+1)) - \ln(n+1) = \sum_{i=1}^{n+1} \ln(n+1+i) - \ln(n+1+i-1) = \sum_{j=2}^{n} \ln(n+j)-\ln(n+j-1) + (\ln(2n+1)-\ln(2n)) + (\ln(2n+2)-\ln(2n+1)) = \sum_{j=2}^{n} \ln(n+j)-\ln(n+j-1) + (\ln(n+1)-\ln(n))
+$$ which is strongly suggestive of what we might want the sizes of the pieces to be. Observe that 
+
+$$
+\ln(2) = \ln(2(n+1)) - \ln(n+1) = \sum_{i=1}^{n+1} \ln(n+1+i) - \ln(n+1+i-1)$$ 
+
+$$ = \sum_{j=2}^{n} \ln(n+j)-\ln(n+j-1) + (\ln(2n+1)-\ln(2n)) + (\ln(2n+2)-\ln(2n+1)) $$
+
+$$= \sum_{j=2}^{n} \ln(n+j)-\ln(n+j-1) + (\ln(n+1)-\ln(n))
 $$ which is the first sum. These algebraic manipulations were done to suggest an algorithm for defining our sequence $$a_1,a_2,\ldots$$. We will in the $$n$$-th stage divide $$[0,\ln(2)]$$ into $$n+1$$ pieces of length $$\ln(n+1)-\ln(n), \ln(n+2)-\ln(n+1),\ldots$$ and then in the $$(n+1)$$-th stage we divide the piece of length $$\ln(n+1)-\ln(n)$$ into two pieces of length $$\ln(2n+1)-\ln(2n), \ln(2n+2)-\ln(2n+1)$$ !
 
 This proves that $$\ln(2)$$ is good and so we are done!
