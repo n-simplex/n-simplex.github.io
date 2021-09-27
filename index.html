@@ -11743,8 +11743,51 @@ Not only is the purely combinatorial proof more difficult, but it also gives lit
 <pre>The 2021 IMC happened recently (3rd-4th of August) and it had some very interesting and challenging problems, as always. This blog may discuss more of them in the future but today we'll be focussing on Problem 3:
 
 @@.problem
-We say that a positive real nuber $$d$$ is //good// if there exists an infinite sequence $$a_1, a_2, a_3 \ldots \frac{a}{b}$$.
+We say that a positive real number $$d$$ is //good// if there exists an infinite sequence $$a_1, a_2, a_3, \ldots \in (0,d)$$ such that for each $$n$$, the points $$a_1,\ldots, a_n$$ partition the interval $$[0,d]$$ into segments of length at most $$\frac{1}{n}$$ each. Find $$
+\text{sup}  \{d \,|\, d\text{ is good} \} 
+$$
 @@
+
+The condition of being good appears rather natural after some thought and the authors of this article do wonder how this question came about. We first consider why we might be interested in the supremum at all and the answer is immediate: if $$d$$ is good and  $$0&lt;c&lt;d$$ then  $$c$$ is also good because any sequence $$a_1,a_2,\ldots$$ that satisfies the definition of goodness for $$d$$ may be scaled down to the interval $$(0,c)$$ linearly and preserve the requirements of the definition. Therefore, the set of good numbers is an interval of the form $$(0,s)$$ or $$(0,s]$$ for some $$s&gt;0$$.
+
+We then might wonder if the supremum is finite at all, i.e. are there any &quot;obvious&quot; reasons why a number might fail to be good. Well, after $$a_1$$ is chosen, we know that $$[0,d]$$ is partitioned into two pieces of length at most $$\frac{1}{1}$$ and therefore $$d \leq 2$$. Similarly, after $$a_1,a_2$$ are chosen $$[0,d]$$ is in three pieces each of length at most $$\frac{1}{2}$$ and thus $$d \leq \frac{3}{2}$$. We may generalise this argument to say that once $$a_1,\ldots, a_k$$ are chosen we have divided $$[0,d]$$ inot $$k+1$$ pieces of length at most $$\frac{1}{k}$$ and so $$d &lt; \frac{k+1}{k}$$ for all $$k\geq 1$$. Thus a simple series of thoughts has led us to the conclusion that any real larger than 1 is necessarily not good!
+
+Such a natural argument strongly suggests that 1 may be the supremum of the good numbers. Could 1 be good? Consider trying to define a sequence $$a_1,a_2,\ldots$$ as in the question. The obvious algorithm here is to repeatedly split the largest piece currently present into 2 as this surely will lead to the quickest reduction in maximum size. Thus $$[0,1]$$ is split into $$[0,\frac{1}{2}], [ \frac{1}{2},1]$$ and then  $$a_2$$ splits $$[0,\frac{1}{2}]$$ into two parts etc. The problem is that after the first step, there are 2 parts of size $$\frac{1}{2}$$, and after these are dealt with, there are 4 parts of size $$\frac{1}{4}$$ etc. At each stage, the number of parts to be halved doubles and so very quickly (by $$a_5$$ ) the bounds on size of the pieces catch up to us and this sequence fails. This is a shock to the system: the authors found it fairly tricky to envision any algorithm with a reasonable chance of success that operates that much differently from halving (e.g. halving some pieces while splitting others in $$\frac{1}{4}$$ and $$\frac{3}{4}$$ pieces). Indeed, after this realisation it appears that no number could possibly be good.
+
+In this spirit, we might try to prove stronger upper bounds on good numbers. It appeared that the previous algorithm failed fundamentally because it became increasingly expensive (in the number of steps) to decrease the maximum length of the pieces. Thinking about this, we might try to consider what bounds we get from simply being able to extend a sequence by a few steps. To be more specific, suppose $$a_1,\ldots, a_n$$ have been defined (and thus separate $$[0,d]$$ into $$n+1$$ pieces of length at most $$\frac{1}{n}$$ ). To be able to continue this sequence, we need to have the ability to choose an $$a_{n+1}$$ such that it cuts //one of these pieces// so that after the cut, all the pieces are of length at most $$\frac{1}{n+1}$$ - ''this has to be possible otherwise the sequence cannot be continued''. 
+
+Clearly, if //more than one// of the pieces are longer than $$\frac{1}{n+1}$$ then we cannot cut both in one step and so the sequence fails. //So all pieces but one// must be shorter than $$\frac{1}{n+1}$$ ! 
+
+We can actually generalise this argument: what, for example, is necessary for us to be able to continue the sequence by 2 steps? In 2 steps time, every piece must be of length at most $$\frac{1}{n+2}$$. To reach this situation, we have exactly 2 cuts available to decrease the length of pieces and so if //more than 2 pieces// are longer than $$\frac{1}{n+2}$$ then the sequence must fail. Therefore, all pieces but two must be shorter than $$\frac{1}{n+2}$$. More generally, to be able to continue the sequence by $$k$$ steps, all pieces but $$k$$ must be shorter than $$\frac{1}{n+k}$$ (this is clearly only a useful statement for $$k\leq n-1$$ ).
+
+Applying these bounds in reverse order, we get that at least one piece is at most of length $$\frac{1}{2n-1}$$, at least two are at most of length $$\frac{1}{2n-2}$$ and so on. By summing the length of the pieces, we get $$d$$ and so this argument tells us that  $$
+d &lt; \frac{1}{n}+\ldots+\frac{1}{2n-1}
+$$
+for each $$n\geq 1$$. We now use the following simple result from analysis.
+
+@@.prop
+Let $$
+c_n = \sum_{k=0}^{n-1} \frac{1}{n+k}
+$$
+Then $$c_n \to \ln(2)$$ as $$n\to \infty$$ and $$c_n$$ is a decreasing sequence.
+@@
+
+This proposition can be proven via consideration of the definition of $$\ln(2)$$ as a Riemann integral. Therefore we've shown that $$d\leq \ln(2)$$ - a significant improvement on 1!
+
+Having made such an argument, it might feel informally that we have squeezed as much information as we can from the definition of a good number to get an upper bound and that $$\ln(2)$$ is indeed the supremum we are looking for. $$\ln(2)$$ is also an interesting number: the $$\ln$$ function has a famous and potentially relevant property that $$\ln(xy)-\ln(y) = \ln(x)$$ which we might try to use in defining a sequence $$a_1,a_2,\ldots$$ to show that it is good.
+
+In fact,$$
+\ln(2) = \ln(2n)-\ln(n) = \sum_{i=1}^{n} \ln(n+i)-\ln(n+i-1)
+$$ which is strongly suggestive of what we might want the sizes of the pieces to be. Observe that $$
+\ln(2) = \ln(2(n+1)) - \ln(n+1) = \sum_{i=1}^{n+1} \ln(n+1+i) - \ln(n+1+i-1) = \sum_{j=2}^{n} \ln(n+j)-\ln(n+j-1) + (\ln(2n+1)-\ln(2n)) + (\ln(2n+2)-\ln(2n+1)) = \sum_{j=2}^{n} \ln(n+j)-\ln(n+j-1) + (\ln(n+1)-\ln(n))
+$$ which is the first sum. These algebraic manipulations were done to suggest an algorithm for defining our sequence $$a_1,a_2,\ldots$$. We will in the $$n$$-th stage divide $$[0,\ln(2)]$$ into $$n+1$$ pieces of length $$\ln(n+1)-\ln(n), \ln(n+2)-\ln(n+1),\ldots$$ and then in the $$(n+1)$$-th stage we divide the piece of length $$\ln(n+1)-\ln(n)$$ into two pieces of length $$\ln(2n+1)-\ln(2n), \ln(2n+2)-\ln(2n+1)$$ !
+
+This proves that $$\ln(2)$$ is good and so we are done!
+
+One of the authors of this article previously had some experience with IMC problems and they believe it to stand out as one of particular elegance and intrigue. The question is, even outside of a problem-solving competition, genuinely interesting and the solution both surprising and unexpected. If the IMC Committee continues to output articles of this kind, we'll be very happy to continue writing blog articles on them!
+
+--Stanisław and Klaus
+
 
 </pre>
 </div>
