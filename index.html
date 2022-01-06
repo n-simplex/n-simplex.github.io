@@ -155,9 +155,17 @@ Error message and password prompt
 
 <li>$:/.giffmex/ViewTemplate/refstranscludecollapse</li>
 
+<li>$:/.tb/macros/slider</li>
+
+<li>$:/ak/plugins/EmbedYouTube</li>
+
+<li>$:/ak/plugins/EmbedYouTube/state/EmbedYouTube</li>
+
 <li>$:/config/EditorTypeMappings/text/vnd.tiddlywiki</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/palette</li>
+
+<li>$:/config/Plugins/Disabled/$:/ak/plugins/EmbedYouTube</li>
 
 <li>$:/config/Plugins/Disabled/$:/themes/jd/Spartan</li>
 
@@ -203,6 +211,18 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/katex</li>
 
+<li>$:/plugins/tobibeer/youtube/forms/new-annotation</li>
+
+<li>$:/plugins/tobibeer/youtube/list/annotations</li>
+
+<li>$:/plugins/tobibeer/youtube/macros/yt.js</li>
+
+<li>$:/plugins/tobibeer/youtube/styles</li>
+
+<li>$:/plugins/tobibeer/youtube/ViewTemplate/annotation</li>
+
+<li>$:/plugins/tobibeer/youtube/ViewTemplate/video</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -225,6 +245,8 @@ Error message and password prompt
 
 <li>All the Strongly Darboux Functions</li>
 
+<li>Circles Touching Circles</li>
+
 <li>Closed Walks in the Complete Graph</li>
 
 <li>IMC 2021 Problem 3</li>
@@ -232,6 +254,8 @@ Error message and password prompt
 <li>IMO 2020, Problem 3</li>
 
 <li>IMO 2021, Problem 2</li>
+
+<li>Stereographic</li>
 
 <li>Strongly Darboux Functions: Conway's Idea</li>
 
@@ -460,11 +484,96 @@ background-color: &lt;&lt;colour tiddler-info-background&gt;&gt;;}
 &lt;/span&gt;
 </pre>
 </div>
+<div created="20150108122803565" creator="Tobias Beer" modified="20220106163956255" modifier="Tobias Beer" summary="provides a basic slider macro" tags="$:/tags/Macro" title="$:/.tb/macros/slider" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define slider(label, content, tooltip, state:&quot;$:/state/slider&quot;, animate: &quot;yes&quot;, class, btn-class:&quot;tc-btn-invisible tc-tiddlylink&quot;, $label-hide$)
+&lt;$reveal type=match state=&quot;$state$&quot; text=&quot;&quot;&gt;
+&lt;$button set=&quot;$state$&quot; setTo=&quot;show&quot; class=&quot;slider-btn slider-btn-show $btn-class$&quot; tooltip=&quot;$tooltip$&quot;&gt;$label$&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=match state=&quot;$state$&quot; text=&quot;show&quot; animate=&quot;$animate$&quot;&gt;
+&lt;$button set=&quot;$state$&quot; setTo=&quot;&quot; class=&quot;slider-btn slider-btn-hide $btn-class$&quot; tooltip=&quot;$tooltip$&quot;&gt;&lt;$reveal type=match text=&quot;&quot; default=&quot;$label-hide$&quot;&gt;$label$&lt;/$reveal&gt;&lt;$reveal type=nomatch text=&quot;&quot; default=&quot;$label-hide$&quot;&gt;$label-hide$&lt;/$reveal&gt;&lt;/$button&gt;
+&lt;div class=&quot;slider-contents $class$&quot;&gt;
+
+$content$
+
+&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;style&gt;
+.slider-contents{
+padding: 5px;
+border: 1px solid #eee;
+background: #fcfcfc;
+border-radius:3px;
+}
+&lt;/style&gt;
+\end
+
+```
+&lt;&lt;slider text content tooltip $:/state/slider-test&gt;&gt;
+```
+
+&lt;&lt;&lt;
+&lt;&lt;slider text content tooltip $:/state/slider-test&gt;&gt;
+&lt;&lt;&lt;</pre>
+</div>
+<div created="20200426151001495" dependents="" description="Embed YouTube Video in TiddlyWiki" modified="20220106162903012" name="Embed YouTube" plugin-type="plugin" title="$:/ak/plugins/EmbedYouTube" type="application/json" version="0.0.4" revision="0" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/ak/plugins/EmbedYouTube/EmbedYouTube.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/ak/plugins/EmbedYouTube/EmbedYouTube.js\ntype: application/javascript\nmodule-type: macro\n\n\n&lt;&lt;embedYouTube \&quot;YouTube url\&quot; \&quot;YouTube API\&quot;&gt;&gt;\n\n\\*/\n\n(function(){\n\n\n\&quot;use strict\&quot;;\n\n\n\nexports.name = \&quot;embedYouTube\&quot;;\n\n\nexports.params = [{name: \&quot;url\&quot;}, {name: \&quot;APIKey\&quot;}];\n\n/*\nRun the macro\n*/\n\nexports.run = function(url, APIKey) {\n\n var url = url || \&quot;None\&quot;;\n var encurl = encodeURI(url) || \&quot;None\&quot;;\n var tiddlerTitle = \&quot;None\&quot;;\n var tiddlerText = \&quot;None\&quot;;\n\n\n   var regExp = /.*(?:youtu.be\\/|v\\/|u\\/\\w\\/|embed\\/|watch\\?v=)([^#\\&amp;\\?]*).*/;\n   var match = url.match(regExp);\n//   console.log(\&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\&quot;);\n   var VideoCode = (match&amp;&amp;match[1].length==11)? match[1] : false ;\n//   console.log(\&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\&quot;);\n\n\n//\nvar ytApiKey = APIKey;\n\n//\n\n   tiddlerText = \&quot;&lt;iframe width='560' height='315' src='https://www.youtube.com/embed/\&quot; + VideoCode + \&quot;' frameborder='0' &gt;&lt;/iframe&gt;\&quot;\n\n //   console.log(\&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; \&quot; + tiddlerTitle + \&quot;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\&quot;);\n\n// $tw.wiki.addTiddler({title:tiddlerTitle, text:tiddlerText});\n\n// $.get(, function(data) {tiddlerTitle = (data.items[0].snippet.title);});\n\n$tw.utils.httpRequest({url: \&quot;https://www.googleapis.com/youtube/v3/videos?part=snippet&amp;id=\&quot; + VideoCode + \&quot;&amp;key=\&quot; + ytApiKey,   callback: function (error,data){\n    if (error){\n    console.log(\&quot;ERROR:\&quot;+error);\n    }\n\n    const parser = JSON.parse(data);\n\n    //console.log(\&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; \&quot; + parser[\&quot;items\&quot;][0][\&quot;snippet\&quot;][\&quot;title\&quot;] + \&quot;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\&quot;);\n   \n    tiddlerTitle =  parser[\&quot;items\&quot;][0][\&quot;snippet\&quot;][\&quot;title\&quot;] ;\n\n    $tw.wiki.addTiddler({title:tiddlerTitle, text:tiddlerText});\n  \n  }}) \n\n\n  return \&quot;[[\&quot;+tiddlerTitle +\&quot;]]\&quot;;\n};\n\n\n})();&quot;,
+            &quot;bag&quot;: &quot;default&quot;,
+            &quot;revision&quot;: &quot;22&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;title&quot;: &quot;$:/ak/plugins/EmbedYouTube/EmbedYouTube.js&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;module-type&quot;: &quot;macro&quot;,
+            &quot;modified&quot;: &quot;20200426150727358&quot;,
+            &quot;created&quot;: &quot;20200426122110951&quot;
+        },
+        &quot;$:/ak/plugins/EmbedYouTube/change.log&quot;: {
+            &quot;created&quot;: &quot;20200426151520281&quot;,
+            &quot;text&quot;: &quot;\&quot;\&quot;\&quot;\n''2020-04-25'': v0.0.4 initial release\n\&quot;\&quot;\&quot;&quot;,
+            &quot;bag&quot;: &quot;default&quot;,
+            &quot;revision&quot;: &quot;1&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;title&quot;: &quot;$:/ak/plugins/EmbedYouTube/change.log&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;modified&quot;: &quot;20200426152636462&quot;
+        },
+        &quot;$:/ak/plugins/EmbedYouTube/state/EmbedYouTube&quot;: {
+            &quot;created&quot;: &quot;20200426121839070&quot;,
+            &quot;text&quot;: &quot;&quot;,
+            &quot;bag&quot;: &quot;default&quot;,
+            &quot;revision&quot;: &quot;51&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;title&quot;: &quot;$:/ak/plugins/EmbedYouTube/state/EmbedYouTube&quot;,
+            &quot;modified&quot;: &quot;20200426152007932&quot;,
+            &quot;apikey&quot;: &quot;AIzaSyBIH-tjbYeglgE41R-JIzrJUry9mzUamQc&quot;
+        },
+        &quot;Add YouTube Video&quot;: {
+            &quot;text&quot;: &quot;\\define embed-YTVideo()\n&lt;&lt;embedYouTube \&quot;$(extUrl)$\&quot; \&quot;$(APIKey)$\&quot;&gt;&gt;\n\\end\n\n&lt;$edit-text class='tc-edit-texteditor' tiddler='$:/ak/plugins/EmbedYouTube/state/EmbedYouTube' field='url' placeholder='YouTube video URL'/&gt;&lt;br&gt; \n\n&lt;$edit-text class='tc-edit-texteditor' tiddler='$:/ak/plugins/EmbedYouTube/state/EmbedYouTube' field='apikey' placeholder='Your YouTube api'/&gt;&lt;br&gt; \n\n&lt;$set name=\&quot;APIKey\&quot; value={{$:/ak/plugins/EmbedYouTube/state/EmbedYouTube!!apikey}} &gt;\n&lt;$set name=\&quot;extUrl\&quot; value={{$:/ak/plugins/EmbedYouTube/state/EmbedYouTube!!url}} &gt;\n&lt;$button actions=&lt;&lt;embed-YTVideo&gt;&gt; &gt;\n&lt;$action-setfield $tiddler='$:/ak/plugins/EmbedYouTube/state/EmbedYouTube' url='' /&gt;\nEmbed Video \n&lt;/$button&gt;\n&lt;/$set&gt;\n\n\n\n&quot;,
+            &quot;bag&quot;: &quot;default&quot;,
+            &quot;revision&quot;: &quot;6&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;title&quot;: &quot;Add YouTube Video&quot;,
+            &quot;tags&quot;: &quot;$:/tags/SideBar&quot;,
+            &quot;modified&quot;: &quot;20200426150547409&quot;,
+            &quot;created&quot;: &quot;20200426121247659&quot;
+        }
+    }
+}</pre>
+</div>
+<div apikey="AIzaSyBt2msPW4iuJC5ga-ShnbDPelEOUUtwbIw" created="20200426121839070" modified="20220106163310974" title="$:/ak/plugins/EmbedYouTube/state/EmbedYouTube" type="text/vnd.tiddlywiki" url="" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20200510024843460" modified="20210812001327440" tags="$:/giffmex/stroll $:/giffmex/blinks" title="$:/config/EditorTypeMappings/text/vnd.tiddlywiki" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>comptext</pre>
 </div>
 <div created="20210812002751880" modified="20210812011427307" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/palette" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hide</pre>
+</div>
+<div created="20220106163645899" modified="20220106163645911" title="$:/config/Plugins/Disabled/$:/ak/plugins/EmbedYouTube" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>yes</pre>
 </div>
 <div created="20210812001824438" modified="20210812002219062" title="$:/config/Plugins/Disabled/$:/themes/jd/Spartan" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>yes</pre>
@@ -10339,10 +10448,10 @@ background-color: &lt;&lt;colour tiddler-info-background&gt;&gt;;}
 <div created="20210812015835954" modified="20210822001601207" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[[IMO 2021, Problem 2]] [[IMO 2020, Problem 3]] [[All the Strongly Darboux Functions]]</pre>
 </div>
-<div created="20210812011737372" modified="20210812011737372" status="complete" title="$:/Import" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20220106163955940" modified="20220106163955940" status="complete" title="$:/Import" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The following tiddlers were imported:
 
-# [[$:/plugins/tiddlywiki/katex]]</pre>
+# [[$:/.tb/macros/slider]]</pre>
 </div>
 <div title="$:/isEncrypted" revision="0" bag="default">
 <pre>no</pre>
@@ -11258,6 +11367,289 @@ exports.context = contextWidget;
     }
 }</pre>
 </div>
+<div created="20150108144744686" modified="20220106163929967" summary="a form to add a new annotations to a video" tags="" title="$:/plugins/tobibeer/youtube/forms/new-annotation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$tiddler tiddler=&quot;$:/temp/yt&quot;&gt;
+&lt;$edit-text field=start size=10 placeholder=&quot;start hh:mm:ss&quot;/&gt;
+&lt;$edit-text field=end size=10 placeholder=&quot;end hh:mm:ss&quot;/&gt;
+&lt;$set name=yt-start value={{!!start}}&gt;
+&lt;$set name=yt-end value={{!!end}}&gt;
+&lt;$tiddler tiddler=&lt;&lt;yt&gt;&gt;&gt;
+&lt;$fieldmangler&gt;
+&lt;$button&gt;add
+&lt;$action-setfield $field=title $value=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+&lt;$action-setfield $field=tags $value={{$:/temp/yt!!tags-plain}}/&gt;
+&lt;$action-setfield $field=yt-video $value=&lt;&lt;yt-video&gt;&gt;/&gt;
+&lt;$action-setfield $field=yt-id $value=&lt;&lt;yt-id&gt;&gt;/&gt;
+&lt;$action-setfield $field=yt-start $value={{$:/temp/yt!!start}}/&gt;
+&lt;$action-setfield $field=yt-end $value={{$:/temp/yt!!end}}/&gt;
+&lt;$action-setfield $field=yt-annotation $value={{$:/temp/yt!!annotation}}/&gt;
+&lt;$action-setfield $field=text $value={{$:/temp/yt!!text}}/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/yt&quot; start={{$:/temp/yt!!end}} annotation=&quot;&quot; text=&quot;&quot; tags-plain=&quot;&quot;/&gt;
+&lt;/$button&gt;
+&lt;/$fieldmangler&gt;
+&lt;/$tiddler&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;$button&gt;set
+&lt;$action-setfield $tiddler=&lt;&lt;yt-video&gt;&gt; yt-start={{!!start}} yt-end={{!!end}}/&gt;
+&lt;/$button&gt;
+&lt;$button&gt;reset
+&lt;$action-setfield $tiddler=&lt;&lt;yt-video&gt;&gt; yt-start=&quot;&quot; yt-end=&quot;&quot;/&gt;
+&lt;/$button&gt;
+&lt;$edit-text field=annotation class=tc-edit-texteditor placeholder=&quot;title&quot;/&gt;
+&lt;$edit-text field=tags-plain class=tc-edit-texteditor placeholder=&quot;tags&quot;/&gt;
+&lt;$edit-text field=text class=tc-edit-texteditor placeholder=&quot;text&quot; default=&quot;&quot;/&gt;
+&lt;/$tiddler&gt;</pre>
+</div>
+<div created="20150109120004264" modified="20220106163936372" summary="lists all annotations for a video tiddler" tags="" title="$:/plugins/tobibeer/youtube/list/annotations" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;ytc-annotations-toggle-tags&quot;&gt;
+&lt;$reveal type=match state=&quot;$:/state/yt/tags&quot; text=&quot;&quot;&gt;
+&lt;$button class=&quot;tc-tiddlylink tc-btn-invisible&quot; set=&quot;$:/state/yt/tags&quot; setTo=&quot;show&quot;&gt;tags&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=nomatch state=&quot;$:/state/yt/tags&quot; text=&quot;&quot;&gt;
+&lt;$button class=&quot;tc-tiddlylink tc-btn-invisible&quot; set=&quot;$:/state/yt/tags&quot; setTo=&quot;&quot;&gt;- tags&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ytc-annotations&quot;&gt;
+&lt;$list filter=&quot;[field:yt-id&lt;yt-id&gt;sort[yt-end]sort[yt-start]]-[[$:/temp/yt]]-[has[draft.of]]-[yt-id&lt;yt-id&gt;!has[yt-video]]&quot;&gt;
+&lt;div class=&quot;ytc-annotation tc-tiddler-controls&quot;&gt;
+{{||$:/core/ui/Buttons/delete}} {{||$:/core/ui/Buttons/clone}}
+&lt;$button class='ytc-annotation-time tc-btn-invisible tc-tiddlylink'&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;yt-video&gt;&gt; yt-start={{!!yt-start}} yt-end={{!!yt-end}}/&gt;
+{{!!yt-start}} - {{!!yt-end}}
+&lt;/$button&gt;
+&lt;$link&gt;
+&lt;$view field=yt-annotation&gt;...&lt;/$view&gt;
+&lt;/$link&gt;
+{{||$:/core/ui/Buttons/edit}}
+&lt;$reveal type=nomatch state=&quot;$:/state/yt/tags&quot; text=&quot;&quot;&gt;
+&lt;$list filter=&quot;[all[current]tags[]limit[1]]&quot; variable=tags&gt;
+&lt;div class=&quot;ytc-annotation-tags&quot;&gt;{{||$:/core/ui/ViewTemplate/tags}}&lt;/div&gt;
+&lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20141223083012961" creator="aelocson" modified="20220106163941459" modifier="aelocson" module-type="macro" summary="embeds player and outputs links" tags="" title="$:/plugins/tobibeer/youtube/macros/yt.js" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+title: $:/plugins/tobibeer/youtube/macros/yt.js
+type: application/javascript
+module-type: macro
+
+Embeds a YouTube video with a specified start and end time...
+Usage: &lt;&lt;yt id:&quot;video-id&quot; start:&quot;01:23:45&quot; end:&quot;01:24:59&quot; link:full width:300 height:240&gt;&gt;
+
+link:&lt;no&gt; =&gt; player only
+link:full =&gt; only link as video url
+link:time =&gt; only link as time
+\*/
+
+(function(){
+
+&quot;use strict&quot;;
+
+exports.name = &quot;yt&quot;;
+
+exports.params = [
+	{ name: &quot;id&quot; },
+	{ name: &quot;start&quot; },
+	{ name: &quot;end&quot; },
+	{ name: &quot;title&quot; },
+	{ name: &quot;link&quot; },
+	{ name: &quot;width&quot; },
+	{ name: &quot;height&quot; }
+];
+
+exports.run = function(id, start, end, title, link, width, height) {
+	var aLnk, aVid, href, src, t0, t1,
+		video = this.getVariable(&quot;yt-video&quot;),
+		prefix =  this.getVariable(&quot;yt-prefix&quot;),
+		ytID = this.getVariable(&quot;yt-id&quot;) || &quot;&quot;,
+		time = function(t,hms) {
+			var h=0,m=0,s=0,
+				out = true;
+			if(!t) return &quot;&quot;;
+
+			t = t.split(&quot;:&quot;);
+			$tw.utils.each(t, function(v,i) {
+				t[i] = parseInt(v);
+				out = out &amp;&amp; !isNaN(t[i]);
+			});
+
+			if(out){
+				s = t[0];
+				if(3 === t.length) {
+					h = t[0];
+					m = t[1];
+					s = t[2];
+				} else
+				if(2 === t.length) {
+					m = t[0];
+					s = t[1];
+				}
+				if(undefined == hms) {
+					out =
+						$tw.utils.pad(h) + ':' +
+						$tw.utils.pad(m) + ':' +
+						$tw.utils.pad(s);
+				} else {
+					out = true == hms ?
+						'' + h + 'h' + m + 'm' + s + 's' :
+						h*60*60 + m*60 + s;
+				}
+			} else {
+				out = &quot;&quot;;
+			}
+			return out;
+		}
+	width = width || &quot;640&quot;;
+	height = height || &quot;360&quot;;
+
+	start = start || this.getVariable(&quot;yt-start&quot;);
+	end = end || this.getVariable(&quot;yt-end&quot;);
+
+	t0 = time(start, true);
+	href = &quot;http://www.youtube.com/watch?v=&quot; + id +
+		(t0 ? &quot;&amp;t=&quot; + t0 : &quot;&quot;);
+
+	t0 = time(start, id);
+	t1 = time(end, id);
+
+	if(!id) {
+		if(!video || !start) return &quot;&quot;;
+		return (prefix ?
+				(prefix + &quot; — &quot;) :
+				('$:/yt/' + ytID + &quot;/&quot;)
+			) + start + ( end ? (prefix ? &quot; - &quot; : &quot;-&quot;) + end : &quot;&quot;);
+	}
+
+	src = &quot;http://www.youtube.com/embed/&quot; + id + &quot;?&quot; + 
+		(t0 ? &quot;start=&quot; + t0 : &quot;&quot;) +
+		(t0 &amp;&amp; t1 ? &quot;&amp;end=&quot; + t1 : &quot;&quot; );
+
+	aLnk = [
+		&quot;&lt;a href='&quot;, href, &quot;' target=_blank&gt;&quot;,
+		title ? title : start + &quot; - &quot; + end,
+		&quot;&lt;/a&gt;&quot;].join(&quot;&quot;);
+	aVid = [
+		&quot;&lt;a href='&quot;, href, &quot;' target=_blank&gt;&quot;,
+		title ? title : href, &quot;&lt;/a&gt;&quot;].join(&quot;&quot;);
+
+	return link &amp;&amp; link!=&quot;time&quot; &amp;&amp; link!=&quot;no&quot; ?
+		(&quot;full&quot; == link ? aVid : aLnk) :
+		[
+			&quot;&lt;iframe width=&quot;,width,
+			&quot; height=&quot;,height,
+			&quot; src='&quot;, src,
+			&quot;&amp;autoplay=0&amp;rel=0' frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;&quot;,
+			(&quot;time&quot; === link ? aLnk : &quot;no&quot; === link ? &quot;&quot; : aVid)
+		].join(&quot;&quot;);
+};
+
+})();</pre>
+</div>
+<div created="20150108140154981" list-after="$:/core/ui/ViewTemplate/tags" modified="20220106163945361" summary="css stylesheet for the package" tags="$:/tags/Stylesheet" title="$:/plugins/tobibeer/youtube/styles" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>.ytc-add-annotation &gt; span &gt; button{
+float:right;
+font-size:2em;
+padding:0 15px;
+color:grey;
+}
+
+.ytc-add-annotation &gt; span &gt; button:hover{
+color:inherit;
+text-decoration:none;
+}
+
+.ytc-add-annotation .slider-contents {
+margin:0;
+}
+
+.ytc-annotations-toggle-tags{
+float:right;
+margin-top: 2px;
+}
+
+.ytc-annotations{
+margin-top:20px;
+}
+
+.ytc-annotation-title{
+color:grey;
+font-style:italic;
+margin-bottom:1em;
+}
+
+.ytc-annotation-tags {
+}
+
+.ytc-annotation-tags .tc-tags-wrapper{
+margin: 0 0 0 30px;
+}
+
+.ytc-annotation-tags .tc-tag-list-item{
+margin: 0;
+}
+
+button.tc-tiddlylink.ytc-annotation-time{
+color: &lt;&lt;colour tiddler-controls-foreground&gt;&gt;;
+}
+
+.ytc-annotation.tc-tiddler-controls{
+float:none;
+}
+
+.ytc-no-controls button{
+display:none;
+}
+
+.ytc-no-controls .tc-tiddlylink,
+.ytc-no-controls .tc-tag-label {
+display:inline;
+}
+
+.ytc-no-controls .tc-tags-wrapper{
+margin: 0;
+}
+
+.ytc-tiddler-anno-video{
+margin-top:10px;
+}</pre>
+</div>
+<div created="20150108132006250" list-after="$:/core/ui/ViewTemplate/tags" modified="20220106163948156" summary="a conditional view template for timed annotations" tags="$:/tags/ViewTemplate" title="$:/plugins/tobibeer/youtube/ViewTemplate/annotation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$list filter=&quot;[all[current]has[yt-video]]&quot;&gt;
+&lt;div class=&quot;ytc-tiddler-anno&quot;&gt;
+&lt;div class=&quot;ytc-tiddler-anno-videolink&quot;&gt;&lt;$link to={{!!yt-video}}&gt;
+&lt;$view field=yt-video/&gt;&lt;/$link&gt; — {{!!yt-annotation}}
+&lt;/div&gt;
+&lt;div class=&quot;ytc-tiddler-anno-video&quot;&gt;
+&lt;$macrocall $name=&quot;yt&quot; id={{!!yt-id}} start={{!!yt-start}} end={{!!yt-end}}/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/$list&gt;</pre>
+</div>
+<div created="20150108121358233" list-after="$:/core/ui/ViewTemplate/tags" modified="20220106163952472" summary="a conditional view template for videos" tags="$:/tags/ViewTemplate" title="$:/plugins/tobibeer/youtube/ViewTemplate/video" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$list filter=&quot;[all[current]has[yt-id]!has[yt-video]]&quot;&gt;
+&lt;div class=&quot;ytc-tiddler-video&quot;&gt;
+&lt;$set name=yt-video value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$set name=yt-prefix value={{!!yt-prefix}}&gt;
+&lt;$set name=yt-id value={{!!yt-id}}&gt;
+
+&lt;$macrocall $name=yt id=&lt;&lt;yt-id&gt;&gt; start={{!!yt-start}} end={{!!yt-end}} link=no/&gt;
+
+&lt;div class=&quot;ytc-add-annotation&quot;&gt;
+&lt;&lt;slider &quot;+&quot; {{$:/plugins/tobibeer/youtube/forms/new-annotation}} &quot;show / hide add annotation form&quot; &quot;$:/temp/yt!!slider&quot;&gt;&gt;
+&lt;/div&gt;
+
+{{||$:/plugins/tobibeer/youtube/list/annotations}}
+
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/div&gt;
+&lt;/$list&gt;</pre>
+</div>
 <div created="20210811123002475" modified="20210811123006968" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>a non-linear mathematical blog</pre>
 </div>
@@ -11643,6 +12035,101 @@ Thus strongly Darboux functions violate another (wrong!) intuition about how con
 --Stanisław
 </pre>
 </div>
+<div author="stanislaw" created="20220106150901000" modified="20220106164507894" tags="Geometry" title="Circles Touching Circles" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Today we discuss a rather different topic to our most recent posts on olympiads, though the problem we are discussing has the flavour of a basic olympiad problem. How many circles can touch others in some configuration if each one is forced to touch the same number? This is a deliberately vague question and has numerous answers. What does touch mean? Here we require the circles to be tangent to one another, though their interiors might or might not overlap.
+
+If we require each circle to touch two others then any three points that collinear can be chosen as centres of three circles in such a configuration as illustrated by the image below:
+
+[img class=&quot;img&quot; width=500 [https://qph.fs.quoracdn.net/main-qimg-f17ff6ffb90b3f5521fa483273f267db]]
+
+That this is always possible is actually only a matter of solving three linear equations: label the lengths of the three sides $$a,b,c$$ (where $$a$$ corresponds to the side opposite $$A$$ and so on) and then notice the radii $$r_a,r_b,r_c$$ (of circles with centres $$a,b,c$$) obey $$
+r_a + r_b = c, \, r_a + r_c = b,\, r_b + r_c = a
+$$ and these can be uniquely solved for the radii!
+
+What if we instead want each circle to touch three others? One very quick way of finding such an arrangement is to take infinite tiling of the planes by equilateral triangles and put circles inside each that are tangent to the three sides.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Tiling_3_simple.svg/600px-Tiling_3_simple.svg.png]]
+
+However, this example is infinite. Is there a finite version? Indeed there is and we don't need to look much further than our last example.
+
+[img class=&quot;img&quot; width=500 [https://cdn.discordapp.com/attachments/911959159996547083/928673118250217472/Screenshot_2022-01-06_at_15.35.19.png]]
+
+In this image, we have three medium-sized circles touching each other and then I show there are 2 choices of extra circle to add: one inside and one encircling them all. In either case, we end up with 4 circles which each touch 3 of the others! You can see where we are going with this: what if we wanted them to all touch 4 other circles?
+
+@@.exercise
+Above we said we can construct an arrangement of circles with each touching 3 others with a triangle tiling. Is there a tiling which allows you to get an infinite arrangement of circles with each touching 4 others?
+@@
+
+There is again a finite arrangement which can be quickly found by fiddling with our previous construction!
+
+[img class=&quot;img&quot; width=500 [https://cdn.discordapp.com/attachments/911959159996547083/928678828518293574/Screenshot_2022-01-06_at_15.57.24.png]]
+
+Now, the real interesting aspect of this problem comes for the higher touching-numbers. What if we wanted to have each circle touching five others? We cannot simply ask for an infinite tiling as there //is no infinite tiling of the plane using regular pentagons//. What about the finite case? I encourage you to try it on pen and paper... It's a doable challenge but requires some genuine insight and ingenuity.
+
+However, I want to explain why from a sufficiently high-level there are numerous interesting reasons why this problem isn't so complicated after all. In the spirit of tilings, is there any other geometric object we know where 5 things are touching each other? The //dodecahedron//, a rather lovely object which has a number of important symmetries.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Dodecahedron.jpg/613px-Dodecahedron.jpg]]
+
+Each face has 5 neighbours... but how is this helpful? Stereographic projection is an idea that comes up often in the study of geometry, complex analysis and graph theory: you take a sphere, place it on the plane and then project points onto the plane by drawing straight lines through them from the apex or &quot;north pole&quot; of the sphere.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Stereographic_projection_in_3D.svg/800px-Stereographic_projection_in_3D.svg.png]]
+
+and here is a wonderful video by Henry Segerman where he uses light to demonstrate how this distorts shapes in visually intriguing ways:
+
+{{Stereographic||$:/plugins/tobibeer/youtube/ViewTemplate/video}}
+
+Stereographic projection has two very important interesting properties:
+
+* It is //conformal//: this means that angles between lines on the sphere are preserved when they are projected onto the plane.
+* It maps circles on the sphere to circles on the plane and vice-versa.
+
+Thus the idea is simply to take a dodecahedron, fill each face with a circle tangent to the sides of that face and then project down onto the plane! There is a live computational simulation of that exact idea [[here|https://n-simplex.github.io/stereographic/]]. The controls are as follows:
+
+* Move your mouse along the $$x$$-axis to rotate the dodecahedron in one horizontal axis and move it up and down in the $$y$$-axis to rotate the dodecahedron around the vertical axis.
+* Click and drag on the screen to rotate.
+* Middle-click (i.e. click with your scroll-wheel) to pan around the scene.
+
+It shows in orange the projection of the dodecahedron (notice that the edges become arcs of circles on the plane) and in red the circles we discussed. Notice that as a natural consequence of the structure of the dodecahedron we see that each circle touches exactly 5 others (and indeed there are lots of different configurations of such circles).
+
+There is another fact about these configurations of circles which is very unobvious but which makes them rather special: you cannot add any circle to any of the configurations formed from the dodecahedron and in fact, if you have a finite collection of circles in the plane where each one is tangent to 5 others such that you cannot add any new circle and keep this 5-touching property //it must arise from a projection of the dodecahedron//! Really rather remarkable.
+
+Is there a way of having each circle touch 6 others? One way is due to the infinite hexagonal tiling, where we place a circle inside each hexagon tangent to the sides, but there //is no finite collection with this property//. Why might this be true?
+
+To explain this, we need to think about graphs (which for those not familiar with [[graph theory|https://en.m.wikipedia.org/wiki/Graph_theory]] are collections of points in the plane with edges/curves connecting them). A graph is //planar// if it can be drawn without any edges crossing, e.g. a pentagon. Now notice that if we have a collection of circles in the plane touching each other at various points, we can form a graph where there is one vertex for each circle and two vertices are connected by an edge if the circles are tangent. Below is an example with 5 circles.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_packing_theorem_K5_minus_edge_example.svg/304px-Circle_packing_theorem_K5_minus_edge_example.svg.png]]
+
+Clearly any graph formed in this way will not have its edges crossing and so is //planar// - we call such a graph the //tangency graph// of this particular collection of circles. However, there is a remarkable converse to this statement.
+
+@@.theorem
+(Koebe-Thurston-Andreev) Any planar graph is the tangency graph of some collection of circles.
+@@
+
+In other words, ANY collection of points with lines that you draw (however curvy these connecting arcs are and no matter how many edges and points you draw), as long as no edges cross we can find a collection of circles with these tangencies. This is a very, //very// unobvious fact and has all kinds of marvelous consequences we can't go into here. One basic example is that certain areas of maths produce incredibly symmetrical planar graphs and their corresponding circle configurations can be exceptionally wild and beautiful.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/ApollianGasketNested_2-20.svg/768px-ApollianGasketNested_2-20.svg.png]]
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Apollonian_gasket.svg/768px-Apollonian_gasket.svg.png]]
+
+Now, a famous fact about planar graphs (proven in any basic course on graph theory) is that if such a graph is finite, it must have at least one vertex with 5 or fewer edges coming out of it (a limit like this might make intuitive sense: too many edges and you couldn't possibly avoid crossing two when drawing it). But if there was a finite collection of circles such that each touched 6 others we could draw a planar graph from it (its tangency graph) violating this fact so no such collection of circles exists.
+
+Excitingly, however, the Koebe-Thurston-Andreev Theorem can also answer our question in the positive for collections of infinitely many circles for a very strange reason. For any $$n &gt; 5$$ we might not be able to find a tiling of the flat Euclidean plane using $$n$$-gons but we can find a tiling of the //hyperbolic plane// using regular $$n$$-gons! For example, here is an image using the Poincaré disk model of the hyperbolic plane made only of regular nonagons (something which would be laughably impossible on the normal plane).
+
+[img class=&quot;img&quot; width=500 [https://pbs.twimg.com/media/Dq2aP3tUwAA_NoU.png]]
+
+and we can even tile such a plane using an infinite-sided polygon (!):
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/H2-I-3-dual.svg/768px-H2-I-3-dual.svg.png]]
+
+Now we can simply draw a point in each of these shapes/regions in these projections and connect two points if their regions are touching. This will form an (infinite) planar graph with each vertex connected to $$n$$ others and so, by our powerful theorem, there is some infinite collection of circles with this graph as its tangency graph (i.e. each circle is tangent to $$n$$ others!).
+
+Finally, before this article ends, I should &quot;come clean&quot; as it were. There is in fact a rather simple solution to this problem for any $$n$$ suggested by this image:
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hawaiian_earrings.svg/768px-Hawaiian_earrings.svg.png]]
+
+but it's so uninteresting that I thought I'd ignore that for this article in favour of circle configurations where they aren't all tangent at one common point!
+</pre>
+</div>
 <div author="klaus" created="20210817211743000" modified="20210819020442745" tags="Linear_Algebra Algebra Combinatorics Graphs Algebraic_Combinatorics Klaus" title="Closed Walks in the Complete Graph" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Combinatorics has somewhat of a mixed reputation. It can appear insular relative to the rest of mathematics; its problems can appear obscure; and their solutions can seem ad hoc and impossible to generalise to broad theories. However, due to developments of the $$20^{\text{ th } }$$ century, none of these characterisations seem to hold much weight. One such example has been the creation of //Algebraic Combinatorics//- the application of algebraic methods to solve combinatorial problems. The problem of finding the number of closed walks of length $$l$$ in $$K_{p}$$ presents a stark example of the advantages of using this.
 
@@ -11908,6 +12395,9 @@ Although this solution has many complications, we hope this article has perhaps 
 
 --Stanisław
 </pre>
+</div>
+<div created="20220106164010599" modified="20220106164304603" tags="" title="Stereographic" type="text/vnd.tiddlywiki" yt-id="lbUOScpu0ws" revision="0" bag="default">
+<pre></pre>
 </div>
 <div author="stanislaw" created="20210820211832000" modified="20210820211342833" tags="Esoteric Conway Darboux" title="Strongly Darboux Functions: Conway's Idea" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[[Conway|https://en.wikipedia.org/wiki/John_Horton_Conway]] had a famous answer to the question of finding a Darboux function, called his &quot;Base 13 function&quot;, but I had never really understood it. This article should explain the idea behind it through the variant that I rediscovered independently.
@@ -12498,7 +12988,7 @@ We then halve the step size and again move until we are as close as possible to 
 --Stanisław
 </pre>
 </div>
-<div author="stanislaw" created="20210811014905149" modified="20210821133935100" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="stanislaw" created="20210811014905149" modified="20220106161457520" tags="$:/tags/Stylesheet" title="Theorem Styling" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>body
 {
 counter-reset: theorem;
@@ -12506,6 +12996,14 @@ counter-reset: def;
 counter-reset: example;
 counter-reset: conjecture;
 counter-reset: axiom;
+}
+
+.img
+{
+background-color: white;
+display: block;
+margin-left: auto;
+margin-right: auto;
 }
 
 .theorem
