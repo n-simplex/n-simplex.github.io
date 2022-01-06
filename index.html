@@ -249,11 +249,15 @@ Error message and password prompt
 
 <li>Closed Walks in the Complete Graph</li>
 
+<li>Draft of 'Circles Touching Circles'</li>
+
 <li>IMC 2021 Problem 3</li>
 
 <li>IMO 2020, Problem 3</li>
 
 <li>IMO 2021, Problem 2</li>
+
+<li>Stereo-code</li>
 
 <li>Stereographic</li>
 
@@ -10445,8 +10449,8 @@ border-radius:3px;
     }
 }</pre>
 </div>
-<div created="20210812015835954" modified="20210822001601207" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>[[IMO 2021, Problem 2]] [[IMO 2020, Problem 3]] [[All the Strongly Darboux Functions]]</pre>
+<div created="20210812015835954" modified="20220106172455337" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>[[Circles Touching Circles]] [[IMO 2021, Problem 2]] [[IMO 2020, Problem 3]] [[All the Strongly Darboux Functions]]</pre>
 </div>
 <div created="20220106163955940" modified="20220106163955940" status="complete" title="$:/Import" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The following tiddlers were imported:
@@ -11659,7 +11663,7 @@ margin-top:10px;
 <div title="$:/status/RequireReloadDueToPluginChange" revision="0" bag="default">
 <pre>no</pre>
 </div>
-<div list="[[IMO 2021, Problem 2]] [[IMO 2020, Problem 3]] [[All the Strongly Darboux Functions]]" title="$:/StoryList" revision="1" bag="default">
+<div list="[[Circles Touching Circles]] [[IMO 2021, Problem 2]] [[IMO 2020, Problem 3]] [[All the Strongly Darboux Functions]]" title="$:/StoryList" revision="1" bag="default">
 <pre></pre>
 </div>
 <div created="20180329154930300" creator="jd" modified="20210812163340413" modifier="jd" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -12226,6 +12230,101 @@ Not only is the purely combinatorial proof more difficult, but it also gives lit
 
 </pre>
 </div>
+<div author="stanislaw" created="20220106150901000" draft.of="Circles Touching Circles" draft.title="Circles Touching Circles" modified="20220106172545103" tags="Geometry" title="Draft of 'Circles Touching Circles'" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Today we discuss a rather different topic to our most recent posts on olympiads, though the problem we are discussing has the flavour of a basic olympiad problem. How many circles can touch others in some configuration if each one is forced to touch the same number? This is a deliberately vague question and has numerous answers. What does touch mean? Here we require the circles to be tangent to one another, though their interiors might or might not overlap.
+
+If we require each circle to touch two others then any three points that collinear can be chosen as centres of three circles in such a configuration as illustrated by the image below:
+
+[img class=&quot;img&quot; width=500 [https://qph.fs.quoracdn.net/main-qimg-f17ff6ffb90b3f5521fa483273f267db]]
+
+That this is always possible is actually only a matter of solving three linear equations: label the lengths of the three sides $$a,b,c$$ (where $$a$$ corresponds to the side opposite $$A$$ and so on) and then notice the radii $$r_a,r_b,r_c$$ (of circles with centres $$a,b,c$$) obey $$
+r_a + r_b = c, \, r_a + r_c = b,\, r_b + r_c = a
+$$ and these can be uniquely solved for the radii!
+
+What if we instead want each circle to touch three others? One very quick way of finding such an arrangement is to take infinite tiling of the planes by equilateral triangles and put circles inside each that are tangent to the three sides.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Tiling_3_simple.svg/600px-Tiling_3_simple.svg.png]]
+
+However, this example is infinite. Is there a finite version? Indeed there is and we don't need to look much further than our last example.
+
+[img class=&quot;img&quot; width=500 [https://cdn.discordapp.com/attachments/911959159996547083/928673118250217472/Screenshot_2022-01-06_at_15.35.19.png]]
+
+In this image, we have three medium-sized circles touching each other and then I show there are 2 choices of extra circle to add: one inside and one encircling them all. In either case, we end up with 4 circles which each touch 3 of the others! You can see where we are going with this: what if we wanted them to all touch 4 other circles?
+
+@@.exercise
+Above we said we can construct an arrangement of circles with each touching 3 others with a triangle tiling. Is there a tiling which allows you to get an infinite arrangement of circles with each touching 4 others?
+@@
+
+There is again a finite arrangement which can be quickly found by fiddling with our previous construction!
+
+[img class=&quot;img&quot; width=500 [https://cdn.discordapp.com/attachments/911959159996547083/928678828518293574/Screenshot_2022-01-06_at_15.57.24.png]]
+
+Now, the real interesting aspect of this problem comes for the higher touching-numbers. What if we wanted to have each circle touching five others? We cannot simply ask for an infinite tiling as there //is no infinite tiling of the plane using regular pentagons//. What about the finite case? I encourage you to try it on pen and paper... It's a doable challenge but requires some genuine insight and ingenuity.
+
+However, I want to explain why from a sufficiently high-level there are numerous interesting reasons why this problem isn't so complicated after all. In the spirit of tilings, is there any other geometric object we know where 5 things are touching each other? The //dodecahedron//, a rather lovely object which has a number of important symmetries.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Dodecahedron.jpg/613px-Dodecahedron.jpg]]
+
+Each face has 5 neighbours... but how is this helpful? Stereographic projection is an idea that comes up often in the study of geometry, complex analysis and graph theory: you take a sphere, place it on the plane and then project points onto the plane by drawing straight lines through them from the apex or &quot;north pole&quot; of the sphere.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Stereographic_projection_in_3D.svg/800px-Stereographic_projection_in_3D.svg.png]]
+
+and here is a wonderful video by Henry Segerman where he uses light to demonstrate how this distorts shapes in visually intriguing ways:
+
+{{Stereographic||$:/plugins/tobibeer/youtube/ViewTemplate/video}}
+
+Stereographic projection has two very important interesting properties:
+
+* It is //conformal//: this means that angles between lines on the sphere are preserved when they are projected onto the plane.
+* It maps circles on the sphere to circles on the plane and vice-versa.
+
+Thus the idea is simply to take a dodecahedron, fill each face with a circle tangent to the sides of that face and then project down onto the plane! There is a live computational simulation of that exact idea [[here|https://n-simplex.github.io/stereographic/]]. The controls are as follows:
+
+* Move your mouse along the $$x$$-axis to rotate the dodecahedron in one horizontal axis and move it up and down in the $$y$$-axis to rotate the dodecahedron around the vertical axis.
+* Click and drag on the screen to rotate.
+* Middle-click (i.e. click with your scroll-wheel) to pan around the scene.
+
+It shows in orange the projection of the dodecahedron (notice that the edges become arcs of circles on the plane) and in red the circles we discussed. Notice that as a natural consequence of the structure of the dodecahedron we see that each circle touches exactly 5 others (and indeed there are lots of different configurations of such circles).
+
+There is another fact about these configurations of circles which is very unobvious but which makes them rather special: you cannot add any circle to any of the configurations formed from the dodecahedron and in fact, if you have a finite collection of circles in the plane where each one is tangent to 5 others such that you cannot add any new circle and keep this 5-touching property //it must arise from a projection of the dodecahedron//! Really rather remarkable.
+
+Is there a way of having each circle touch 6 others? One way is due to the infinite hexagonal tiling, where we place a circle inside each hexagon tangent to the sides, but there //is no finite collection with this property//. Why might this be true?
+
+To explain this, we need to think about graphs (which for those not familiar with [[graph theory|https://en.m.wikipedia.org/wiki/Graph_theory]] are collections of points in the plane with edges/curves connecting them). A graph is //planar// if it can be drawn without any edges crossing, e.g. a pentagon. Now notice that if we have a collection of circles in the plane touching each other at various points, we can form a graph where there is one vertex for each circle and two vertices are connected by an edge if the circles are tangent. Below is an example with 5 circles.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_packing_theorem_K5_minus_edge_example.svg/304px-Circle_packing_theorem_K5_minus_edge_example.svg.png]]
+
+Clearly any graph formed in this way will not have its edges crossing and so is //planar// - we call such a graph the //tangency graph// of this particular collection of circles. However, there is a remarkable converse to this statement.
+
+@@.theorem
+(Koebe-Thurston-Andreev) Any planar graph is the tangency graph of some collection of circles.
+@@
+
+In other words, ANY collection of points with lines that you draw (however curvy these connecting arcs are and no matter how many edges and points you draw), as long as no edges cross we can find a collection of circles with these tangencies. This is a very, //very// unobvious fact and has all kinds of marvelous consequences we can't go into here. One basic example is that certain areas of maths produce incredibly symmetrical planar graphs and their corresponding circle configurations can be exceptionally wild and beautiful.
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/ApollianGasketNested_2-20.svg/768px-ApollianGasketNested_2-20.svg.png]]
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Apollonian_gasket.svg/768px-Apollonian_gasket.svg.png]]
+
+Now, a famous fact about planar graphs (proven in any basic course on graph theory) is that if such a graph is finite, it must have at least one vertex with 5 or fewer edges coming out of it (a limit like this might make intuitive sense: too many edges and you couldn't possibly avoid crossing two when drawing it). But if there was a finite collection of circles such that each touched 6 others we could draw a planar graph from it (its tangency graph) violating this fact so no such collection of circles exists.
+
+Excitingly, however, the Koebe-Thurston-Andreev Theorem can also answer our question in the positive for collections of infinitely many circles for a very strange reason. For any $$n &gt; 5$$ we might not be able to find a tiling of the flat Euclidean plane using $$n$$-gons but we can find a tiling of the //hyperbolic plane// using regular $$n$$-gons! For example, here is an image using the Poincaré disk model of the hyperbolic plane made only of regular nonagons (something which would be laughably impossible on the normal plane).
+
+[img class=&quot;img&quot; width=500 [https://pbs.twimg.com/media/Dq2aP3tUwAA_NoU.png]]
+
+and we can even tile such a plane using an infinite-sided polygon (!):
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/H2-I-3-dual.svg/768px-H2-I-3-dual.svg.png]]
+
+Now we can simply draw a point in each of these shapes/regions in these projections and connect two points if their regions are touching. This will form an (infinite) planar graph with each vertex connected to $$n$$ others and so, by our powerful theorem, there is some infinite collection of circles with this graph as its tangency graph (i.e. each circle is tangent to $$n$$ others!).
+
+Finally, before this article ends, I should &quot;come clean&quot; as it were. There is in fact a rather simple solution to this problem for any $$n$$ suggested by this image:
+
+[img class=&quot;img&quot; width=500 [https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hawaiian_earrings.svg/768px-Hawaiian_earrings.svg.png]]
+
+but it's so uninteresting that I thought I'd ignore that for this article in favour of circle configurations where they aren't all tangent at one common point! Also, if you are interested in the code for the simluation it can be found [[here|Stereo-code]] and also at my GitHub
+</pre>
+</div>
 <div author="stanislaw" created="20210813161525000" modified="20210927011705630" tags="IMC, Problem" title="IMC 2021 Problem 3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The 2021 IMC happened recently (3rd-4th of August) and it had some very interesting and challenging problems, as always. This blog may discuss more of them in the future but today we'll be focussing on Problem 3:
 
@@ -12394,6 +12493,266 @@ The first inequality is by concavity and our careful choice of $$s^+,s^-$$, the 
 Although this solution has many complications, we hope this article has perhaps guided you through our thought process in tackling a truly tough puzzle.
 
 --Stanisław
+</pre>
+</div>
+<div author="stanislaw" created="20220106172324000" modified="20220106172431379" tags="Code" title="Stereo-code" type="application/javascript" revision="0" bag="default">
+<pre>function setup() {
+  	createCanvas(1000,1000, WEBGL);
+	createEasyCam();
+    let phi = (1+sqrt(5))/2;
+	
+	dodec = [createVector(1,1,1),createVector(1,1,-1),createVector(1,-1,1), createVector(1,-1,-1),createVector(-1,1,1),createVector(-1,1,-1),createVector(-1,-1,1),createVector(-1,-1,-1), createVector(0, phi, 1/phi),createVector(0, phi, -1/phi),createVector(0, -phi, 1/phi),createVector(0, -phi, -1/phi),createVector(1/phi, 0,phi),createVector(1/phi, 0,-phi),createVector(-1/phi, 0,phi),createVector(-1/phi, 0,-phi), createVector(phi, 1/phi, 0), createVector(phi, -1/phi, 0),createVector(-phi, 1/phi, 0),createVector(-phi, -1/phi, 0)];
+    for (var i = 0; i&lt; dodec.length; i++) {
+        dodec[i].mult(100/sqrt(3)); 
+    }
+  
+    let lg = Array(20);
+    for (var i = 0; i &lt; dodec.length; i++) {
+      lg[i] = [p5.Vector.sub(dodec[i],dodec[15]).magSq(), i];
+    }
+
+    edges = [[0,8], [0,12],[0,16],[1,9],[1,13], [1,16],[2,10],[2,12],[2,17],[3,11],[3,13],[3,17],[4,8],[4,14],[4,18],[5,9],[5,15],[5,18],[6,10],[6,14],[6,19],[7,11],[7,15],[7,19],[8,9],[10,11],[12,14],[18,19],[16,17],[13,15]];
+    faces = [[0,12,2,17,16],[0, 8, 12, 4, 14],[1, 9, 13, 5, 15],[1, 9, 16, 0, 8],[1, 13, 16, 3, 17],[2, 10, 17, 3, 11],[2, 10, 12, 6, 14],[19, 18, 6, 4, 14],[19, 18, 7, 5, 15],[19, 6, 7, 10, 11],[15, 13, 7, 3, 11],[5, 9, 18, 4, 8]];
+    circs = [[[0,12], [0,16], [2,12]],
+             [[0,8],[0,12],[4,8]],
+             [[1,9],[1,13],[13,15]],
+             [[1,9],[1,16],[0,16]],
+             [[1,13],[1,16],[16,17]],
+             [[2,10],[2,17], [17,3]],
+             [[2,10],[2,12],[12,14]],
+             [[19,18],[19,6],[6,14]],
+             [[19,18],[19,7],[18,5]],
+             [[19,7],[19,6],[7,11]],
+             [[15,13], [15,7],[7,11]],
+             [[5,9],[5,18],[18,4]]];
+}
+
+function draw() {
+    background(250);
+    let locX = mouseX - height / 2;
+    let locY = mouseY - width / 2;
+    let rotdod = Array(20);
+    let l = Array(4);
+    let a = Array(2);
+    let v = createVector(0,0,0);
+  
+    stroke(60);
+    stroke(&quot;orange&quot;);
+  
+  	for (var i = 0; i&lt; dodec.length; i++) {
+        rotdod[i] = rotateAround(rotateAround(dodec[i], createVector(1,0,0), map(locX, -height/2, height/2, 0, 2*PI)), createVector(0,1,0), map(locY, -height/2, height/2, 0, 2*PI));
+        //projdod[i] = project(rotdod[i]);
+	}
+
+    for (var i = 0; i&lt; dodec.length; i++) {
+        point(rotdod[i]);
+        point(project(rotdod[i]));
+	}
+
+    for (var i = 0; i &lt; edges.length; i++) {
+      divl = divide(rotdod[edges[i][0]], rotdod[edges[i][1]], 10);
+      for (var j = 0; j &lt; 10; j++) {
+        divl[j] = project(divl[j]);
+      }
+      
+      noFill()
+      beginShape();
+      curveVertex(divl[0].x,divl[0].y, divl[0].z);
+      for (var j = 0; j &lt; 10; j++) {
+        curveVertex(divl[j].x,divl[j].y,divl[j].z);
+      }
+      curveVertex(divl[9].x,divl[9].y, divl[9].z);
+      endShape();
+      
+      line(rotdod[edges[i][0]].x,rotdod[edges[i][0]].y,rotdod[edges[i][0]].z, rotdod[edges[i][1]].x,rotdod[edges[i][1]].y,rotdod[edges[i][1]].z);
+    }
+    
+    stroke(&quot;red&quot;);
+    for (var i = 0; i &lt; faces.length; i++) {
+      l = [rotdod[faces[i][0]],rotdod[faces[i][1]],rotdod[faces[i][2]],rotdod[faces[i][3]],rotdod[faces[i][4]]];
+      v = av(l);
+      point(v);
+      point(project(v));
+      
+      c = circ([project(av([rotdod[circs[i][0][0]],rotdod[circs[i][0][1]]])),  project(av([rotdod[circs[i][1][0]],rotdod[circs[i][1][1]]])), project(av([rotdod[circs[i][2][0]],rotdod[circs[i][2][1]]]))]);
+      push();
+      translate(c[0]);
+      beginShape();
+      for (var j = 0; j &lt; 13; j++) {
+        curveVertex(c[1]*cos(2*PI/10*j),0,c[1]*sin(2*PI/10*j));
+      }
+      endShape(CLOSE);
+      pop();
+    }
+  
+    ambientLight(120);
+    pointLight(100, 100, 100, 0,-300, 0);
+    ambientMaterial(255);
+    fill(250);
+	noStroke();
+    translate(0,100,0);
+    push();
+	rotateX(PI/2);
+    ambientMaterial(100,100,250);
+	plane(2000);
+	pop();
+}
+
+// does stereographic projection
+function project(vect) {
+  let p = createVector(0,-100,0);
+  let q = p5.Vector.sub(vect, p);
+  q = p5.Vector.mult(q, 200/q.y);
+  return p5.Vector.add(q,p);
+}
+
+// averages a bunch of vectors
+function av(fac) {
+  a = createVector(0,0,0);
+  for (var i = 0; i &lt; fac.length; i++) {
+    a.add(fac[i])
+  }
+  a.mult(1/fac.length);
+  a.mult(100/a.mag());
+  return a;
+}
+
+// checks if p1,p2 are adjacent in the list l
+function adjacent(p1,p2,l) {
+  for (var i = 0; i &lt; l.length; i++) {
+    if (arraysEqual(l[i],[p1,p2])) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// helpful function in finding faces
+function find(f, edge, face) {
+  m = Array(4);
+  j = 0
+  for (var i = 0; i &lt; edge.length; i++) {
+    if (edge[i][0] == f[1] || edge[i][0] == f[2]) {
+      if (edge[i][1] != f[0]) {
+        m[j] = edge[i][1];
+        j += 1;
+      }
+    }
+    if (edge[i][1] == f[1] || edge[i][1] == f[2]) {
+      if (edge[i][0] != f[0]) {
+        m[j] = edge[i][0];
+        j += 1;
+      }
+    }
+  }
+  for (var i = 0; i &lt; 4; i++) {
+    for (var j = i; j &lt; 4; j++) {
+      if (adjacent(m[i], m[j], edge)) {
+        return [f[0],f[1],f[2],m[i],m[j]];
+      }
+    }
+  }
+}
+
+// checks if two arrays are equal
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false;
+  for (var i = 0; i &lt; a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
+// given three points, it works out the centre and radius of the unique circle passing through them
+function circ(points) {
+  let M11 = new Matrix(3,3, points[0].x, points[0].z, 1, points[1].x, points[1].z, 1,points[2].x, points[2].z, 1);
+  let M12 = new Matrix(3,3, points[0].x**2+points[0].z**2, points[0].z, 1, points[1].x**2+points[1].z**2, points[1].z, 1,points[2].x**2+points[2].z**2, points[2].z, 1);
+  let M13 = new Matrix(3,3, points[0].x**2+points[0].z**2, points[0].x, 1, points[1].x**2+points[1].z**2, points[1].x, 1,points[2].x**2+points[2].z**2, points[2].x, 1);
+  let M14 = new Matrix(3,3, points[0].x**2+points[0].z**2, points[0].x, points[0].z, points[1].x**2+points[1].z**2, points[1].x, points[1].z,points[2].x**2+points[2].z**2, points[2].x, points[2].z);
+  let p = createVector(1/2*M12.determinant()/M11.determinant(), 100,-1/2*M13.determinant()/M11.determinant());
+  return [p,sqrt(p.x**2+p.z**2+ M14.determinant()/M11.determinant())];
+}
+
+// divides the segment between v1,v2 into num-many points on the sphere of radius 100
+function divide(v1, v2, num) {
+  l = Array(num);
+  l[0] = v2;
+  l[num-1] = v1;
+  if (num == 2) {
+    return l;
+  }
+  for (var i = 1; i &lt; l.length-1; ++i) {
+    l[i] = p5.Vector.add(p5.Vector.mult(v1, i/(num-1)), p5.Vector.mult(v2, (num-1-i)/(num-1)));
+    l[i] = p5.Vector.mult(l[i], 100/p5.Vector.mag(l[i]));
+  }
+  return l;
+}
+
+// Rodrigues rotation formula!
+function rotateAround(vect, axis, angle) {
+  axis = p5.Vector.normalize(axis);
+
+  return p5.Vector.add(
+    p5.Vector.mult(vect, cos(angle)),
+    p5.Vector.add(
+      p5.Vector.mult(
+        p5.Vector.cross(axis, vect),
+        sin(angle)
+      ),
+      p5.Vector.mult(
+        p5.Vector.mult(
+          axis,
+          p5.Vector.dot(axis, vect)
+        ),
+        (1 - cos(angle))
+      )
+    )
+  );
+}
+
+class Matrix {
+    constructor(cols, rows, ...vals) {
+        this.v = [];
+        for (let i = 0; i &lt; vals.length; i++) {
+            if (!this.v[i % cols]) this.v[i % cols] = [];
+            this.v[i % cols][Math.floor(i / cols)] = vals[i];
+        }
+    }
+
+    determinant() {
+        let res = 0;
+        let factors = [];
+        for (let x = 0; x &lt; this.v.length; x++) {
+            for (let y = 0; y &lt; this.v.length; y++) {
+                let xx = x + y;
+                if (xx &gt;= this.v.length) xx -= this.v.length;
+                factors.push(this.v[xx][y]);
+            }
+
+            res += factors.reduce((tot, cur) =&gt; tot * cur, 1);
+            //log(factors)
+            factors = [];
+
+        }
+
+        for (let x = 0; x &lt; this.v.length; x++) {
+            for (let y = 0; y &lt; this.v.length; y++) {
+                let xx = x - y;
+                if (xx &lt; 0) xx += this.v.length;
+                factors.push(this.v[xx][y]);
+
+            }
+            res -= factors.reduce((tot, cur) =&gt; tot * cur, 1);
+            //log(factors)
+            factors = [];
+
+        }
+
+        return res;
+    }
+}
 </pre>
 </div>
 <div created="20220106164010599" modified="20220106164304603" tags="" title="Stereographic" type="text/vnd.tiddlywiki" yt-id="lbUOScpu0ws" revision="0" bag="default">
